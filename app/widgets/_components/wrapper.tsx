@@ -14,6 +14,10 @@ const ScrollViewWrapper: React.FC<ScrollViewWrapperProps> = ({ children }) => {
                 height: "100%",
                 width: "100%",
             }}
+            alwaysBounceHorizontal={false}
+            alwaysBounceVertical={false}
+            bounces={false}
+            overScrollMode="never"
             showsVerticalScrollIndicator={false}
         >
             {children}

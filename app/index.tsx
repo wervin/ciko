@@ -12,6 +12,10 @@ const Home = () => {
                 height: "100%",
                 width: "100%",
             }}
+            alwaysBounceHorizontal={false}
+            alwaysBounceVertical={false}
+            bounces={false}
+            overScrollMode="never"
             showsVerticalScrollIndicator={false}
             stickyHeaderIndices={[0]}
             stickyHeaderHiddenOnScroll={true}

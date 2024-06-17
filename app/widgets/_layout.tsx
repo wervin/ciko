@@ -2,7 +2,7 @@ import { Widget } from '@/components/widgets';
 import { Stack } from 'expo-router';
 import { randomUUID } from "expo-crypto";
 import { Header } from './_components/header';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import { pink } from '@/utils/colors';
 
 export const widgets: Widget[] = [
@@ -14,7 +14,7 @@ export const widgets: Widget[] = [
     },
     {
         id: randomUUID(),
-        categories: ['EPF', 'LCC'],
+        categories: ['EPF', 'Age gestationnel'],
         title: 'Estimation du Poids Fœtal',
         page: "/widgets/poidsFoetal"
     }

@@ -39,7 +39,7 @@ const RootLayout = () => {
       <Stack
         screenOptions={{
           headerShown: false,
-          navigationBarColor: pink.pink5,
+          // navigationBarColor: pink.pink5,
           statusBarColor: pink.pink5,
           statusBarStyle: "dark",
           animation: "slide_from_right",
