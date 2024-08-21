@@ -1,4 +1,4 @@
-import { pink, pinkDark } from "@/utils/colors";
+import { purple, purpleDark } from "@/utils/colors";
 import { useRef, useEffect } from "react";
 import { View, Text, Animated } from "react-native";
 
@@ -36,7 +36,7 @@ export const GestiationalAge = ({
                 style={{
                     fontSize: 22,
                     fontWeight: "800",
-                    color: pinkDark.pink5,
+                    color: purpleDark.purple5,
                 }}
             >
                 Age Gestationnel
@@ -49,8 +49,8 @@ export const GestiationalAge = ({
             >
                 <View
                     style={{
-                        backgroundColor: pink.pink2,
-                        borderColor: pink.pink6,
+                        backgroundColor: purple.purple2,
+                        borderColor: purple.purple6,
                         borderWidth: 2,
                         borderRadius: 10,
                         height: 60,
@@ -65,7 +65,7 @@ export const GestiationalAge = ({
                         width: "40%",
                         height: 60,
                         paddingRight: 15,
-                        color: pinkDark.pink7,
+                        color: purpleDark.purple7,
                         fontSize: 22,
                         fontWeight: "700",
                         textAlignVertical: "center",
@@ -82,10 +82,10 @@ export const GestiationalAge = ({
                         right: "45%",
                         height: 60,
                         width: "15%",
-                        backgroundColor: pink.pink5,
-                        borderColor: pink.pink6,
+                        backgroundColor: purple.purple5,
+                        borderColor: purple.purple6,
                         borderWidth: 2,
-                        color: pinkDark.pink7,
+                        color: purpleDark.purple7,
                         fontSize: 22,
                         fontWeight: "700",
                         textAlignVertical: "center",
@@ -103,7 +103,7 @@ export const GestiationalAge = ({
                         height: 60,
                         width: "30%",
                         paddingRight: 15,
-                        color: pinkDark.pink7,
+                        color: purpleDark.purple7,
                         fontSize: 22,
                         fontWeight: "700",
                         textAlignVertical: "center",
@@ -122,10 +122,10 @@ export const GestiationalAge = ({
                         width: "15%",
                         borderTopRightRadius: 10,
                         borderBottomRightRadius: 10,
-                        backgroundColor: pink.pink5,
-                        borderColor: pink.pink6,
+                        backgroundColor: purple.purple5,
+                        borderColor: purple.purple6,
                         borderWidth: 2,
-                        color: pinkDark.pink7,
+                        color: purpleDark.purple7,
                         fontSize: 22,
                         fontWeight: "700",
                         textAlignVertical: "center",

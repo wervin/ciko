@@ -3,7 +3,7 @@ import { Stack } from 'expo-router';
 import { randomUUID } from "expo-crypto";
 import { Header } from './_components/header';
 import { View } from 'react-native';
-import { pink } from '@/utils/colors';
+import { pink, purple } from '@/utils/colors';
 
 export const widgets: Widget[] = [
     {
@@ -13,6 +13,35 @@ export const widgets: Widget[] = [
         page: "/widgets/cranioCaudale"
     },
     {
+        id: randomUUID(),
+        categories: ['EPF', 'Age gestationnel'],
+        title: 'Estimation du Poids Fœtal',
+        page: "/widgets/poidsFoetal"
+    },
+    {
+        id: randomUUID(),
+        categories: ['EPF', 'Age gestationnel'],
+        title: 'Estimation du Poids Fœtal',
+        page: "/widgets/poidsFoetal"
+    },
+    {
+        id: randomUUID(),
+        categories: ['EPF', 'Age gestationnel'],
+        title: 'Estimation du Poids Fœtal',
+        page: "/widgets/poidsFoetal"
+    },
+    {
+        id: randomUUID(),
+        categories: ['EPF', 'Age gestationnel'],
+        title: 'Estimation du Poids Fœtal',
+        page: "/widgets/poidsFoetal"
+    }
+    ,{
+        id: randomUUID(),
+        categories: ['EPF', 'Age gestationnel'],
+        title: 'Estimation du Poids Fœtal',
+        page: "/widgets/poidsFoetal"
+    },{
         id: randomUUID(),
         categories: ['EPF', 'Age gestationnel'],
         title: 'Estimation du Poids Fœtal',
@@ -33,10 +62,20 @@ const WidgetLayout = () => {
                 screenOptions={{
                     header: (props) => <Header widgets={widgets} props={props} />,
                     contentStyle: {
-                        backgroundColor: pink.pink3,
-                    }
+                        backgroundColor: pink.pink3
+                    },
                 }}
             />
+
+            <View
+                style={{
+                    backgroundColor: purple.purple11,
+                    width: "100%",
+                    height: 100
+                }}
+            >
+
+            </View>
         </View>
     );
 };

@@ -1,4 +1,4 @@
-import { pink, pinkDark } from "@/utils/colors";
+import { purple, purpleDark } from "@/utils/colors";
 import { useRef, useEffect } from "react";
 import { View, Text, Animated } from "react-native";
 import { CalendarDays } from 'lucide-react-native';
@@ -37,7 +37,7 @@ export const PregnancyStartDate = ({
                 style={{
                     fontSize: 22,
                     fontWeight: "800",
-                    color: pinkDark.pink5,
+                    color: purpleDark.purple5,
                 }}
             >
                 Date de Début de Grossesse
@@ -50,8 +50,8 @@ export const PregnancyStartDate = ({
             >
                 <View
                     style={{
-                        backgroundColor: pink.pink2,
-                        borderColor: pink.pink6,
+                        backgroundColor: purple.purple2,
+                        borderColor: purple.purple6,
                         borderWidth: 2,
                         borderRadius: 10,
                         height: 60,
@@ -66,7 +66,7 @@ export const PregnancyStartDate = ({
                         width: "85%",
                         height: 60,
                         paddingRight: 15,
-                        color: pinkDark.pink7,
+                        color: purpleDark.purple7,
                         fontSize: 22,
                         fontWeight: "700",
                         textAlignVertical: "center",
@@ -85,15 +85,15 @@ export const PregnancyStartDate = ({
                         width: "15%",
                         borderTopRightRadius: 10,
                         borderBottomRightRadius: 10,
-                        backgroundColor: pink.pink5,
-                        borderColor: pink.pink6,
+                        backgroundColor: purple.purple5,
+                        borderColor: purple.purple6,
                         borderWidth: 2,
                         alignItems: "center",
                         justifyContent: "center"
                     }}
                 >
                     <CalendarDays
-                        color={pinkDark.pink7}
+                        color={purpleDark.purple7}
                         size={24}
                     />
                 </View>

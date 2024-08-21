@@ -8,7 +8,7 @@ export const GestationalAgeCurves = {
 };
 
 interface CranioCaudaleInputProps {
-    onChangeText: (text: string) => void;
+    onChangeCrownRumpLength: (text: string) => void;
     crownRumpLength: string;
     isCrownRumpLengthValid: boolean;
     setIsCrownRumpLengthValid: (valid: boolean) => void;
@@ -19,7 +19,7 @@ interface CranioCaudaleInputProps {
 };
 
 export const CranioCaudaleInput = ({
-    onChangeText,
+    onChangeCrownRumpLength,
     crownRumpLength,
     isCrownRumpLengthValid,
     isValid,
@@ -52,7 +52,7 @@ export const CranioCaudaleInput = ({
                 }}
             >
                 <TextInput
-                    onChangeText={onChangeText}
+                    onChangeText={onChangeCrownRumpLength}
                     onEndEditing={(e) => {
                         const crl = parseFloat(e.nativeEvent.text);
                         setIsValid(true);

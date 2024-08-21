@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { Pressable, View, Text } from "react-native";
 import { EchographyDate } from "./echography-date";
 import { CranioCaudaleInput, GestationalAgeCurves } from "./cranio-caudale-input";
 import { GestiationalAge } from "./gestiational-age";
@@ -7,6 +7,8 @@ import { PregnancyStartDate } from "./pregnancy-start-date";
 import { DateTimePickerEvent } from "@react-native-community/datetimepicker";
 import withScrollView from "../_components/wrapper";
 import { Term } from "./term";
+import { pink, pinkDark, purple } from "@/utils/colors";
+import { ExecuteButton } from "./execute-button";
 
 const CranioCaudale = () => {
     const [crownRumpLength, setCrownRumpLength] = useState("");
@@ -26,7 +28,7 @@ const CranioCaudale = () => {
         setShow(true);
     };
 
-    const onChangeText = (text: string) => {
+    const onChangeCrownRumpLength = (text: string) => {
         setIsValid(false);
         const re = /[+-]?([0-9]*[.])?[0-9]+/
         if (text === "" || re.test(text))
@@ -68,30 +70,79 @@ const CranioCaudale = () => {
             style={{
                 width: "100%",
                 height: "100%",
-                backgroundColor: "transparent",
                 flex: 1,
-                gap: 30,
-                padding: 20
+                justifyContent: 'center',
+                alignItems: 'center',
             }}
         >
-            <EchographyDate show={show} date={date} onDateChange={onDateChange} showDatePicker={showDatePicker} />
+            <View style={{
+                width: "100%",
+                padding: 20,
+                gap: 30
+            }}>
+                <EchographyDate show={show} date={date} onDateChange={onDateChange} showDatePicker={showDatePicker} />
 
-            <CranioCaudaleInput
-                onChangeText={onChangeText}
-                crownRumpLength={crownRumpLength}
-                isCrownRumpLengthValid={isCrownRumpLengthValid}
-                setIsCrownRumpLengthValid={setIsCrownRumpLengthValid}
-                isValid={isValid}
-                setIsValid={setIsValid}
-                onPressGestationalAgeCurve={onPressGestationalAgeCurve}
-                gestationalAgeCurve={gestationalAgeCurve}
-            />
+                <CranioCaudaleInput
+                    onChangeCrownRumpLength={onChangeCrownRumpLength}
+                    crownRumpLength={crownRumpLength}
+                    isCrownRumpLengthValid={isCrownRumpLengthValid}
+                    setIsCrownRumpLengthValid={setIsCrownRumpLengthValid}
+                    isValid={isValid}
+                    setIsValid={setIsValid}
+                    onPressGestationalAgeCurve={onPressGestationalAgeCurve}
+                    gestationalAgeCurve={gestationalAgeCurve}
+                />
+            </View>
 
-            {isValid && isCrownRumpLengthValid && <GestiationalAge crownRumpLength={crownRumpLength} gestationalAge={gestationalAge} />}
+            <View style={{
+                width: "100%",
+                height: 500,
+                padding: 20,
+                borderRadius: 10
+            }}>
+                <View style={{
+                    backgroundColor: "green",
+                    width: "100%",
+                    height: "100%"
+                }}>
 
-            {isValid &&  isCrownRumpLengthValid && <PregnancyStartDate crownRumpLength={crownRumpLength} pregnancyStartDate={pregnancyStartDate} />}
+                </View>
 
-            {isValid && isCrownRumpLengthValid && <Term crownRumpLength={crownRumpLength} termDate={TermDate} />}
+            </View>
+
+            <View style={{
+                width: "100%",
+                padding: 20,
+                gap: 30
+            }}>
+                <ExecuteButton />
+            </View>
+
+            {/* 
+            {(isValid && isCrownRumpLengthValid) ?
+                <View
+                    style={{
+                        backgroundColor: purple.purple3,
+                        margin: 20,
+                        padding: 20,
+                        gap: 30,
+                        borderRadius: 10,
+                        shadowOffset: {
+                            width: 0,
+                            height: 2,
+                        },
+                        shadowOpacity: 0.25,
+                        shadowRadius: 3.84,
+                        elevation: 3,
+                    }}
+                >
+                    <GestiationalAge crownRumpLength={crownRumpLength} gestationalAge={gestationalAge} />
+                    <PregnancyStartDate crownRumpLength={crownRumpLength} pregnancyStartDate={pregnancyStartDate} />
+                    <Term crownRumpLength={crownRumpLength} termDate={TermDate} />
+                </View>
+                :
+                <View />
+            } */}
         </View >
     );
 };

@@ -3,10 +3,20 @@ import { Check } from "lucide-react-native";
 import { useState } from "react";
 import { View, Text, Modal, FlatList, Pressable, StyleSheet } from "react-native";
 
-export const GestiationalAge = () => {
-    const [weekModalVisible, setWeekModalVisible] = useState(false);
-    const [selectedWeek, setSelectedWeek] = useState('1');
+interface GestiationalAgeProps {
+    selectedWeek: string;
+    setSelectedWeek: (text: string) => void;
+    selectedDay: string;
+    setSelectedDay: (text: string) => void;
+}
 
+export const GestiationalAge = ({
+    selectedWeek,
+    setSelectedWeek,
+    selectedDay,
+    setSelectedDay
+}: GestiationalAgeProps) => {
+    const [weekModalVisible, setWeekModalVisible] = useState(false);
     const weeks = Array.from({ length: 40 }, (_, i) => ({ label: `${i + 1}`, value: `${i + 1}` }))
 
     const onWeekChange = (item: { label: string; value: string; }) => {
@@ -15,8 +25,6 @@ export const GestiationalAge = () => {
     };
 
     const [dayModalVisible, setDayModalVisible] = useState(false);
-    const [selectedDay, setSelectedDay] = useState('1');
-
     const days = Array.from({ length: 6 }, (_, i) => ({ label: `${i + 1}`, value: `${i + 1}` }))
 
     const onDayChange = (item: { label: string; value: string; }) => {
