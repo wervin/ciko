@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native";
 import { pink, pinkDark } from "@/utils/colors";
 
+
 export const Header = () => {
     return (
         <View>
