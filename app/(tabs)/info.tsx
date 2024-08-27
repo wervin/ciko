@@ -1,17 +1,12 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View } from 'lucide-react-native';
+import withScrollView from '../_components/wrapper';
 
-export default function Info() {
+const Info = () => {
     return (
-        <View style={styles.container}>
-            <Text>Info</Text>
+        <View>
+
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
+export default withScrollView(Info);

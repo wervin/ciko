@@ -17,35 +17,6 @@ export const widgets: Widget[] = [
         categories: ['EPF', 'Age gestationnel'],
         title: 'Estimation du Poids Fœtal',
         page: "/widgets/poidsFoetal"
-    },
-    {
-        id: randomUUID(),
-        categories: ['EPF', 'Age gestationnel'],
-        title: 'Estimation du Poids Fœtal',
-        page: "/widgets/poidsFoetal"
-    },
-    {
-        id: randomUUID(),
-        categories: ['EPF', 'Age gestationnel'],
-        title: 'Estimation du Poids Fœtal',
-        page: "/widgets/poidsFoetal"
-    },
-    {
-        id: randomUUID(),
-        categories: ['EPF', 'Age gestationnel'],
-        title: 'Estimation du Poids Fœtal',
-        page: "/widgets/poidsFoetal"
-    }
-    ,{
-        id: randomUUID(),
-        categories: ['EPF', 'Age gestationnel'],
-        title: 'Estimation du Poids Fœtal',
-        page: "/widgets/poidsFoetal"
-    },{
-        id: randomUUID(),
-        categories: ['EPF', 'Age gestationnel'],
-        title: 'Estimation du Poids Fœtal',
-        page: "/widgets/poidsFoetal"
     }
 ];
 

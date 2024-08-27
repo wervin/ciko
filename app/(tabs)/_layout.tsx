@@ -1,11 +1,10 @@
 import { Tabs } from 'expo-router';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Header } from "../_components/header";
 import { pink, pinkDark } from '@/utils/colors';
-import { Animated, View, Text, StyleSheet, Pressable } from 'react-native';
-import { Calculator, Library, Info, LucideIcon } from 'lucide-react-native'
+import { Animated, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
+import { Calculator, Library, Info, LucideIcon, View } from 'lucide-react-native'
 import { BottomTabBarButtonProps } from "@react-navigation/bottom-tabs";
-
 
 interface TabBarAnimatedButtonProps {
   props: BottomTabBarButtonProps,
@@ -50,12 +49,15 @@ const TabBarAnimatedButton = ({ props, label, Icon }: TabBarAnimatedButtonProps)
 export default function TabLayout() {
   return (
     <Tabs
+      sceneContainerStyle={{
+        backgroundColor: "transparent"
+      }}
       screenOptions={{
         header: () => <Header />,
         tabBarStyle: {
           height: 80,
           backgroundColor: pink.pink5,
-        }
+        },
       }}
     >
       <Tabs.Screen

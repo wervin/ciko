@@ -15,7 +15,7 @@ export const WidgetCard = (widget: Widget) => {
                 },
                 shadowOpacity: 0.25,
                 shadowRadius: 3.84,
-                elevation: 5,
+                elevation: 2,
             }}
             href={widget.page}
             asChild
@@ -23,7 +23,7 @@ export const WidgetCard = (widget: Widget) => {
             <Pressable>
                 <View
                     style={{
-                        backgroundColor: pink.pink3,
+                        backgroundColor: pink.pink4,
                         flex: 1,
                         justifyContent: "space-around",
                         padding: 10,
@@ -34,7 +34,7 @@ export const WidgetCard = (widget: Widget) => {
                 >
                     <Text
                         style={{
-                            fontSize: 22,
+                            fontSize: 24,
                             fontWeight: "800",
                             color: pinkDark.pink5,
                         }}

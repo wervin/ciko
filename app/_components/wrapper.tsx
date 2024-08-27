@@ -1,27 +1,33 @@
-import { pink } from '@/utils/colors';
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 interface ScrollViewWrapperProps {
     children: React.ReactNode;
 }
 
 const ScrollViewWrapper: React.FC<ScrollViewWrapperProps> = ({ children }) => {
+
     return (
-        <ScrollView
+        <View
             style={{
-                backgroundColor: pink.pink3,
-                height: "100%",
                 width: "100%",
+                height: "100%"
             }}
-            alwaysBounceHorizontal={false}
-            alwaysBounceVertical={false}
-            bounces={false}
-            overScrollMode="never"
-            showsVerticalScrollIndicator={false}
         >
-            {children}
-        </ScrollView>
+            <ScrollView
+                style={{
+                    height: "100%",
+                    width: "100%",
+                }}
+                alwaysBounceHorizontal={false}
+                alwaysBounceVertical={false}
+                bounces={false}
+                overScrollMode="never"
+                showsVerticalScrollIndicator={false}
+            >
+                {children}
+            </ScrollView>
+        </View>
     );
 };
 

@@ -1,49 +1,23 @@
-import { ScrollView, View } from "react-native";
-import { pink, purple } from "@/utils/colors";
+import { View } from "react-native";
 import { WidgetCard } from "../_components/widgetCard";
 import { widgets } from "../widgets/_layout";
-import { Footer } from "../_components/footer";
+import withScrollView from '../_components/wrapper';
 
 const Home = () => {
     return (
         <View
             style={{
-                width: "100%",
-                height: "100%"
+                gap: 10,
+                padding: 10,
             }}
         >
-            <ScrollView
-                style={{
-                    backgroundColor: pink.pink3,
-                    height: "100%",
-                    width: "100%",
-                }}
-                alwaysBounceHorizontal={false}
-                alwaysBounceVertical={false}
-                bounces={false}
-                overScrollMode="never"
-                showsVerticalScrollIndicator={false}
-            >
-
-                <View
-                    style={{
-                        gap: 10,
-                        padding: 10,
-                    }}
-                >
-                    {
-                        widgets.map((widget) =>
-                            <WidgetCard key={widget.id} {...widget} />
-                        )
-                    }
-
-                </View>
-
-            </ScrollView>
-
+            {
+                widgets.map((widget) =>
+                    <WidgetCard key={widget.id} {...widget} />
+                )
+            }
         </View>
-
     );
 };
 
-export default Home;
+export default withScrollView(Home);
