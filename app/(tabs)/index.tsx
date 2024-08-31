@@ -16,7 +16,9 @@ const Home = () => {
                     <WidgetCard key={widget.id} {...widget} />
                 )
             }
+
         </View>
+
     );
 };
 

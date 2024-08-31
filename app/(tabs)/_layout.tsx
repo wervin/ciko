@@ -5,6 +5,7 @@ import { pink, pinkDark } from '@/utils/colors';
 import { Animated, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
 import { Calculator, Library, Info, LucideIcon, View } from 'lucide-react-native'
 import { BottomTabBarButtonProps } from "@react-navigation/bottom-tabs";
+import { Shadow } from 'react-native-shadow-2';
 
 interface TabBarAnimatedButtonProps {
   props: BottomTabBarButtonProps,
@@ -54,9 +55,18 @@ export default function TabLayout() {
       }}
       screenOptions={{
         header: () => <Header />,
+        tabBarBackground: () => <Shadow
+          distance={6}
+          style={{
+            width: '100%',
+          }}
+          sides={{ top: true, bottom: false, start: true, end: false }}
+          corners={{ topStart: true, topEnd: true, bottomStart: false, bottomEnd: false }}
+        />,
         tabBarStyle: {
           height: 80,
           backgroundColor: pink.pink5,
+          elevation: 0
         },
       }}
     >

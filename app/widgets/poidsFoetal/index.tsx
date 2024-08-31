@@ -3,6 +3,7 @@ import { GestiationalAge } from "./gestiational-age";
 import { useState } from "react";
 import { AbdominalCircumference } from "./abdominal-circumference";
 import { HeadCircumference } from "./head-circumference";
+import withScrollView from "@/app/_components/wrapper";
 
 // WHo Intergrowth-21
 
@@ -48,4 +49,4 @@ const PoidsFoetal = () => {
     );
 };
 
-export default PoidsFoetal;
+export default withScrollView(PoidsFoetal);

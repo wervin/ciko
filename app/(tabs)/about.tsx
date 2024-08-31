@@ -53,8 +53,9 @@ const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutBut
         <Pressable
             style={{
                 backgroundColor: backgroundColor,
-                padding: 8,
-                paddingLeft: 20,
+                height: 50,
+                padding: 4,
+                paddingLeft: 60,
                 borderRadius: 16,
                 gap: 10,
                 alignItems: "center",
@@ -68,12 +69,24 @@ const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutBut
                 elevation: 2,
             }}
         >
-            <Icon size={28} color={foregroundColor} />
+            <View style={{
+                position: "absolute",
+                backgroundColor: foregroundColor,
+                alignItems: "center",
+                justifyContent: "center",
+                borderTopLeftRadius: 16,
+                borderBottomLeftRadius: 16,
+                height: 50,
+                width: 50
+            }}
+            >
+                <Icon size={28} color={backgroundColor} />
+            </View>
 
             <Text
                 style={{
                     fontSize: 24,
-                    fontFamily: "Righteous",
+                    // fontFamily: "Righteous",
                     fontWeight: "600",
                     color: foregroundColor
                 }}

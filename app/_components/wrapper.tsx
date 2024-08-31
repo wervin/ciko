@@ -11,7 +11,7 @@ const ScrollViewWrapper: React.FC<ScrollViewWrapperProps> = ({ children }) => {
         <View
             style={{
                 width: "100%",
-                height: "100%"
+                height: "100%",
             }}
         >
             <ScrollView

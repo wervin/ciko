@@ -4,6 +4,7 @@ import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { CircleChevronLeft } from 'lucide-react-native';
 import { Link } from "expo-router";
 import { Widget } from "@/components/widgets";
+import { Shadow } from "react-native-shadow-2";
 
 function getTitleByPagePath(widgets: Widget[], pagePath: string) {
     const widget = widgets.find(widget => {
@@ -18,32 +19,27 @@ interface HeaderProps {
     props: NativeStackHeaderProps
 };
 
-export const Header = ({widgets, props} : HeaderProps) => {
+export const Header = () => {
     return (
-        <View>
+        <Shadow
+            distance={6}
+            corners={{ topStart: false, topEnd: false, bottomStart: true, bottomEnd: true }}
+        >
             <View
                 style={{
                     width: "100%",
-                    height: 100,
+                    height: 80,
                     backgroundColor: pink.pink5,
-                    shadowOffset: {
-                        width: 0,
-                        height: 4,
-                    },
-                    shadowOpacity: 0.30,
-                    shadowRadius: 4.65,
-                    elevation: 5,
                 }}
             >
                 <View
                     style={{
-                        flex: 1,
                         flexDirection: "row",
                         width: "100%",
                         height: "100%",
                         gap: 20,
-                        padding: 10,
-                        alignItems: "center"
+                        paddingHorizontal: 10,
+                        alignItems: "center",
                     }}
                 >
 
@@ -63,17 +59,17 @@ export const Header = ({widgets, props} : HeaderProps) => {
                     <Text
                         style={{
                             flex: 1,
-                            lineHeight: 36,
                             padding: 0,
-                            fontSize: 36,
+                            fontSize: 28,
                             fontWeight: "600",
                             color: pinkDark.pink3,
                         }}
                     >
-                        {getTitleByPagePath(widgets, props.route.name)}
+                        {/* {getTitleByPagePath(widgets, props.route.name)} */}
+                        Test Header
                     </Text>
                 </View>
             </View>
-        </View>
+        </Shadow>
     );
 };

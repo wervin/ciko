@@ -4,6 +4,7 @@ import { randomUUID } from "expo-crypto";
 import { Header } from './_components/header';
 import { View } from 'react-native';
 import { pink, purple } from '@/utils/colors';
+import { Footer } from './_components/footer';
 
 export const widgets: Widget[] = [
     {
@@ -26,27 +27,17 @@ const WidgetLayout = () => {
             style={{
                 width: "100%",
                 height: "100%",
-                backgroundColor: pink.pink3
             }}
         >
             <Stack
                 screenOptions={{
-                    header: (props) => <Header widgets={widgets} props={props} />,
+                    header: () => <Header />,
                     contentStyle: {
-                        backgroundColor: pink.pink3
+                        backgroundColor: "transparent",
                     },
                 }}
             />
-
-            <View
-                style={{
-                    backgroundColor: purple.purple11,
-                    width: "100%",
-                    height: 100
-                }}
-            >
-
-            </View>
+            <Footer />
         </View>
     );
 };

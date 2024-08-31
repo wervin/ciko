@@ -1,23 +1,22 @@
 import { View, Text, Image } from "react-native";
 import { pink, pinkDark } from "@/utils/colors";
+import { Shadow } from "react-native-shadow-2";
 
 
 export const Header = () => {
     return (
-        <View>
+        <Shadow
+            distance={6}
+            style={{
+                width: '100%',
+            }}
+            corners={{ topStart: false, topEnd: false, bottomStart: true, bottomEnd: true }}
+        >
             <View
                 style={{
-                    position: "relative",
+                    backgroundColor: pink.pink5,
                     width: "100%",
                     height: 80,
-                    backgroundColor: pink.pink5,
-                    shadowOffset: {
-                        width: 0,
-                        height: 4,
-                    },
-                    shadowOpacity: 0.30,
-                    shadowRadius: 4.65,
-                    elevation: 5,
                 }}
             >
 
@@ -49,6 +48,6 @@ export const Header = () => {
                 </Text>
 
             </View>
-        </View>
+        </Shadow>
     );
 };

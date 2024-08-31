@@ -5,7 +5,7 @@ import { CranioCaudaleInput, GestationalAgeCurves } from "./cranio-caudale-input
 import { GestiationalAge } from "./gestiational-age";
 import { PregnancyStartDate } from "./pregnancy-start-date";
 import { DateTimePickerEvent } from "@react-native-community/datetimepicker";
-import withScrollView from "../_components/wrapper";
+import withScrollView from "@/app/_components/wrapper";
 import { Term } from "./term";
 import { pink, pinkDark, purple } from "@/utils/colors";
 import { ExecuteButton } from "./execute-button";
