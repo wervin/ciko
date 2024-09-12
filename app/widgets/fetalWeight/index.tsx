@@ -1,17 +1,25 @@
 import { View } from "react-native";
 import { GestiationalAge } from "./gestiational-age";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AbdominalCircumference } from "./abdominal-circumference";
 import { HeadCircumference } from "./head-circumference";
 import withScrollView from "@/app/_components/wrapper";
+import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { FetalWeightWidget } from "../_components/widgets";
 
 // WHo Intergrowth-21
 
-const PoidsFoetal = () => {
+const FetalWeight = () => {
     const [abdominalCircumference, setAbdominalCircumference] = useState("");
     const [headCircumference, setHeadCircumference] = useState("");
     const [selectedWeek, setSelectedWeek] = useState('1');
     const [selectedDay, setSelectedDay] = useState('1');
+    const setWidgetInfo = useWidgetStoreContext((store) => store.setWidgetInfo);
+
+    useEffect(() => {
+        setWidgetInfo(FetalWeightWidget);
+    }, [setWidgetInfo]);
+
 
     return (
         <View
@@ -49,4 +57,4 @@ const PoidsFoetal = () => {
     );
 };
 
-export default withScrollView(PoidsFoetal);
+export default withScrollView(FetalWeight);

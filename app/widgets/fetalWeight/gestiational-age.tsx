@@ -2,6 +2,7 @@ import { blackA, pink, pinkDark } from "@/utils/colors";
 import { Check } from "lucide-react-native";
 import { useState } from "react";
 import { View, Text, Modal, FlatList, Pressable, StyleSheet } from "react-native";
+import { Shadow } from "react-native-shadow-2";
 
 interface GestiationalAgeProps {
     selectedWeek: string;
@@ -77,33 +78,33 @@ export const GestiationalAge = ({
                             overScrollMode="never"
                             showsVerticalScrollIndicator={false}
                             ListHeaderComponent={
-                                <View
+                                <Shadow
+                                    distance={3}
                                     style={{
                                         width: "100%",
-                                        height: 40,
-                                        backgroundColor: pink.pink5,
-                                        justifyContent: "center",
-                                        shadowOffset: {
-                                            width: 0,
-                                            height: 4,
-                                        },
-                                        shadowOpacity: 0.30,
-                                        shadowRadius: 4.65,
-                                        elevation: 5,
                                     }}
                                 >
-                                    <Text
+                                    <View
                                         style={{
-                                            color: pinkDark.pink5,
-                                            fontSize: 22,
-                                            fontWeight: "700",
-                                            textAlignVertical: "center",
-                                            textAlign: "center",
+                                            width: "100%",
+                                            height: 40,
+                                            backgroundColor: pink.pink5,
+                                            justifyContent: "center"
                                         }}
                                     >
-                                        Semaine Aménorrhée
-                                    </Text>
-                                </View>
+                                        <Text
+                                            style={{
+                                                color: pinkDark.pink5,
+                                                fontSize: 22,
+                                                fontWeight: "700",
+                                                textAlignVertical: "center",
+                                                textAlign: "center",
+                                            }}
+                                        >
+                                            Semaine Aménorrhée
+                                        </Text>
+                                    </View>
+                                </Shadow>
                             }
                             stickyHeaderIndices={[0]}
                             keyExtractor={(item) => item.value}
@@ -179,33 +180,33 @@ export const GestiationalAge = ({
                             overScrollMode="never"
                             showsVerticalScrollIndicator={false}
                             ListHeaderComponent={
-                                <View
+                                <Shadow
+                                    distance={3}
                                     style={{
                                         width: "100%",
-                                        height: 40,
-                                        backgroundColor: pink.pink5,
-                                        justifyContent: "center",
-                                        shadowOffset: {
-                                            width: 0,
-                                            height: 4,
-                                        },
-                                        shadowOpacity: 0.30,
-                                        shadowRadius: 4.65,
-                                        elevation: 5,
                                     }}
                                 >
-                                    <Text
+                                    <View
                                         style={{
-                                            color: pinkDark.pink5,
-                                            fontSize: 22,
-                                            fontWeight: "700",
-                                            textAlignVertical: "center",
-                                            textAlign: "center",
+                                            width: "100%",
+                                            height: 40,
+                                            backgroundColor: pink.pink5,
+                                            justifyContent: "center",
                                         }}
                                     >
-                                        Jour
-                                    </Text>
-                                </View>
+                                        <Text
+                                            style={{
+                                                color: pinkDark.pink5,
+                                                fontSize: 22,
+                                                fontWeight: "700",
+                                                textAlignVertical: "center",
+                                                textAlign: "center",
+                                            }}
+                                        >
+                                            Jour
+                                        </Text>
+                                    </View>
+                                </Shadow>
                             }
                             stickyHeaderIndices={[0]}
                             keyExtractor={(item) => item.value}

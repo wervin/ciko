@@ -1,75 +1,177 @@
-import { View, Text, Pressable } from "react-native";
-import { pink, pinkDark } from "@/utils/colors";
-import { NativeStackHeaderProps } from "@react-navigation/native-stack";
-import { CircleChevronLeft } from 'lucide-react-native';
+import { View, Text, Pressable, Modal } from "react-native";
+import { blackA, pink, pinkA, pinkDark } from "@/utils/colors";
+import { X, Info } from 'lucide-react-native';
 import { Link } from "expo-router";
-import { Widget } from "@/components/widgets";
-import { Shadow } from "react-native-shadow-2";
-
-function getTitleByPagePath(widgets: Widget[], pagePath: string) {
-    const widget = widgets.find(widget => {
-        const widgetPagePath = widget.page.split('/').pop();
-        return widgetPagePath === pagePath.split('/')[0];
-    });
-    return widget ? widget.title : null;
-}
-
-interface HeaderProps {
-    widgets: Widget[];
-    props: NativeStackHeaderProps
-};
+import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { useState } from "react";
 
 export const Header = () => {
+    const widgetInfo = useWidgetStoreContext((store) => store.widgetInfo);
+    const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
+
     return (
-        <Shadow
-            distance={6}
-            corners={{ topStart: false, topEnd: false, bottomStart: true, bottomEnd: true }}
-        >
+        <>
+            <Modal
+                transparent={true}
+                animationType={"fade"}
+                visible={descriptionModalVisible}
+                onRequestClose={() => setDescriptionModalVisible(false)}
+                statusBarTranslucent
+            >
+                <Pressable
+                    onPress={(event) => {
+                        if (event.target == event.currentTarget) {
+                            setDescriptionModalVisible(false);
+                        }
+                    }}
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: blackA.blackA8,
+                    }}
+                >
+
+
+                    <View style={{
+                        width: "90%",
+                        padding: 10,
+                        backgroundColor: pink.pink5,
+                        borderBottomWidth: 1,
+                        borderBottomColor: pink.pink6,
+                        borderTopLeftRadius: 16,
+                        borderTopRightRadius: 16,
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        flexDirection: "row"
+                    }}>
+                        <Text style={{
+                            fontSize: 24,
+                            fontWeight: "700",
+                            color: pinkDark.pink7
+                        }}>
+                            Information
+                        </Text>
+                        <View style={{
+                            width: 30,
+                            height: 30,
+                            backgroundColor: pink.pink7,
+                            borderRadius: 30,
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}>
+                            <Pressable
+                                onPress={() => setDescriptionModalVisible(false)}
+                            >
+                                <X
+                                    width={20}
+                                    height={20}
+                                    color={pinkDark.pink7}
+                                />
+                            </Pressable>
+                        </View>
+
+                    </View>
+
+                    <View style={{
+                        width: "90%",
+                        backgroundColor: pink.pink4,
+                        padding: 10,
+                        borderBottomLeftRadius: 16,
+                        borderBottomRightRadius: 16
+                    }}>
+
+                        {widgetInfo?.description()}
+
+                    </View>
+                </Pressable>
+            </Modal>
+
             <View
                 style={{
                     width: "100%",
                     height: 80,
+                    padding: 10,
                     backgroundColor: pink.pink5,
+                    borderBottomWidth: 1,
+                    borderBottomColor: pink.pink6,
+                    alignItems: "center",
+                    justifyContent: "center"
                 }}
             >
                 <View
                     style={{
                         flexDirection: "row",
                         width: "100%",
-                        height: "100%",
-                        gap: 20,
-                        paddingHorizontal: 10,
+                        borderRadius: 16,
+                        padding: 5,
                         alignItems: "center",
+                        justifyContent: "space-between"
                     }}
                 >
 
                     <Link
                         href="/"
                         asChild
+                        style={{
+                            backgroundColor: pink.pink7,
+                            borderRadius: 24,
+                            padding: 5,
+                        }}
                     >
                         <Pressable>
-                            <CircleChevronLeft
-                                width={48}
-                                height={48}
-                                color={pinkDark.pink3}
+                            <X
+                                width={32}
+                                height={32}
+                                color={pinkDark.pink7}
                             />
                         </Pressable>
                     </Link>
 
-                    <Text
+                    <View
                         style={{
-                            flex: 1,
-                            padding: 0,
-                            fontSize: 28,
-                            fontWeight: "600",
-                            color: pinkDark.pink3,
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: 10,
                         }}
                     >
-                        {/* {getTitleByPagePath(widgets, props.route.name)} */}
-                        Test Header
-                    </Text>
+                        <Pressable
+                            onPress={() => setDescriptionModalVisible(true)}
+                            style={{
+                                height: 50,
+                                borderRadius: 16,
+                                flexDirection: "row",
+                                gap: 10,
+                                alignItems: "center",
+                                backgroundColor: pink.pink7,
+                                paddingHorizontal: 10
+                            }}
+                        >
+                            <View style={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                flexDirection: "row"
+                            }}>
+                                <Text
+                                    style={{
+                                        fontSize: 24,
+                                        fontWeight: "700",
+                                        color: pinkDark.pink7
+                                    }}
+                                >
+                                    {widgetInfo?.title}
+                                </Text>
+                            </View>
+
+                            <Info
+                                width={24}
+                                height={24}
+                                color={pinkDark.pink7}
+                            />
+                        </Pressable>
+                    </View>
                 </View>
             </View>
-        </Shadow>
+        </>
     );
 };

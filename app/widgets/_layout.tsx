@@ -2,23 +2,16 @@ import { Widget } from '@/components/widgets';
 import { Stack } from 'expo-router';
 import { randomUUID } from "expo-crypto";
 import { Header } from './_components/header';
-import { View } from 'react-native';
-import { pink, purple } from '@/utils/colors';
+import { View, Text, Linking } from 'react-native';
+import { WidgetStoreProvider } from '@/providers/widgetStoreProvider';
+import { blackA, pink, pinkA, pinkDark, pinkDarkA, purple, purpleDark, whiteA } from '@/utils/colors';
 import { Footer } from './_components/footer';
+import { ExecuteButton } from './_components/executeButton';
+import { CrownRumpLengthWidget, FetalWeightWidget } from './_components/widgets';
 
 export const widgets: Widget[] = [
-    {
-        id: randomUUID(),
-        categories: ['DDG', 'LCC', 'Terme', 'Age gestationnel'],
-        title: 'Date de Début de Grossesse',
-        page: "/widgets/cranioCaudale"
-    },
-    {
-        id: randomUUID(),
-        categories: ['EPF', 'Age gestationnel'],
-        title: 'Estimation du Poids Fœtal',
-        page: "/widgets/poidsFoetal"
-    }
+    CrownRumpLengthWidget,
+    FetalWeightWidget
 ];
 
 const WidgetLayout = () => {
@@ -29,15 +22,18 @@ const WidgetLayout = () => {
                 height: "100%",
             }}
         >
-            <Stack
-                screenOptions={{
-                    header: () => <Header />,
-                    contentStyle: {
-                        backgroundColor: "transparent",
-                    },
-                }}
-            />
-            <Footer />
+            <WidgetStoreProvider>
+                <Stack
+                    screenOptions={{
+                        header: () => <Header />,
+                        contentStyle: {
+                            backgroundColor: "transparent",
+                        },
+                    }}
+                />
+                <ExecuteButton />
+                <Footer />
+            </WidgetStoreProvider>
         </View>
     );
 };

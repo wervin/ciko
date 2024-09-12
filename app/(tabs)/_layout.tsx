@@ -55,18 +55,12 @@ export default function TabLayout() {
       }}
       screenOptions={{
         header: () => <Header />,
-        tabBarBackground: () => <Shadow
-          distance={6}
-          style={{
-            width: '100%',
-          }}
-          sides={{ top: true, bottom: false, start: true, end: false }}
-          corners={{ topStart: true, topEnd: true, bottomStart: false, bottomEnd: false }}
-        />,
         tabBarStyle: {
           height: 80,
           backgroundColor: pink.pink5,
-          elevation: 0
+          elevation: 0,
+          borderTopColor: pink.pink6,
+          borderTopWidth: 1
         },
       }}
     >

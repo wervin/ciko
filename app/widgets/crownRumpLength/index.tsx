@@ -1,22 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Pressable, View, Text } from "react-native";
 import { EchographyDate } from "./echography-date";
-import { CranioCaudaleInput, GestationalAgeCurves } from "./cranio-caudale-input";
+import { CrownRumpLengthInput, GestationalAgeCurves } from "./crown-rump-length-input";
 import { GestiationalAge } from "./gestiational-age";
 import { PregnancyStartDate } from "./pregnancy-start-date";
 import { DateTimePickerEvent } from "@react-native-community/datetimepicker";
 import withScrollView from "@/app/_components/wrapper";
 import { Term } from "./term";
 import { pink, pinkDark, purple } from "@/utils/colors";
-import { ExecuteButton } from "./execute-button";
+import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { CrownRumpLengthWidget } from "../_components/widgets";
 
-const CranioCaudale = () => {
+const CrownRumpLength = () => {
     const [crownRumpLength, setCrownRumpLength] = useState("");
     const [date, setDate] = useState(new Date());
     const [show, setShow] = useState(false);
     const [gestationalAgeCurve, setGestationalAgeCurve] = useState(GestationalAgeCurves.Intergrowth);
     const [isCrownRumpLengthValid, setIsCrownRumpLengthValid] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const setWidgetInfo = useWidgetStoreContext((store) => store.setWidgetInfo);
+
+    useEffect(() => {
+        setWidgetInfo(CrownRumpLengthWidget);
+    }, [setWidgetInfo]);
 
     const onDateChange = (event: DateTimePickerEvent, date?: Date) => {
         if (date)
@@ -77,12 +83,12 @@ const CranioCaudale = () => {
         >
             <View style={{
                 width: "100%",
-                padding: 20,
-                gap: 30
+                padding: 10,
+                gap: 10
             }}>
                 <EchographyDate show={show} date={date} onDateChange={onDateChange} showDatePicker={showDatePicker} />
 
-                <CranioCaudaleInput
+                <CrownRumpLengthInput
                     onChangeCrownRumpLength={onChangeCrownRumpLength}
                     crownRumpLength={crownRumpLength}
                     isCrownRumpLengthValid={isCrownRumpLengthValid}
@@ -92,30 +98,6 @@ const CranioCaudale = () => {
                     onPressGestationalAgeCurve={onPressGestationalAgeCurve}
                     gestationalAgeCurve={gestationalAgeCurve}
                 />
-            </View>
-
-            <View style={{
-                width: "100%",
-                height: 500,
-                padding: 20,
-                borderRadius: 10
-            }}>
-                <View style={{
-                    backgroundColor: "green",
-                    width: "100%",
-                    height: "100%"
-                }}>
-
-                </View>
-
-            </View>
-
-            <View style={{
-                width: "100%",
-                padding: 20,
-                gap: 30
-            }}>
-                <ExecuteButton />
             </View>
 
             {/* 
@@ -147,4 +129,4 @@ const CranioCaudale = () => {
     );
 };
 
-export default withScrollView(CranioCaudale);
+export default withScrollView(CrownRumpLength);

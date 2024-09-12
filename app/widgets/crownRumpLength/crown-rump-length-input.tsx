@@ -1,13 +1,14 @@
 import { pink, pinkDark, red, redDark } from "@/utils/colors";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { CircleAlert } from "lucide-react-native";
+import { Shadow } from "react-native-shadow-2";
 
 export const GestationalAgeCurves = {
     Intergrowth: 1,
     Robinson: 2
 };
 
-interface CranioCaudaleInputProps {
+interface CrownRumpLengthInputProps {
     onChangeCrownRumpLength: (text: string) => void;
     crownRumpLength: string;
     isCrownRumpLengthValid: boolean;
@@ -18,7 +19,7 @@ interface CranioCaudaleInputProps {
     gestationalAgeCurve: number;
 };
 
-export const CranioCaudaleInput = ({
+export const CrownRumpLengthInput = ({
     onChangeCrownRumpLength,
     crownRumpLength,
     isCrownRumpLengthValid,
@@ -27,29 +28,37 @@ export const CranioCaudaleInput = ({
     setIsCrownRumpLengthValid,
     onPressGestationalAgeCurve,
     gestationalAgeCurve
-}: CranioCaudaleInputProps) => {
+}: CrownRumpLengthInputProps) => {
 
     return (
+
         <View
             style={{
-                gap: 10
+                gap: 10,
+                padding: 10,
+                backgroundColor: pink.pink4,
+                borderRadius: 16,
+                borderWidth: 1,
+                borderColor: pink.pink6
             }}
         >
 
             <Text
                 style={{
-                    fontSize: 22,
-                    fontWeight: "800",
-                    color: pinkDark.pink5,
+                    fontSize: 24,
+                    fontWeight: "700",
+                    color: pinkDark.pink3
                 }}
             >
                 Longueur Cranio-Caudale
             </Text>
 
-            <View
-                style={{
-                    position: "relative"
-                }}
+            <View style={{
+                flexDirection: "row",
+                height: 60,
+                width: "100%",
+                alignItems: "center",
+            }}
             >
                 <TextInput
                     onChangeText={onChangeCrownRumpLength}
@@ -60,13 +69,16 @@ export const CranioCaudaleInput = ({
                     }}
                     keyboardType='numeric'
                     style={{
-                        backgroundColor: isCrownRumpLengthValid || !isValid ? pink.pink2 : red.red4,
+                        flex: 1,
+                        textAlign: "center",
+                        backgroundColor: isCrownRumpLengthValid || !isValid ? pink.pink4 : red.red4,
                         paddingHorizontal: 20,
-                        borderColor: isCrownRumpLengthValid || !isValid ? pink.pink6 : redDark.red8,
+                        borderColor: isCrownRumpLengthValid || !isValid ? pink.pink7 : redDark.red8,
                         borderWidth: 2,
-                        borderRadius: 10,
+                        borderTopLeftRadius: 16,
+                        borderBottomLeftRadius: 16,
                         height: 60,
-                        color: isCrownRumpLengthValid || !isValid ? pinkDark.pink7 : redDark.red8,
+                        color: isCrownRumpLengthValid || !isValid ? pinkDark.pink3 : redDark.red8,
                         fontSize: 22,
                         fontWeight: "700",
                     }}
@@ -74,87 +86,29 @@ export const CranioCaudaleInput = ({
                     cursorColor={isCrownRumpLengthValid || !isValid ? pink.pink7 : redDark.red8}
                     selectionColor={isCrownRumpLengthValid || !isValid ? pink.pink7 : redDark.red8}
                     value={crownRumpLength}
-                />
-                <Text
-                    style={{
-                        position: "absolute",
-                        top: 0,
-                        right: 0,
-                        width: "15%",
-                        backgroundColor: isCrownRumpLengthValid || !isValid ? pink.pink5 : red.red7,
-                        borderColor: isCrownRumpLengthValid || !isValid ? pink.pink6 : redDark.red8,
-                        borderWidth: 2,
-                        height: 60,
-                        borderTopRightRadius: 10,
-                        borderBottomRightRadius: 10,
-                        textAlignVertical: "center",
-                        textAlign: "center",
-                        color: isCrownRumpLengthValid || !isValid ? pinkDark.pink7 : redDark.red8,
-                        fontSize: 22,
+                >
+
+                </TextInput>
+
+                <View style={{
+                    backgroundColor: pink.pink7,
+                    height: 60,
+                    width: 60,
+                    borderTopRightRadius: 16,
+                    borderBottomRightRadius: 16,
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}>
+                    <Text style={{
                         fontWeight: "700",
-                    }}
-                >
-                    mm
-                </Text>
-            </View>
-
-            {
-                isValid && !isCrownRumpLengthValid &&
-                <View
-                    style={{
-                        position: "relative"
-                    }}
-                >
-                    <View
-                        style={{
-                            backgroundColor: red.red4,
-                            borderColor: redDark.red8,
-                            borderWidth: 2,
-                            borderRadius: 10,
-                            height: 50,
-                        }}
-                    />
-
-                    <Text
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            right: "15%",
-                            width: "85%",
-                            height: 50,
-                            paddingHorizontal: 15,
-                            color: redDark.red8,
-                            fontSize: 13,
-                            fontWeight: "500",
-                            textAlignVertical: "center",
-                        }}
-                    >
-                        La longueur cranio-caudale doit être comprise entre 15 et 95 mm
+                        fontSize: 22,
+                        color: pinkDark.pink7
+                    }}>
+                        mm
                     </Text>
-
-                    <View
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            right: 0,
-                            height: 50,
-                            width: "15%",
-                            borderTopRightRadius: 10,
-                            borderBottomRightRadius: 10,
-                            backgroundColor: red.red7,
-                            borderColor: redDark.red8,
-                            borderWidth: 2,
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}
-                    >
-                        <CircleAlert
-                            color={redDark.red8}
-                            size={24}
-                        />
-                    </View>
                 </View>
-            }
+
+            </View>
 
             <Pressable
                 style={{
@@ -170,8 +124,8 @@ export const CranioCaudaleInput = ({
                         height: 26,
                         borderWidth: 2,
                         borderRadius: 26,
-                        borderColor: pink.pink6,
-                        backgroundColor: pink.pink2,
+                        borderColor: pink.pink7,
+                        backgroundColor: pink.pink4,
                         alignItems: "center",
                         justifyContent: "center"
                     }}
@@ -192,7 +146,7 @@ export const CranioCaudaleInput = ({
                     style={{
                         fontSize: 18,
                         fontWeight: "600",
-                        color: pinkDark.pink5,
+                        color: pinkDark.pink3,
                     }}
                 >
                     Courbe INTERGROWTH-21st
@@ -214,12 +168,11 @@ export const CranioCaudaleInput = ({
                         height: 26,
                         borderWidth: 2,
                         borderRadius: 26,
-                        borderColor: pink.pink6,
-                        backgroundColor: pink.pink2,
+                        borderColor: pink.pink7,
+                        backgroundColor: pink.pink4,
                         alignItems: "center",
                         justifyContent: "center"
                     }}
-
                 >
                     {
                         gestationalAgeCurve === GestationalAgeCurves.Robinson &&
@@ -237,7 +190,7 @@ export const CranioCaudaleInput = ({
                     style={{
                         fontSize: 18,
                         fontWeight: "600",
-                        color: pinkDark.pink5,
+                        color: pinkDark.pink3,
                     }}
                 >
                     Courbe de Robinson

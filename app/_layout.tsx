@@ -86,7 +86,7 @@ const RootLayout = () => {
               navigationBarColor: pink.pink5,
               statusBarColor: pink.pink5,
               statusBarStyle: "dark",
-              animation: "slide_from_right",
+              animation: "fade",
             }}
           />
         </SafeAreaView>

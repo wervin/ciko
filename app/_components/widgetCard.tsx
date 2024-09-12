@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
-import { pink, pinkA, pinkDark } from "@/utils/colors";
+import { pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { Widget } from "@/components/widgets";
 
 export const WidgetCard = (widget: Widget) => {
@@ -8,72 +8,55 @@ export const WidgetCard = (widget: Widget) => {
         <Link
             style={{
                 width: "100%",
-                borderRadius: 10,
-                shadowOffset: {
-                    width: 0,
-                    height: 2,
-                },
-                shadowOpacity: 0.25,
-                shadowRadius: 3.84,
-                elevation: 2,
+                borderRadius: 16,
             }}
             href={widget.page}
             asChild
         >
-            <Pressable>
-                <View
-                    style={{
-                        backgroundColor: pink.pink4,
-                        flex: 1,
-                        justifyContent: "space-around",
-                        padding: 10,
-                        gap: 10,
-                        borderRadius: 10,
-                        overflow: "hidden"
-                    }}
+            <Pressable style={{
+                height: 90,
+                width: "100%",
+                backgroundColor: pink.pink4,
+                borderColor: pink.pink6,
+                borderWidth: 1,
+                borderRadius: 16,
+                alignItems: "center",
+                justifyContent: "space-around",
+                gap: 10,
+                padding: 10,
+                flexDirection: "row",
+            }}>
+                <View style={{
+                    backgroundColor: pink.pink7,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 80,
+                    height: 60,
+                    borderRadius: 16,
+                    flexDirection: "row",
+                }}
                 >
-                    <Text
-                        style={{
-                            fontSize: 24,
-                            fontWeight: "800",
-                            color: pinkDark.pink5,
-                        }}
+                    <Text style={{
+                        fontSize: 28,
+                        fontWeight: "800",
+                        color: pinkDark.pink7
+                    }}
                     >
                         {widget.title}
                     </Text>
+                </View>
 
-
-                    <View
-                        style={{
-                            flexDirection: "row",
-                            gap: 5
-                        }}
+                <View style={{
+                    flex: 1,
+                }}>
+                    <Text style={{
+                        fontSize: 24,
+                        fontWeight: "700",
+                        color: pinkDark.pink3
+                    }}
                     >
-                        {
-                            widget.categories.map((category) =>
-
-                                <View
-                                    key={category}
-                                    style={{
-                                        backgroundColor: pinkA.pinkA6,
-                                        borderRadius: 10,
-                                        padding: 5
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            fontSize: 16,
-                                            fontWeight: "500",
-                                            color: pinkDark.pink5,
-                                        }}
-                                    >
-                                        {category}
-                                    </Text>
-                                </View>
-                            )
-                        }
-
-                    </View>
+                        {widget.subtitle}
+                    </Text>
                 </View>
             </Pressable>
         </Link>
