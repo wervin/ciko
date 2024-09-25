@@ -32,7 +32,6 @@ export const Header = () => {
                     }}
                 >
 
-
                     <View style={{
                         width: "90%",
                         padding: 10,
@@ -52,25 +51,24 @@ export const Header = () => {
                         }}>
                             Information
                         </Text>
-                        <View style={{
-                            width: 30,
-                            height: 30,
-                            backgroundColor: pink.pink7,
-                            borderRadius: 30,
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}>
-                            <Pressable
-                                onPress={() => setDescriptionModalVisible(false)}
-                            >
-                                <X
-                                    width={20}
-                                    height={20}
-                                    color={pinkDark.pink7}
-                                />
-                            </Pressable>
-                        </View>
+                        <Pressable
+                            style={{
+                                width: 30,
+                                height: 30,
+                                backgroundColor: pink.pink7,
+                                borderRadius: 30,
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}
+                            onPress={() => setDescriptionModalVisible(false)}
+                        >
 
+                            <X
+                                width={20}
+                                height={20}
+                                color={pinkDark.pink7}
+                            />
+                        </Pressable>
                     </View>
 
                     <View style={{

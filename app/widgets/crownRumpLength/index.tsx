@@ -86,8 +86,10 @@ const CrownRumpLength = () => {
                 padding: 10,
                 gap: 10
             }}>
-                <EchographyDate show={show} date={date} onDateChange={onDateChange} showDatePicker={showDatePicker} />
+                {/* <EchographyDate show={show} date={date} onDateChange={onDateChange} showDatePicker={showDatePicker} /> */}
 
+                <EchographyDate />
+                
                 <CrownRumpLengthInput
                     onChangeCrownRumpLength={onChangeCrownRumpLength}
                     crownRumpLength={crownRumpLength}

@@ -1,32 +1,38 @@
-import { pink, pinkDark } from "@/utils/colors";
-import { View, Text, Pressable } from "react-native";
+import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
+import { View, Text, Pressable, Modal } from "react-native";
 import { CalendarDays } from 'lucide-react-native';
-import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
-import { Shadow } from "react-native-shadow-2";
+import { useMemo, useState } from "react";
+import { Calendar } from "@/components/ui/calendar";
 
-interface EchographyDateProps {
-    show: boolean;
-    date: Date;
-    onDateChange: (event: DateTimePickerEvent, date?: Date) => void;
-    showDatePicker: () => void;
-};
+export const EchographyDate = () => {
+    const [descriptionModalVisible, setDescriptionModalVisible] = useState<boolean>(false);
+    const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
-export const EchographyDate = ({ show, date, onDateChange, showDatePicker }: EchographyDateProps) => {
     return (
         <>
-            {show && (
-                <DateTimePicker
-                    testID="dateTimePicker"
-                    value={date}
-                    mode="date"
-                    is24Hour={true}
-                    onChange={onDateChange}
-                    timeZoneName="Europe/Paris"
-                    style={{
-                        backgroundColor: pink.pink7,
+            <Modal
+                transparent={true}
+                animationType={"fade"}
+                visible={descriptionModalVisible}
+                onRequestClose={() => setDescriptionModalVisible(false)}
+                statusBarTranslucent
+            >
+                <Pressable
+                    onPress={(event) => {
+                        if (event.target == event.currentTarget) {
+                            setDescriptionModalVisible(false);
+                        }
                     }}
-                />
-            )}
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: blackA.blackA8,
+                    }}
+                >
+                    <Calendar currentDate={currentDate} onCurrentDateChange={setCurrentDate} open={setDescriptionModalVisible}/>
+                </Pressable>
+            </Modal>
 
             <View
                 style={{
@@ -54,7 +60,7 @@ export const EchographyDate = ({ show, date, onDateChange, showDatePicker }: Ech
                         borderRadius: 16,
                         flexDirection: "row",
                     }}
-                    onPress={showDatePicker}
+                    onPress={() => setDescriptionModalVisible(true)}
                 >
                     <View style={{
                         flex: 1,
@@ -74,7 +80,7 @@ export const EchographyDate = ({ show, date, onDateChange, showDatePicker }: Ech
                                 fontWeight: "700"
                             }}
                         >
-                            {date.toLocaleDateString()}
+                            {currentDate.toLocaleDateString()}
                         </Text>
                     </View>
 
