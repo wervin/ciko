@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Modal } from "react-native";
+import { View, Text, Pressable, Modal, Keyboard } from "react-native";
 import { blackA, pink, pinkA, pinkDark } from "@/utils/colors";
 import { X, Info } from 'lucide-react-native';
 import { Link } from "expo-router";
@@ -6,7 +6,7 @@ import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useState } from "react";
 
 export const Header = () => {
-    const widgetInfo = useWidgetStoreContext((store) => store.widgetInfo);
+    const widget = useWidgetStoreContext((store) => store.widget);
     const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
 
     return (
@@ -79,13 +79,14 @@ export const Header = () => {
                         borderBottomRightRadius: 16
                     }}>
 
-                        {widgetInfo?.description()}
+                        {widget?.description()}
 
                     </View>
                 </Pressable>
             </Modal>
 
             <View
+                onTouchStart={() => Keyboard.dismiss()}
                 style={{
                     width: "100%",
                     height: 80,
@@ -139,16 +140,16 @@ export const Header = () => {
                                 height: 50,
                                 borderRadius: 16,
                                 flexDirection: "row",
-                                gap: 10,
+                                gap: 16,
                                 alignItems: "center",
                                 backgroundColor: pink.pink7,
-                                paddingHorizontal: 10
                             }}
                         >
                             <View style={{
                                 alignItems: "center",
                                 justifyContent: "center",
-                                flexDirection: "row"
+                                flexDirection: "row",
+                                paddingLeft: 16
                             }}>
                                 <Text
                                     style={{
@@ -157,15 +158,25 @@ export const Header = () => {
                                         color: pinkDark.pink7
                                     }}
                                 >
-                                    {widgetInfo?.title}
+                                    {widget?.title}
                                 </Text>
                             </View>
 
-                            <Info
-                                width={24}
-                                height={24}
-                                color={pinkDark.pink7}
-                            />
+                            <View style={{
+                                borderTopRightRadius: 16,
+                                borderBottomRightRadius: 16,
+                                height: 50,
+                                width: 40,
+                                backgroundColor: pinkDark.pink7,
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}>
+                                <Info
+                                    width={24}
+                                    height={24}
+                                    color={pink.pink7}
+                                />
+                            </View>
                         </Pressable>
                     </View>
                 </View>

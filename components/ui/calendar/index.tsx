@@ -215,9 +215,11 @@ const CalendarMonthViewItem = memo(({ item, currentDate, onCurrentDateChange }: 
             <View
                 style={{
                     width: 60,
-                    height: 50,
+                    height: 60,
                     backgroundColor: areDatesEqual() ? pink.pink7 : "transparent",
-                    borderRadius: areDatesEqual() ? 16 : 0,
+                    borderRadius: 16,
+                    borderWidth: areDatesEqual() ? 0 : 2,
+                    borderColor: pink.pink5,
                     alignItems: "center",
                     justifyContent: "center"
                 }}
@@ -226,7 +228,7 @@ const CalendarMonthViewItem = memo(({ item, currentDate, onCurrentDateChange }: 
                     style={{
                         textAlign: "center",
                         textAlignVertical: "center",
-                        fontWeight: areDatesEqual() ? "800" : "400",
+                        fontWeight: areDatesEqual() ? "800" : "500",
                         color: areDatesEqual() ? pinkDark.pink7 : pinkDark.pink3
                     }}
                 >

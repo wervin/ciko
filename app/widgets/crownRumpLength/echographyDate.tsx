@@ -4,9 +4,13 @@ import { CalendarDays } from 'lucide-react-native';
 import { useMemo, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 
-export const EchographyDate = () => {
+interface EchographyDateProps {
+    currentDate: Date,
+    setCurrentDate: (date: Date) => void;
+};
+
+export const EchographyDate = ({ currentDate, setCurrentDate }: EchographyDateProps) => {
     const [descriptionModalVisible, setDescriptionModalVisible] = useState<boolean>(false);
-    const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
     return (
         <>
@@ -30,7 +34,7 @@ export const EchographyDate = () => {
                         backgroundColor: blackA.blackA8,
                     }}
                 >
-                    <Calendar currentDate={currentDate} onCurrentDateChange={setCurrentDate} open={setDescriptionModalVisible}/>
+                    <Calendar currentDate={currentDate} onCurrentDateChange={setCurrentDate} open={setDescriptionModalVisible} />
                 </Pressable>
             </Modal>
 

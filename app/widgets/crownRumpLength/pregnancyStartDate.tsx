@@ -3,18 +3,17 @@ import { useRef, useEffect } from "react";
 import { View, Text } from "react-native";
 import { CalendarDays } from 'lucide-react-native';
 
-interface TermProps {
-    termDate: Date;
+interface PregnancyStartDateProps {
+    pregnancyStartDate: Date;
 };
 
-export const Term = ({
-    termDate
-}: TermProps) => {
-
+export const PregnancyStartDate = ({
+    pregnancyStartDate
+}: PregnancyStartDateProps) => {
     return (
         <View
             style={{
-                gap: 10,
+                gap: 10
             }}
         >
 
@@ -25,7 +24,7 @@ export const Term = ({
                     color: pinkDark.pink3
                 }}
             >
-                Terme
+                Date de Début de Grossesse
             </Text>
 
             <View
@@ -53,7 +52,7 @@ export const Term = ({
                             fontWeight: "700"
                         }}
                     >
-                        {termDate.toLocaleDateString()}
+                        {pregnancyStartDate.toLocaleDateString()}
                     </Text>
                 </View>
 
@@ -72,7 +71,6 @@ export const Term = ({
                     />
                 </View>
             </View>
-
         </View>
     );
 };

@@ -1,7 +1,15 @@
 import { Widget } from '@/components/widgets';
 import { randomUUID } from "expo-crypto";
-import { Text, Linking } from 'react-native';
-import { pinkDark } from '@/utils/colors';
+import { Text, Linking, Pressable, View } from 'react-native';
+import { pink, pinkDark } from '@/utils/colors';
+import { Calculator } from 'lucide-react-native';
+import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+
+export interface CrownRumpLengthWidgetProps {
+    visible: boolean;
+    isValid: boolean;
+    crownRumpLength?: number;
+};
 
 const GestationCalculatorText = () => {
     return (
@@ -14,10 +22,100 @@ const GestationCalculatorText = () => {
     );
 };
 
+const StickyButton = () => {
+    const widgetData = useWidgetStoreContext<CrownRumpLengthWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
+
+    const validateInput = () => {
+        if (widgetData == null) {
+            return;
+        }
+
+        if (widgetData.crownRumpLength == null) {
+            setWidgetData({ ...widgetData, isValid: false });
+            return;
+        }
+
+        if (widgetData.crownRumpLength < 15 || 95 < widgetData.crownRumpLength) {
+            setWidgetData({ ...widgetData, isValid: false });
+            return;
+        }
+
+        setWidgetData({ ...widgetData, visible: true, isValid: true });
+    };
+
+    return (
+        <View
+            style={{
+                backgroundColor: pink.pink5,
+                borderTopWidth: 1,
+                borderTopColor: pink.pink6,
+                height: 80,
+                justifyContent: "center",
+                alignContent: "center"
+            }}
+        >
+            <Pressable
+                style={{
+                    borderRadius: 16,
+                    backgroundColor: pink.pink7,
+                    flexDirection: "row",
+                    alignSelf: "center",
+                    alignItems: "center",
+                    gap: 16,
+                    height: 60
+                }}
+
+                onPress={validateInput}
+            >
+                <View style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexDirection: "row",
+                    paddingLeft: 16
+                }}>
+                    <Text
+                        style={{
+                            fontSize: 32,
+                            fontWeight: "700",
+                            color: pinkDark.pink7
+                        }}
+                    >
+                        Calculer
+                    </Text>
+                </View>
+
+                <View style={{
+                    borderTopRightRadius: 16,
+                    borderBottomRightRadius: 16,
+                    height: 60,
+                    width: 60,
+                    backgroundColor: pinkDark.pink7,
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}>
+                    <Calculator
+                        width={32}
+                        height={32}
+                        color={pink.pink7}
+                    />
+                </View>
+            </Pressable>
+        </View>
+    );
+};
+
+export const CrownRumpLengthWidgetData: CrownRumpLengthWidgetProps = {
+    visible: false,
+    isValid: true,
+    crownRumpLength: undefined
+};
+
 export const CrownRumpLengthWidget: Widget = {
     id: randomUUID(),
     title: 'DDG',
     subtitle: 'Date de Début de Grossesse',
     description: () => <GestationCalculatorText />,
+    footer: () => <StickyButton />,
     page: "/widgets/crownRumpLength"
 }

@@ -1,14 +1,12 @@
-import { pink } from "@/utils/colors"
-import { View } from "react-native"
+import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { Keyboard, View } from "react-native";
 
 export const Footer = () => {
+    const widget = useWidgetStoreContext((store) => store.widget);
+
     return (
-        <View style={{
-            width:"100%",
-            height: 0,
-            backgroundColor: pink.pink5,
-            borderTopWidth: 1,
-            borderTopColor: pink.pink6
-        }} />
-    )
-}
+        <View onTouchStart={() => Keyboard.dismiss()}>
+            {widget?.footer && widget?.footer()}
+        </View>
+    );
+};

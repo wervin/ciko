@@ -4,18 +4,22 @@ import { StoreApi, useStore } from 'zustand';
 import { Widget } from '@/components/widgets';
 
 interface WidgetState {
-    widgetInfo: Widget | undefined;
+    widget: Widget | undefined;
+    widgetData: any;
 };
 
 interface WidgetActions {
-    setWidgetInfo: (info: Widget) => void;
+    setWidget: (info: Widget) => void;
+    setWidgetData: (data: any) => void;
 };
 
 export type WidgetStore = WidgetState & WidgetActions
 
 const useWidgetStore = createStore<WidgetStore>((set) => ({
-    widgetInfo: undefined,
-    setWidgetInfo: (info: Widget) => set({ widgetInfo: info }),
+    widget: undefined,
+    widgetData: undefined,
+    setWidget: (widget: Widget) => set({ widget: widget }),
+    setWidgetData: (widgetData: any) => set({ widgetData: widgetData })
 }));
 
 const WidgetStoreContext = createContext<StoreApi<WidgetStore> | undefined>(undefined);
