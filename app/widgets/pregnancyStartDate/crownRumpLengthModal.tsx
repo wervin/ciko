@@ -7,8 +7,8 @@ import { PregnancyStartDate } from "./pregnancyStartDate";
 import { Term } from "./term";
 import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { CrownRumpLengthWidget, CrownRumpLengthWidgetData, CrownRumpLengthWidgetProps } from "../_components/widgets";
 import { X, ScatterChart, Check } from "lucide-react-native";
+import { PregnancyStartDateWidgetProps } from "../_components/widgets";
 
 interface CrownRumpLengthModalProps {
     echographyDate: Date;
@@ -17,7 +17,7 @@ interface CrownRumpLengthModalProps {
 export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalProps) => {
     const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
     const [gestationalAgeCurve, setGestationalAgeCurve] = useState(GestationalAgeCurves.Intergrowth);
-    const widgetData = useWidgetStoreContext<CrownRumpLengthWidgetProps>((store) => store.widgetData);
+    const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
     const robinson = (crl: number) => {

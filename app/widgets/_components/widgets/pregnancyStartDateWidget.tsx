@@ -4,8 +4,9 @@ import { Text, Linking, Pressable, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
 import { Calculator } from 'lucide-react-native';
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import PressableOpacity from '@/components/ui/pressableOpacity';
 
-export interface CrownRumpLengthWidgetProps {
+export interface PregnancyStartDateWidgetProps {
     visible: boolean;
     isValid: boolean;
     crownRumpLength?: number;
@@ -23,7 +24,7 @@ const GestationCalculatorText = () => {
 };
 
 const StickyButton = () => {
-    const widgetData = useWidgetStoreContext<CrownRumpLengthWidgetProps>((store) => store.widgetData);
+    const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
     const validateInput = () => {
@@ -55,7 +56,7 @@ const StickyButton = () => {
                 alignContent: "center"
             }}
         >
-            <Pressable
+            <PressableOpacity
                 style={{
                     borderRadius: 16,
                     backgroundColor: pink.pink7,
@@ -63,7 +64,7 @@ const StickyButton = () => {
                     alignSelf: "center",
                     alignItems: "center",
                     gap: 16,
-                    height: 60
+                    height: 60,
                 }}
 
                 onPress={validateInput}
@@ -100,22 +101,22 @@ const StickyButton = () => {
                         color={pink.pink7}
                     />
                 </View>
-            </Pressable>
+            </PressableOpacity>
         </View>
     );
 };
 
-export const CrownRumpLengthWidgetData: CrownRumpLengthWidgetProps = {
+export const PregnancyStartDateWidgetData: PregnancyStartDateWidgetProps = {
     visible: false,
     isValid: true,
     crownRumpLength: undefined
 };
 
-export const CrownRumpLengthWidget: Widget = {
+export const PregnancyStartDateWidget: Widget = {
     id: randomUUID(),
     title: 'DDG',
     subtitle: 'Date de Début de Grossesse',
     description: () => <GestationCalculatorText />,
     footer: () => <StickyButton />,
-    page: "/widgets/crownRumpLength"
+    page: "/widgets/pregnancyStartDate"
 }

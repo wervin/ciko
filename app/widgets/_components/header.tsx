@@ -1,13 +1,19 @@
 import { View, Text, Pressable, Modal, Keyboard } from "react-native";
 import { blackA, pink, pinkA, pinkDark } from "@/utils/colors";
 import { X, Info } from 'lucide-react-native';
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useState } from "react";
+import PressableOpacity from "@/components/ui/pressableOpacity";
 
 export const Header = () => {
+    const router = useRouter();
     const widget = useWidgetStoreContext((store) => store.widget);
     const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
+
+    const handlePress = () => {
+        router.push("/");
+    };
 
     return (
         <>
@@ -51,14 +57,14 @@ export const Header = () => {
                         }}>
                             Information
                         </Text>
-                        <Pressable
+                        <PressableOpacity
                             style={{
                                 width: 30,
                                 height: 30,
                                 backgroundColor: pink.pink7,
                                 borderRadius: 30,
                                 alignItems: "center",
-                                justifyContent: "center"
+                                justifyContent: "center",
                             }}
                             onPress={() => setDescriptionModalVisible(false)}
                         >
@@ -68,7 +74,7 @@ export const Header = () => {
                                 height={20}
                                 color={pinkDark.pink7}
                             />
-                        </Pressable>
+                        </PressableOpacity>
                     </View>
 
                     <View style={{
@@ -109,23 +115,20 @@ export const Header = () => {
                     }}
                 >
 
-                    <Link
-                        href="/"
-                        asChild
+                    <PressableOpacity
                         style={{
                             backgroundColor: pink.pink7,
                             borderRadius: 24,
                             padding: 5,
                         }}
+                        onPress={handlePress}
                     >
-                        <Pressable>
-                            <X
-                                width={32}
-                                height={32}
-                                color={pinkDark.pink7}
-                            />
-                        </Pressable>
-                    </Link>
+                        <X
+                            width={32}
+                            height={32}
+                            color={pinkDark.pink7}
+                        />
+                    </PressableOpacity>
 
                     <View
                         style={{
@@ -134,7 +137,7 @@ export const Header = () => {
                             gap: 10,
                         }}
                     >
-                        <Pressable
+                        <PressableOpacity
                             onPress={() => setDescriptionModalVisible(true)}
                             style={{
                                 height: 50,
@@ -177,7 +180,7 @@ export const Header = () => {
                                     color={pink.pink7}
                                 />
                             </View>
-                        </Pressable>
+                        </PressableOpacity>
                     </View>
                 </View>
             </View>

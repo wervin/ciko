@@ -5,11 +5,11 @@ import { Header } from './_components/header';
 import { View, Text, Linking } from 'react-native';
 import { WidgetStoreProvider } from '@/providers/widgetStoreProvider';
 import { blackA, pink, pinkA, pinkDark, pinkDarkA, purple, purpleDark, whiteA } from '@/utils/colors';
-import { CrownRumpLengthWidget, FetalWeightWidget } from './_components/widgets';
+import { PregnancyStartDateWidget, FetalWeightWidget } from './_components/widgets';
 import React from 'react';
 
 export const widgets: Widget[] = [
-    CrownRumpLengthWidget,
+    PregnancyStartDateWidget,
     FetalWeightWidget
 ];
 

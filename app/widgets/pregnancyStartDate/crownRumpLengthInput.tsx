@@ -1,8 +1,8 @@
 import { pink, pinkDark, red, redDark } from "@/utils/colors";
 import { View, Text, TextInput } from "react-native";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { CrownRumpLengthWidgetProps } from "@/app/widgets/_components/widgets/crownRumpLengthWidget";
 import { CircleAlert } from 'lucide-react-native';
+import { PregnancyStartDateWidgetProps } from "../_components/widgets";
 
 
 export const GestationalAgeCurves = {
@@ -13,7 +13,7 @@ export const GestationalAgeCurves = {
 export type GestationalAgeCurveType = typeof GestationalAgeCurves[keyof typeof GestationalAgeCurves];
 
 export const CrownRumpLengthInput = () => {
-    const widgetData = useWidgetStoreContext<CrownRumpLengthWidgetProps>((store) => store.widgetData);
+    const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
     const onChangeCrownRumpLength = (text: string) => {

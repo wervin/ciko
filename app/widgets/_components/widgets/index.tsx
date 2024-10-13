@@ -1,2 +1,2 @@
-export { CrownRumpLengthWidget, CrownRumpLengthWidgetData, CrownRumpLengthWidgetProps } from './crownRumpLengthWidget';
+export { PregnancyStartDateWidget, PregnancyStartDateWidgetData, PregnancyStartDateWidgetProps } from './pregnancyStartDateWidget';
 export { FetalWeightWidget } from './fetalWeightWidget';

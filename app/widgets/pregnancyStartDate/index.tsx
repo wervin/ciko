@@ -1,26 +1,21 @@
 import { useState, useEffect } from "react";
-import { Pressable, View, Text, Modal } from "react-native";
+import { View } from "react-native";
 import { EchographyDate } from "./echographyDate";
-import { CrownRumpLengthInput, GestationalAgeCurves } from "./crownRumpLengthInput";
-import { GestiationalAge } from "./gestiationalAge";
-import { PregnancyStartDate } from "./pregnancyStartDate";
-import { DateTimePickerEvent } from "@react-native-community/datetimepicker";
+import { CrownRumpLengthInput } from "./crownRumpLengthInput";
 import withScrollView from "@/app/widgets/_components/wrapper";
-import { Term } from "./term";
-import { blackA, pink, pinkDark } from "@/utils/colors";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { CrownRumpLengthWidget, CrownRumpLengthWidgetData, CrownRumpLengthWidgetProps } from "../_components/widgets";
+import { PregnancyStartDateWidget, PregnancyStartDateWidgetData } from "../_components/widgets";
 import { CrownRumpLengthModal } from "./crownRumpLengthModal";
 
-const CrownRumpLength = () => {
+const PregnancyStartDatePage = () => {
     const [echographyDate, setEchographyDate] = useState(new Date());
 
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
     useEffect(() => {
-        setWidget(CrownRumpLengthWidget);
-        setWidgetData(CrownRumpLengthWidgetData);
+        setWidget(PregnancyStartDateWidget);
+        setWidgetData(PregnancyStartDateWidgetData);
     }, []);
 
     return (
@@ -49,4 +44,4 @@ const CrownRumpLength = () => {
     );
 };
 
-export default withScrollView(CrownRumpLength);
+export default withScrollView(PregnancyStartDatePage);
