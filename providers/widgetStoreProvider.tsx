@@ -1,5 +1,5 @@
 import { createStore } from 'zustand';
-import { ReactNode, createContext, useContext } from 'react';
+import { ReactNode, createContext, useContext, useRef } from 'react';
 import { StoreApi, useStore } from 'zustand';
 import { Widget } from '@/components/widgets';
 
@@ -9,24 +9,29 @@ interface WidgetState {
 };
 
 interface WidgetActions {
-    setWidget: (info: Widget) => void;
+    setWidget: (info: Widget | undefined) => void;
     setWidgetData: (data: any) => void;
 };
 
 export type WidgetStore = WidgetState & WidgetActions
 
-const useWidgetStore = createStore<WidgetStore>((set) => ({
+const useWidgetStore = () => createStore<WidgetStore>((set) => ({
     widget: undefined,
     widgetData: undefined,
-    setWidget: (widget: Widget) => set({ widget: widget }),
+    setWidget: (widget: Widget | undefined) => set({ widget: widget }),
     setWidgetData: (widgetData: any) => set({ widgetData: widgetData })
 }));
 
 const WidgetStoreContext = createContext<StoreApi<WidgetStore> | undefined>(undefined);
 
 export const WidgetStoreProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+    const storeRef = useRef<StoreApi<WidgetStore>>()
+    if (!storeRef.current) {
+        storeRef.current = useWidgetStore()
+    }
+
     return (
-        <WidgetStoreContext.Provider value={useWidgetStore}>
+        <WidgetStoreContext.Provider value={storeRef.current}>
             {children}
         </WidgetStoreContext.Provider>
     );

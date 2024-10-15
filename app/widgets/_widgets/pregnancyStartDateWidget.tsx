@@ -32,17 +32,8 @@ const StickyButton = () => {
             return;
         }
 
-        if (widgetData.crownRumpLength == null) {
-            setWidgetData({ ...widgetData, isValid: false });
-            return;
-        }
-
-        if (widgetData.crownRumpLength < 15 || 95 < widgetData.crownRumpLength) {
-            setWidgetData({ ...widgetData, isValid: false });
-            return;
-        }
-
-        setWidgetData({ ...widgetData, visible: true, isValid: true });
+        const isValid = widgetData.crownRumpLength != null && !(widgetData.crownRumpLength < 15 || 95 < widgetData.crownRumpLength);
+        setWidgetData({ ...widgetData, visible: isValid, isValid: isValid });
     };
 
     return (

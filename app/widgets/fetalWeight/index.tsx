@@ -1,18 +1,15 @@
 import { View } from "react-native";
-import { GestationalAge } from "./gestationalAge";
-import { useState, useEffect } from "react";
-import { AbdominalCircumference } from "./abdominal-circumference";
-import { HeadCircumference } from "./head-circumference";
+import { useEffect } from "react";
+import { GestationalAgePicker } from "./gestationalAgePicker";
+import { HeadCircumferenceInput } from "./headCircumferenceInput";
+import { AbdominalCircumferenceInput } from "./abdominalCircumference";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { FetalWeightWidget, FetalWeightWidgetData } from "../_widgets";
 import withScrollView from "@/app/widgets/_components/wrapper";
-
-// WHo Intergrowth-21
+import { FemurLengthInput } from "./femurLengthInput";
 
 const FetalWeight = () => {
-    const [abdominalCircumference, setAbdominalCircumference] = useState<number | undefined>();
-    const [headCircumference, setHeadCircumference] = useState<number | undefined>();
-
+    const widget = useWidgetStoreContext((store) => store.widget);
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
@@ -21,8 +18,8 @@ const FetalWeight = () => {
         setWidgetData(FetalWeightWidgetData);
     }, []);
 
-
     return (
+        widget &&
         <View
             style={{
                 width: "100%",
@@ -37,7 +34,10 @@ const FetalWeight = () => {
                 padding: 10,
                 gap: 10
             }}>
-                <GestationalAge />
+                <GestationalAgePicker />
+                <HeadCircumferenceInput />
+                <AbdominalCircumferenceInput />
+                <FemurLengthInput />
             </View>
         </View>
     );

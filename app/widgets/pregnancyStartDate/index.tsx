@@ -10,6 +10,7 @@ import { CrownRumpLengthModal } from "./crownRumpLengthModal";
 const PregnancyStartDatePage = () => {
     const [echographyDate, setEchographyDate] = useState(new Date());
 
+    const widget = useWidgetStoreContext((store) => store.widget);
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
@@ -19,6 +20,7 @@ const PregnancyStartDatePage = () => {
     }, []);
 
     return (
+        widget &&
         <>
             <CrownRumpLengthModal echographyDate={echographyDate} />
             <View

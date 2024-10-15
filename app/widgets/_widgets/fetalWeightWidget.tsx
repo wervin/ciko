@@ -8,14 +8,24 @@ import PressableOpacity from '@/components/ui/pressableOpacity';
 
 export interface FetalWeightWidgetProps {
     visible: boolean;
-    isValid: boolean;
+    isHeadCircumferenceValid: boolean;
+    isAbdominalCircumferenceValid: boolean;
+    isFemurLengthValid: boolean;
     gestationalAge?: number;
+    headCircumference?: number;
+    abdominalCircumference?: number;
+    femurLength?: number;
 };
 
 export const FetalWeightWidgetData: FetalWeightWidgetProps = {
     visible: false,
-    isValid: true,
-    gestationalAge: undefined
+    isHeadCircumferenceValid: true,
+    isAbdominalCircumferenceValid: true,
+    isFemurLengthValid: true,
+    gestationalAge: undefined,
+    headCircumference: undefined,
+    abdominalCircumference: undefined,
+    femurLength: undefined
 };
 
 const FetalWeightWidgetDescription = () => {
@@ -33,14 +43,24 @@ const FetalWeightWidgetDescription = () => {
 
 const StickyButton = () => {
     const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
+    const setWidgetData = useWidgetStoreContext<(data: FetalWeightWidgetProps) => void>((store) => store.setWidgetData);
 
     const validateInput = () => {
         if (widgetData == null) {
             return;
         }
 
-        setWidgetData({ ...widgetData, visible: true, isValid: true });
+        const isHeadCircumferenceValid = widgetData.headCircumference ? true : false;
+        const isAbdominalCircumferenceValid = widgetData.abdominalCircumference ? true : false;
+        const isFemurLengthValid = widgetData.femurLength ? true : false;
+
+        setWidgetData({
+            ...widgetData,
+            isHeadCircumferenceValid: isHeadCircumferenceValid,
+            isAbdominalCircumferenceValid: isAbdominalCircumferenceValid,
+            isFemurLengthValid: isFemurLengthValid,
+            visible: isHeadCircumferenceValid && isAbdominalCircumferenceValid && isFemurLengthValid
+        });
     };
 
     return (

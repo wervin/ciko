@@ -279,7 +279,7 @@ const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
     );
 };
 
-export const GestationalAge = () => {
+export const GestationalAgePicker = () => {
     const [weekModalVisible, setWeekModalVisible] = useState(false);
     const [dayModalVisible, setDayModalVisible] = useState(false);
 

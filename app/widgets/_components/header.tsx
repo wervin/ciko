@@ -91,92 +91,94 @@ export const Header = () => {
                 </Pressable>
             </Modal>
 
-            <View
-                onTouchStart={() => Keyboard.dismiss()}
-                style={{
-                    width: "100%",
-                    height: 80,
-                    padding: 10,
-                    backgroundColor: pink.pink5,
-                    borderBottomWidth: 1,
-                    borderBottomColor: pink.pink6,
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}
-            >
+            {widget &&
                 <View
+                    onTouchStart={() => Keyboard.dismiss()}
                     style={{
-                        flexDirection: "row",
                         width: "100%",
-                        borderRadius: 16,
-                        padding: 5,
+                        height: 80,
+                        padding: 10,
+                        backgroundColor: pink.pink5,
+                        borderBottomWidth: 1,
+                        borderBottomColor: pink.pink6,
                         alignItems: "center",
-                        justifyContent: "space-between"
+                        justifyContent: "center"
                     }}
                 >
-
-                    <PressableOpacity
+                    <View
                         style={{
-                            backgroundColor: pink.pink7,
-                            borderRadius: 24,
-                            padding: 5,
-                        }}
-                        onPress={handlePress}
-                    >
-                        <X
-                            width={32}
-                            height={32}
-                            color={pinkDark.pink7}
-                        />
-                    </PressableOpacity>
-
-                    <PressableOpacity
-                        onPress={() => setDescriptionModalVisible(true)}
-                        style={{
-                            width: 150,
-                            height: 50,
+                            flexDirection: "row",
+                            width: "100%",
                             borderRadius: 16,
-                            flexDirection: "row",
+                            padding: 5,
                             alignItems: "center",
-                            justifyContent: "space-between",
-                            backgroundColor: pink.pink7,
+                            justifyContent: "space-between"
                         }}
                     >
-                        <View style={{
-                            flex: 1,
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flexDirection: "row",
-                        }}>
-                            <Text
-                                style={{
-                                    fontSize: 24,
-                                    fontWeight: "700",
-                                    color: pinkDark.pink7
-                                }}
-                            >
-                                {widget?.title}
-                            </Text>
-                        </View>
 
-                        <View style={{
-                            borderTopRightRadius: 16,
-                            borderBottomRightRadius: 16,
-                            height: 50,
-                            width: 40,
-                            backgroundColor: pinkDark.pink7,
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}>
-                            <Info
-                                width={24}
-                                height={24}
-                                color={pink.pink7}
+                        <PressableOpacity
+                            style={{
+                                backgroundColor: pink.pink7,
+                                borderRadius: 24,
+                                padding: 5,
+                            }}
+                            onPress={handlePress}
+                        >
+                            <X
+                                width={32}
+                                height={32}
+                                color={pinkDark.pink7}
                             />
-                        </View>
-                    </PressableOpacity>
+                        </PressableOpacity>
+
+                        <PressableOpacity
+                            onPress={() => setDescriptionModalVisible(true)}
+                            style={{
+                                width: 150,
+                                height: 50,
+                                borderRadius: 16,
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                backgroundColor: pink.pink7,
+                            }}
+                        >
+                            <View style={{
+                                flex: 1,
+                                alignItems: "center",
+                                justifyContent: "center",
+                                flexDirection: "row",
+                            }}>
+                                <Text
+                                    style={{
+                                        fontSize: 24,
+                                        fontWeight: "700",
+                                        color: pinkDark.pink7
+                                    }}
+                                >
+                                    {widget?.title}
+                                </Text>
+                            </View>
+
+                            <View style={{
+                                borderTopRightRadius: 16,
+                                borderBottomRightRadius: 16,
+                                height: 50,
+                                width: 40,
+                                backgroundColor: pinkDark.pink7,
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}>
+                                <Info
+                                    width={24}
+                                    height={24}
+                                    color={pink.pink7}
+                                />
+                            </View>
+                        </PressableOpacity>
+                    </View>
                 </View>
-            </View>
+            }
         </>
     );
 };

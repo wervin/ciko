@@ -1,12 +1,10 @@
 import { Widget } from '@/components/widgets';
 import { Stack } from 'expo-router';
-import { randomUUID } from "expo-crypto";
 import { Header } from './_components/header';
 import { View, Text, Linking } from 'react-native';
-import { WidgetStoreProvider } from '@/providers/widgetStoreProvider';
-import { blackA, pink, pinkA, pinkDark, pinkDarkA, purple, purpleDark, whiteA } from '@/utils/colors';
 import { PregnancyStartDateWidget, FetalWeightWidget } from './_widgets';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { WidgetStoreProvider } from '@/providers/widgetStoreProvider';
 
 export const widgets: Widget[] = [
     PregnancyStartDateWidget,
