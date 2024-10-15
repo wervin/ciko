@@ -2,13 +2,13 @@ import { pink, pinkDark } from "@/utils/colors";
 import { CalendarClock, CalendarHeart, } from "lucide-react-native";
 import { View, Text } from "react-native";
 
-interface GestiationalAgeProps {
+interface GestationalAgeProps {
     gestationalAge: number;
 };
 
-export const GestiationalAge = ({
+export const GestationalAge = ({
     gestationalAge
-}: GestiationalAgeProps) => {
+}: GestationalAgeProps) => {
     return (
         <View
             style={{
@@ -49,13 +49,10 @@ export const GestiationalAge = ({
                             textAlignVertical: "center",
                             color: pinkDark.pink3,
                             fontSize: 22,
-                            fontWeight: "800"
+                            fontWeight: "700"
                         }}
                     >
-                        <Text>{Math.trunc(gestationalAge / 7)} </Text>
-                        <Text style={{ color: pinkDark.pink7, fontWeight: "700" }}>SA</Text>
-                        <Text> {gestationalAge % 7} </Text>
-                        <Text style={{ color: pinkDark.pink7, fontWeight: "700" }}>J</Text>
+                        <Text>{Math.trunc(gestationalAge / 7)} SA {gestationalAge % 7} J</Text>
                     </Text>
                 </View>
 

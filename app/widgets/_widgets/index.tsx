@@ -1,2 +1,2 @@
 export { PregnancyStartDateWidget, PregnancyStartDateWidgetData, PregnancyStartDateWidgetProps } from './pregnancyStartDateWidget';
-export { FetalWeightWidget } from './fetalWeightWidget';
+export { FetalWeightWidget, FetalWeightWidgetData, FetalWeightWidgetProps } from './fetalWeightWidget';

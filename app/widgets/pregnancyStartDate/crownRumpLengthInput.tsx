@@ -2,7 +2,7 @@ import { pink, pinkDark, red, redDark } from "@/utils/colors";
 import { View, Text, TextInput } from "react-native";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { CircleAlert } from 'lucide-react-native';
-import { PregnancyStartDateWidgetProps } from "../_components/widgets";
+import { PregnancyStartDateWidgetProps } from "../_widgets";
 
 
 export const GestationalAgeCurves = {

@@ -36,9 +36,10 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 alignItems: 'center',
-            }}>
+            }}
+        >
             {/* Day Picker */}
-            <Pressable
+            <PressableOpacity
                 onPress={() => setDayModalVisible(true)}
                 style={{
                     height: 60,
@@ -65,7 +66,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 </Text>
 
                 <ChevronDown size={20} color={pinkDark.pink7} />
-            </Pressable>
+            </PressableOpacity>
 
             {/* Day Modal */}
             <Modal
@@ -191,7 +192,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
             </Modal>
 
             {/* Month Picker */}
-            <Pressable
+            <PressableOpacity
                 onPress={() => setMonthModalVisible(true)}
                 style={{
                     flex: 1,
@@ -214,7 +215,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 </Text>
 
                 <ChevronDown size={20} color={pinkDark.pink7} />
-            </Pressable>
+            </PressableOpacity>
 
             {/* Month Modal */}
             <Modal
@@ -342,7 +343,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
             </Modal>
 
             {/* Year Picker */}
-            <Pressable
+            <PressableOpacity
                 onPress={() => setYearModalVisible(true)}
                 style={{
                     height: 60,
@@ -369,7 +370,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 </Text>
 
                 <ChevronDown size={20} color={pinkDark.pink7} />
-            </Pressable>
+            </PressableOpacity>
 
             {/* Year Modal */}
             <Modal

@@ -3,9 +3,8 @@ import { useEffect, useRef } from "react";
 import { Header } from "../_components/header";
 import { pink, pinkDark } from '@/utils/colors';
 import { Animated, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
-import { Calculator, Library, Info, LucideIcon, View } from 'lucide-react-native'
+import { Calculator, CalendarRange, Info, LucideIcon, View } from 'lucide-react-native'
 import { BottomTabBarButtonProps } from "@react-navigation/bottom-tabs";
-import { Shadow } from 'react-native-shadow-2';
 
 interface TabBarAnimatedButtonProps {
   props: BottomTabBarButtonProps,
@@ -71,9 +70,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="info"
+        name="calendar"
         options={{
-          tabBarButton: (props) => <TabBarAnimatedButton props={props} label={'Documentation'} Icon={Library}></TabBarAnimatedButton>
+          tabBarButton: (props) => <TabBarAnimatedButton props={props} label={'Calendrier'} Icon={CalendarRange}></TabBarAnimatedButton>
         }}
       />
       <Tabs.Screen

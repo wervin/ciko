@@ -1,13 +1,13 @@
 import { useState, useEffect, memo } from "react";
-import { View, Text, Modal, LayoutChangeEvent, Pressable } from "react-native";
-import { CrownRumpLengthInput, GestationalAgeCurveType, GestationalAgeCurves } from "./crownRumpLengthInput";
-import { GestiationalAge } from "./gestiationalAge";
+import { View, Text, Modal, Pressable } from "react-native";
+import { GestationalAgeCurveType, GestationalAgeCurves } from "./crownRumpLengthInput";
+import { GestationalAge } from "./gestationalAge";
 import { PregnancyStartDate } from "./pregnancyStartDate";
 import { Term } from "./term";
 import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { X, ScatterChart, Check } from "lucide-react-native";
-import { PregnancyStartDateWidgetProps } from "../_components/widgets";
+import { PregnancyStartDateWidgetProps } from "../_widgets";
 import PressableOpacity from "@/components/ui/pressableOpacity";
 
 interface CrownRumpLengthModalProps {
@@ -126,7 +126,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                                 alignItems: "center",
                                 justifyContent: "space-between",
                                 paddingHorizontal: 20,
-                                paddingVertical: 12,
+                                height: 50,
                                 backgroundColor: gestationalAgeCurve === GestationalAgeCurves.Intergrowth ? pink.pink5 : pink.pink4
                             }}
                             onPress={() => onGestationalAgeCurveChange(GestationalAgeCurves.Intergrowth)}
@@ -164,7 +164,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                                 alignItems: "center",
                                 justifyContent: "space-between",
                                 paddingHorizontal: 20,
-                                paddingVertical: 12,
+                                height: 50,
                                 backgroundColor: gestationalAgeCurve === GestationalAgeCurves.Robinson ? pink.pink5 : pink.pink4,
                                 borderBottomLeftRadius: 16,
                                 borderBottomRightRadius: 16
@@ -175,7 +175,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                             <Text style={{
                                 fontSize: 20,
                                 fontWeight: "700",
-                                color: pinkDark.pink7,
+                                color: gestationalAgeCurve === GestationalAgeCurves.Robinson ? pinkDark.pink7 : pinkDark.pink3
                             }}>
                                 Robinson
                             </Text>
@@ -319,7 +319,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                             overflow: "hidden"
                         }}
                     >
-                        <GestiationalAge gestationalAge={gestationalAge(widgetData?.crownRumpLength ?? 0)} />
+                        <GestationalAge gestationalAge={gestationalAge(widgetData?.crownRumpLength ?? 0)} />
 
                         <PregnancyStartDate pregnancyStartDate={pregnancyStartDate(widgetData?.crownRumpLength ?? 0)} />
 

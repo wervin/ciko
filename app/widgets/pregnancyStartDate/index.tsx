@@ -4,7 +4,7 @@ import { EchographyDate } from "./echographyDate";
 import { CrownRumpLengthInput } from "./crownRumpLengthInput";
 import withScrollView from "@/app/widgets/_components/wrapper";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { PregnancyStartDateWidget, PregnancyStartDateWidgetData } from "../_components/widgets";
+import { PregnancyStartDateWidget, PregnancyStartDateWidgetData } from "../_widgets";
 import { CrownRumpLengthModal } from "./crownRumpLengthModal";
 
 const PregnancyStartDatePage = () => {
