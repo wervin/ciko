@@ -56,21 +56,31 @@ const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutBut
             style={{
                 backgroundColor: backgroundColor,
                 height: 50,
-                padding: 4,
-                paddingLeft: 60,
                 borderRadius: 16,
-                gap: 10,
                 alignItems: "center",
                 flexDirection: "row",
+                justifyContent: "space-between"
             }}
         >
+            <View style={{ flex: 1, paddingLeft: 16 }}>
+                <Text
+                    style={{
+                        fontSize: 24,
+                        fontWeight: "600",
+                        color: foregroundColor,
+                        textAlignVertical: "center"
+                    }}
+                >
+                    {label}
+                </Text>
+            </View>
+
             <View style={{
-                position: "absolute",
                 backgroundColor: foregroundColor,
                 alignItems: "center",
                 justifyContent: "center",
-                borderTopLeftRadius: 16,
-                borderBottomLeftRadius: 16,
+                borderTopRightRadius: 16,
+                borderBottomRightRadius: 16,
                 height: 50,
                 width: 50
             }}
@@ -78,15 +88,6 @@ const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutBut
                 <Icon size={28} color={backgroundColor} />
             </View>
 
-            <Text
-                style={{
-                    fontSize: 24,
-                    fontWeight: "600",
-                    color: foregroundColor
-                }}
-            >
-                {label}
-            </Text>
         </Pressable>
     );
 };
