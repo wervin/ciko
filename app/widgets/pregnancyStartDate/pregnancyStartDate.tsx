@@ -36,8 +36,8 @@ export const PregnancyStartDate = ({
             >
                 <View style={{
                     flex: 1,
-                    backgroundColor: pink.pink4,
-                    borderColor: pink.pink7,
+                    backgroundColor: pink.pink5,
+                    borderColor: pink.pink5,
                     borderWidth: 2,
                     alignItems: "center",
                     justifyContent: "center",
@@ -48,7 +48,7 @@ export const PregnancyStartDate = ({
                     <Text
                         style={{
                             color: pinkDark.pink3,
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: "700"
                         }}
                     >
@@ -57,7 +57,7 @@ export const PregnancyStartDate = ({
                 </View>
 
                 <View style={{
-                    backgroundColor: pink.pink7,
+                    backgroundColor: pink.pink6,
                     alignItems: "center",
                     justifyContent: "center",
                     borderTopRightRadius: 16,

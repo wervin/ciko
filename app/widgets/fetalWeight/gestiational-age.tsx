@@ -167,7 +167,7 @@ export const GestiationalAge = ({
                         maxHeight: 500,
                         backgroundColor: 'white',
                         borderRadius: 8,
-                        overflow: "hidden"
+                        overflow: "hidden",
                     }}>
                         <FlatList
                             style={{

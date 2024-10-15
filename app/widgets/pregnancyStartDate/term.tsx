@@ -1,7 +1,7 @@
 import { pink, pinkDark, purple, purpleDark } from "@/utils/colors";
 import { useRef, useEffect } from "react";
 import { View, Text } from "react-native";
-import { CalendarDays } from 'lucide-react-native';
+import { CalendarHeart } from 'lucide-react-native';
 
 interface TermProps {
     termDate: Date;
@@ -37,8 +37,8 @@ export const Term = ({
             >
                 <View style={{
                     flex: 1,
-                    backgroundColor: pink.pink4,
-                    borderColor: pink.pink7,
+                    backgroundColor: pink.pink5,
+                    borderColor: pink.pink5,
                     borderWidth: 2,
                     alignItems: "center",
                     justifyContent: "center",
@@ -49,7 +49,7 @@ export const Term = ({
                     <Text
                         style={{
                             color: pinkDark.pink3,
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: "700"
                         }}
                     >
@@ -58,7 +58,7 @@ export const Term = ({
                 </View>
 
                 <View style={{
-                    backgroundColor: pink.pink7,
+                    backgroundColor: pink.pink6,
                     alignItems: "center",
                     justifyContent: "center",
                     borderTopRightRadius: 16,
@@ -66,7 +66,7 @@ export const Term = ({
                     width: 60
                 }}
                 >
-                    <CalendarDays
+                    <CalendarHeart
                         color={pinkDark.pink7}
                         size={24}
                     />

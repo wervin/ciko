@@ -1,6 +1,5 @@
 import { useState, useEffect, memo } from "react";
-import { Pressable, View, Text, Modal, LayoutChangeEvent } from "react-native";
-import { EchographyDate } from "./echographyDate";
+import { View, Text, Modal, LayoutChangeEvent, Pressable } from "react-native";
 import { CrownRumpLengthInput, GestationalAgeCurveType, GestationalAgeCurves } from "./crownRumpLengthInput";
 import { GestiationalAge } from "./gestiationalAge";
 import { PregnancyStartDate } from "./pregnancyStartDate";
@@ -9,6 +8,7 @@ import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { X, ScatterChart, Check } from "lucide-react-native";
 import { PregnancyStartDateWidgetProps } from "../_components/widgets";
+import PressableOpacity from "@/components/ui/pressableOpacity";
 
 interface CrownRumpLengthModalProps {
     echographyDate: Date;
@@ -93,7 +93,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                         }}>
                             Courbe de Réference
                         </Text>
-                        <Pressable
+                        <PressableOpacity
                             style={{
                                 width: 30,
                                 height: 30,
@@ -110,7 +110,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                                 height={20}
                                 color={pinkDark.pink7}
                             />
-                        </Pressable>
+                        </PressableOpacity>
                     </View>
 
                     <View style={{
@@ -120,7 +120,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                         borderBottomRightRadius: 16
                     }}>
 
-                        <Pressable
+                        <PressableOpacity
                             style={{
                                 flexDirection: "row",
                                 alignItems: "center",
@@ -156,9 +156,9 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                             </View>
 
                             {gestationalAgeCurve === GestationalAgeCurves.Intergrowth && <Check size={18} color={pinkDark.pink7} />}
-                        </Pressable>
+                        </PressableOpacity>
 
-                        <Pressable
+                        <PressableOpacity
                             style={{
                                 flexDirection: "row",
                                 alignItems: "center",
@@ -181,7 +181,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                             </Text>
 
                             {gestationalAgeCurve === GestationalAgeCurves.Robinson && <Check size={18} color={pinkDark.pink7} />}
-                        </Pressable>
+                        </PressableOpacity>
 
                     </View>
                 </Pressable>
@@ -220,7 +220,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                         alignItems: "center",
                         flexDirection: "row"
                     }}>
-                        <Pressable
+                        <PressableOpacity
                             onPress={() => setDescriptionModalVisible(true)}
                             style={{
                                 flexDirection: "row",
@@ -286,9 +286,9 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                                     color={pink.pink7}
                                 />
                             </View>
-                        </Pressable>
+                        </PressableOpacity>
 
-                        <Pressable
+                        <PressableOpacity
                             style={{
                                 width: 30,
                                 height: 30,
@@ -305,7 +305,7 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                                 height={20}
                                 color={pinkDark.pink7}
                             />
-                        </Pressable>
+                        </PressableOpacity>
                     </View>
 
                     <View
@@ -315,17 +315,13 @@ export const CrownRumpLengthModal = ({ echographyDate }: CrownRumpLengthModalPro
                             padding: 20,
                             borderBottomLeftRadius: 16,
                             borderBottomRightRadius: 16,
-                            gap: 20,
+                            gap: 30,
                             overflow: "hidden"
                         }}
                     >
                         <GestiationalAge gestationalAge={gestationalAge(widgetData?.crownRumpLength ?? 0)} />
 
-                        <View style={{ borderTopWidth: 2, borderTopColor: pink.pink6 }}></View>
-
                         <PregnancyStartDate pregnancyStartDate={pregnancyStartDate(widgetData?.crownRumpLength ?? 0)} />
-
-                        <View style={{ borderTopWidth: 2, borderTopColor: pink.pink6 }}></View>
 
                         <Term termDate={termDate(widgetData?.crownRumpLength ?? 0)} />
 
