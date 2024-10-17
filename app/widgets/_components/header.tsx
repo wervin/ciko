@@ -12,8 +12,8 @@ export const Header = () => {
     const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
 
     const handlePress = () => {
-        router.push("/");
-    };
+        router.dismissAll();
+    }
 
     return (
         <>

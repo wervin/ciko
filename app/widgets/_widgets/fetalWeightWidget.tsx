@@ -22,10 +22,10 @@ export const FetalWeightWidgetData: FetalWeightWidgetProps = {
     isHeadCircumferenceValid: true,
     isAbdominalCircumferenceValid: true,
     isFemurLengthValid: true,
-    gestationalAge: undefined,
-    headCircumference: undefined,
-    abdominalCircumference: undefined,
-    femurLength: undefined
+    gestationalAge: 196,
+    headCircumference: 264,
+    abdominalCircumference: 240,
+    femurLength: 53
 };
 
 const FetalWeightWidgetDescription = () => {

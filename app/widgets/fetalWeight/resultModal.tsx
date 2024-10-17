@@ -4,10 +4,36 @@ import { X, ScatterChart, Check } from "lucide-react-native";
 import PressableOpacity from "@/components/ui/pressableOpacity";
 import { FetalWeightWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { CartesianChart, Line } from "victory-native";
+
+const DATA = Array.from({ length: 31 }, (_, i) => ({
+    day: i,
+    highTmp: 40 + 30 * Math.random(),
+}));
+
+const TestChart = () => {
+    return (
+        <View style={{ height: 300 }}>
+            <CartesianChart data={DATA} xKey="day" yKeys={["highTmp"]}>
+                {({ points }) => (
+                    <Line points={points.highTmp} color="red" strokeWidth={3} />
+                )}
+            </CartesianChart>
+        </View>
+    );
+};
 
 export const ResultModal = () => {
     const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
+
+    const fetalWeightWithHadlock = () => {
+        // EFW = 10^(1.326 +0.0107×HC + 0.0438×AC + 0.158×FL - 0.00326×AC×FL)
+        const hc = widgetData?.headCircumference ?? 0;
+        const ac = widgetData?.abdominalCircumference ?? 0;
+        const fl = widgetData?.femurLength ?? 0;
+        return Math.pow(10, 1.326 + 0.0107 * hc + 0.0438 * ac + 0.158 * fl - 0.00326 * ac * fl)
+    };
 
     return (
         <Modal
@@ -75,8 +101,7 @@ export const ResultModal = () => {
                         overflow: "hidden"
                     }}
                 >
-                    <Text>Okay</Text>
-
+                    <TestChart />
                 </View>
             </Pressable>
         </Modal>

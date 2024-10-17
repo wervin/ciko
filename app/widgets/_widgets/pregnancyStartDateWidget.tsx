@@ -5,11 +5,15 @@ import { pink, pinkDark } from '@/utils/colors';
 import { Calculator } from 'lucide-react-native';
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import PressableOpacity from '@/components/ui/pressableOpacity';
+import { Fragment } from 'react';
+import { GestationalAgeCurveType, GestationalAgeCurves } from '../pregnancyStartDate/crownRumpLengthInput';
 
 export interface PregnancyStartDateWidgetProps {
     visible: boolean;
     isValid: boolean;
-    crownRumpLength?: number;
+    isPresent: boolean;
+    gestationalAge?: number;
+    echographyDate: Date;
 };
 
 const PregnancyStartDateWidgetDescription = () => {
@@ -23,84 +27,12 @@ const PregnancyStartDateWidgetDescription = () => {
     );
 };
 
-const StickyButton = () => {
-    const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
-
-    const validateInput = () => {
-        if (widgetData == null) {
-            return;
-        }
-
-        const isValid = widgetData.crownRumpLength != null && !(widgetData.crownRumpLength < 15 || 95 < widgetData.crownRumpLength);
-        setWidgetData({ ...widgetData, visible: isValid, isValid: isValid });
-    };
-
-    return (
-        <View
-            style={{
-                backgroundColor: pink.pink5,
-                borderTopWidth: 1,
-                borderTopColor: pink.pink6,
-                height: 80,
-                justifyContent: "center",
-                alignContent: "center"
-            }}
-        >
-            <PressableOpacity
-                style={{
-                    borderRadius: 16,
-                    backgroundColor: pink.pink7,
-                    flexDirection: "row",
-                    alignSelf: "center",
-                    alignItems: "center",
-                    gap: 16,
-                    height: 60,
-                }}
-
-                onPress={validateInput}
-            >
-                <View style={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: "row",
-                    paddingLeft: 16
-                }}>
-                    <Text
-                        style={{
-                            fontSize: 28,
-                            fontWeight: "700",
-                            color: pinkDark.pink7
-                        }}
-                    >
-                        Calculer
-                    </Text>
-                </View>
-
-                <View style={{
-                    borderTopRightRadius: 16,
-                    borderBottomRightRadius: 16,
-                    height: 60,
-                    width: 60,
-                    backgroundColor: pinkDark.pink7,
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}>
-                    <Calculator
-                        width={32}
-                        height={32}
-                        color={pink.pink7}
-                    />
-                </View>
-            </PressableOpacity>
-        </View>
-    );
-};
-
 export const PregnancyStartDateWidgetData: PregnancyStartDateWidgetProps = {
     visible: false,
     isValid: true,
-    crownRumpLength: undefined
+    isPresent: false,
+    gestationalAge: undefined,
+    echographyDate: new Date()
 };
 
 export const PregnancyStartDateWidget: Widget = {
@@ -108,6 +40,6 @@ export const PregnancyStartDateWidget: Widget = {
     title: 'DDG',
     subtitle: 'Date de Début de Grossesse',
     description: () => <PregnancyStartDateWidgetDescription />,
-    footer: () => <StickyButton />,
+    footer: () => <View style={{ borderTopColor: pink.pink6, borderTopWidth: 1 }} />,
     page: "/widgets/pregnancyStartDate"
 }

@@ -5,11 +5,11 @@ import { CrownRumpLengthInput } from "./crownRumpLengthInput";
 import withScrollView from "@/app/widgets/_components/wrapper";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { PregnancyStartDateWidget, PregnancyStartDateWidgetData } from "../_widgets";
-import { CrownRumpLengthModal } from "./crownRumpLengthModal";
+import { GestationalAge } from "./gestationalAge";
+import { PregnancyStartDate } from "./pregnancyStartDate";
+import { Term } from "./term";
 
 const PregnancyStartDatePage = () => {
-    const [echographyDate, setEchographyDate] = useState(new Date());
-
     const widget = useWidgetStoreContext((store) => store.widget);
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
@@ -22,7 +22,6 @@ const PregnancyStartDatePage = () => {
     return (
         widget &&
         <>
-            <CrownRumpLengthModal echographyDate={echographyDate} />
             <View
                 style={{
                     width: "100%",
@@ -37,9 +36,15 @@ const PregnancyStartDatePage = () => {
                     padding: 10,
                     gap: 10
                 }}>
-                    <EchographyDate currentDate={echographyDate} setCurrentDate={setEchographyDate} />
+                    <EchographyDate />
 
                     <CrownRumpLengthInput />
+
+                    <GestationalAge />
+
+                    <PregnancyStartDate />
+
+                    <Term />
                 </View>
             </View >
         </>

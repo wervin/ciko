@@ -1,17 +1,16 @@
 import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { View, Text, Pressable, Modal } from "react-native";
-import { ChevronDown } from 'lucide-react-native';
-import { useMemo, useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
-import PressableOpacity from "@/components/ui/pressableOpacity";
 import DatePicker from "@/components/ui/dataPicker";
+import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { PregnancyStartDateWidget, PregnancyStartDateWidgetProps } from "../_widgets";
 
-interface EchographyDateProps {
-    currentDate: Date,
-    setCurrentDate: (date: Date) => void;
-};
+export const EchographyDate = () => {
+    const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(data: PregnancyStartDateWidgetProps) => void>((store) => store.setWidgetData);
 
-export const EchographyDate = ({ currentDate, setCurrentDate }: EchographyDateProps) => {
+    const setCurrentDate = (date: Date) => {
+        setWidgetData({ ...widgetData, echographyDate: date })
+    }
 
     return (
         <View
@@ -34,7 +33,7 @@ export const EchographyDate = ({ currentDate, setCurrentDate }: EchographyDatePr
                 Date de l'Echographie
             </Text>
 
-            <DatePicker date={currentDate} setDate={setCurrentDate} />
+            <DatePicker date={widgetData?.echographyDate ?? new Date()} setDate={setCurrentDate} />
         </View>
     );
 };
