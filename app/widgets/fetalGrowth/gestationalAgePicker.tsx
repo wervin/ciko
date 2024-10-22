@@ -3,7 +3,7 @@ import { Check, ChevronDown, X } from "lucide-react-native";
 import { useState } from "react";
 import { View, Text, Modal, FlatList, Pressable, StyleSheet } from "react-native";
 import { Shadow } from "react-native-shadow-2";
-import { FetalWeightWidgetProps } from "../_widgets";
+import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import PressableOpacity from "@/components/ui/pressableOpacity";
 
@@ -20,8 +20,8 @@ interface WeekModalProps {
 const ITEM_HEIGHT = 50;
 
 const DayModal = ({ visible, setVisible }: DayModalProps) => {
-    const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext<(data: FetalWeightWidgetProps) => void>((store) => store.setWidgetData);
+    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(data: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
 
     const days = Array.from({ length: 7 }, (_, i) => i);
     const day = widgetData?.gestationalAge ? widgetData.gestationalAge % 7 : 0;
@@ -150,10 +150,10 @@ const DayModal = ({ visible, setVisible }: DayModalProps) => {
 };
 
 const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
-    const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext<(data: FetalWeightWidgetProps) => void>((store) => store.setWidgetData);
+    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(data: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
 
-    const weeks = Array.from({ length: 43 }, (_, i) => i);
+    const weeks = Array.from({ length: 27 }, (_, i) => i + 14);
     const day = widgetData?.gestationalAge ? widgetData.gestationalAge % 7 : 0;
     const week = widgetData?.gestationalAge ? Math.trunc(widgetData.gestationalAge / 7) : 0;
 
@@ -227,7 +227,7 @@ const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
                 }}>
                     <FlatList
                         data={weeks}
-                        initialScrollIndex={week > 3 ? week - 3 : 0}
+                        initialScrollIndex={week > 17 ? week - 17 : 0}
                         getItemLayout={(_, index) => ({
                             length: (ITEM_HEIGHT + 1),
                             offset: (ITEM_HEIGHT + 1) * index,
@@ -283,7 +283,7 @@ export const GestationalAgePicker = () => {
     const [weekModalVisible, setWeekModalVisible] = useState(false);
     const [dayModalVisible, setDayModalVisible] = useState(false);
 
-    const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
+    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
 
     return (
         <>

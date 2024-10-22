@@ -2,17 +2,14 @@ import { Widget } from '@/components/widgets';
 import { randomUUID } from "expo-crypto";
 import { Text, Linking, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
-import { Calculator } from 'lucide-react-native';
-import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import PressableOpacity from '@/components/ui/pressableOpacity';
-import { Fragment } from 'react';
-import { GestationalAgeCurveType, GestationalAgeCurves } from '../pregnancyStartDate/crownRumpLengthInput';
+import { GestationalAgeCurveType, GestationalAgeCurves } from '../pregnancyStartDate/gestationalAgeCurve';
 
 export interface PregnancyStartDateWidgetProps {
     visible: boolean;
     isValid: boolean;
     isPresent: boolean;
-    gestationalAge?: number;
+    gestationalAgeCurve: GestationalAgeCurveType;
+    crownRumpLength?: number;
     echographyDate: Date;
 };
 
@@ -31,7 +28,8 @@ export const PregnancyStartDateWidgetData: PregnancyStartDateWidgetProps = {
     visible: false,
     isValid: true,
     isPresent: false,
-    gestationalAge: undefined,
+    gestationalAgeCurve: GestationalAgeCurves.Intergrowth,
+    crownRumpLength: undefined,
     echographyDate: new Date()
 };
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import { EchographyDate } from "./echographyDate";
 import { CrownRumpLengthInput } from "./crownRumpLengthInput";
@@ -8,6 +8,7 @@ import { PregnancyStartDateWidget, PregnancyStartDateWidgetData } from "../_widg
 import { GestationalAge } from "./gestationalAge";
 import { PregnancyStartDate } from "./pregnancyStartDate";
 import { Term } from "./term";
+import { GestationalAgeCurveInput } from "./gestationalAgeCurveInput";
 
 const PregnancyStartDatePage = () => {
     const widget = useWidgetStoreContext((store) => store.widget);
@@ -21,33 +22,33 @@ const PregnancyStartDatePage = () => {
 
     return (
         widget &&
-        <>
-            <View
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <View style={{
-                    width: "100%",
-                    padding: 10,
-                    gap: 10
-                }}>
-                    <EchographyDate />
+        <View
+            style={{
+                width: "100%",
+                height: "100%",
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
+            <View style={{
+                width: "100%",
+                padding: 10,
+                gap: 10
+            }}>
+                <GestationalAgeCurveInput />
+                
+                <EchographyDate />
 
-                    <CrownRumpLengthInput />
+                <CrownRumpLengthInput />
 
-                    <GestationalAge />
+                <GestationalAge />
 
-                    <PregnancyStartDate />
+                <PregnancyStartDate />
 
-                    <Term />
-                </View>
-            </View >
-        </>
+                <Term />
+            </View>
+        </View >
     );
 };
 

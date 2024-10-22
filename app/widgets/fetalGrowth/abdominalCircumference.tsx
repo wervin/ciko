@@ -1,19 +1,19 @@
 import { pink, pinkDark, red } from "@/utils/colors";
 import { View, Text, TextInput } from "react-native";
 import { CircleAlert } from "lucide-react-native";
-import { FetalWeightWidgetProps } from "../_widgets";
+import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 
-export const HeadCircumferenceInput = () => {
-    const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext<(date: FetalWeightWidgetProps) => void>((store) => store.setWidgetData);
+export const AbdominalCircumferenceInput = () => {
+    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(date: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
 
-    const onChangeHeadCircumference = (text: string) => {
+    const onChangeAbdominalCircumference = (text: string) => {
         const re = /[+-]?([0-9]*[.])?[0-9]+/
         if (text === "")
-            setWidgetData({ ...widgetData, headCircumference: undefined })
+            setWidgetData({ ...widgetData, abdominalCircumference: undefined })
         if (re.test(text))
-            setWidgetData({ ...widgetData, headCircumference: parseFloat(text) })
+            setWidgetData({ ...widgetData, abdominalCircumference: parseFloat(text) })
     };
 
     return (
@@ -34,7 +34,7 @@ export const HeadCircumferenceInput = () => {
                     color: pinkDark.pink3
                 }}
             >
-                Périmètre Crânien
+                Périmètre Abdominal
             </Text>
 
             <View style={{
@@ -45,15 +45,15 @@ export const HeadCircumferenceInput = () => {
             }}
             >
                 <TextInput
-                    value={widgetData?.headCircumference?.toString() ?? ""}
-                    onChangeText={onChangeHeadCircumference}
+                    value={widgetData?.abdominalCircumference?.toString() ?? ""}
+                    onChangeText={onChangeAbdominalCircumference}
                     keyboardType='numeric'
                     style={{
                         flex: 1,
                         textAlign: "center",
                         backgroundColor: pink.pink4,
                         paddingHorizontal: 20,
-                        borderColor: widgetData?.isHeadCircumferenceValid ? pink.pink7 : red.red9,
+                        borderColor: widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9,
                         borderWidth: 2,
                         borderTopLeftRadius: 16,
                         borderBottomLeftRadius: 16,
@@ -63,14 +63,14 @@ export const HeadCircumferenceInput = () => {
                         fontWeight: "700",
                     }}
                     maxLength={5}
-                    cursorColor={widgetData?.isHeadCircumferenceValid ? pink.pink7 : red.red9}
-                    selectionColor={widgetData?.isHeadCircumferenceValid ? pink.pink7 : red.red9}
+                    cursorColor={widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9}
+                    selectionColor={widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9}
                 >
 
                 </TextInput>
 
                 <View style={{
-                    backgroundColor: widgetData?.isHeadCircumferenceValid ? pink.pink7 : red.red9,
+                    backgroundColor: widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9,
                     height: 60,
                     width: 60,
                     borderTopRightRadius: 16,
@@ -81,7 +81,7 @@ export const HeadCircumferenceInput = () => {
                     <Text style={{
                         fontWeight: "700",
                         fontSize: 22,
-                        color: widgetData?.isHeadCircumferenceValid ? pinkDark.pink7 : pink.pink4
+                        color: widgetData?.isAbdominalCircumferenceValid ? pinkDark.pink7 : pink.pink4
                     }}>
                         mm
                     </Text>
@@ -90,7 +90,7 @@ export const HeadCircumferenceInput = () => {
             </View>
 
             {
-                !widgetData?.isHeadCircumferenceValid &&
+                !widgetData?.isAbdominalCircumferenceValid &&
 
                 <View style={{
                     flexDirection: "row",
@@ -120,7 +120,7 @@ export const HeadCircumferenceInput = () => {
                             fontSize: 16,
                             color: pink.pink4
                         }}>
-                            Le périmètre crânien doit être renseigné
+                            Le périmètre abdominal doit être renseigné
                         </Text>
                     </View>
 

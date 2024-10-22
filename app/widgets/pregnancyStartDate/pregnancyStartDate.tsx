@@ -3,18 +3,21 @@ import { View, Text } from "react-native";
 import { CalendarDays, CircleAlert } from 'lucide-react-native';
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { PregnancyStartDateWidgetProps } from "../_widgets";
+import { gestationalAge } from "./gestationalAgeCurve";
 
 export const PregnancyStartDate = () => {
     const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
 
-    const gestationalAge = widgetData?.gestationalAge ?? 0;
+    const gestationalAgeCurve = widgetData?.gestationalAgeCurve;
     const echographyDate = widgetData?.echographyDate ?? new Date();
     const isValid = widgetData?.isValid ?? false;
     const isPresent = widgetData?.isPresent ?? false;
+    const crownRumpLength = widgetData?.crownRumpLength ?? 0;
+    const age = isValid && isPresent ? gestationalAge(crownRumpLength, gestationalAgeCurve) : undefined;
 
-    const pregnancyStartDate = () => {
+    const pregnancyStartDate = (age: number) => {
         const d = new Date(echographyDate)
-        d.setDate(d.getDate() - gestationalAge + 14)
+        d.setDate(d.getDate() - age + 14)
         return d;
     }
 
@@ -64,7 +67,7 @@ export const PregnancyStartDate = () => {
                             fontWeight: "700"
                         }}
                     >
-                        {gestationalAge ? pregnancyStartDate().toLocaleDateString() : "-"}
+                        {age ? pregnancyStartDate(age).toLocaleDateString() : "-"}
                     </Text>
                 </View>
 

@@ -2,7 +2,7 @@ import { View, Text, Modal, Pressable } from "react-native";
 import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { X, ScatterChart, Check } from "lucide-react-native";
 import PressableOpacity from "@/components/ui/pressableOpacity";
-import { FetalWeightWidgetProps } from "../_widgets";
+import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { CartesianChart, Line } from "victory-native";
 
@@ -24,7 +24,7 @@ const TestChart = () => {
 };
 
 export const ResultModal = () => {
-    const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
+    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
     const fetalWeightWithHadlock = () => {

@@ -1,19 +1,19 @@
 import { pink, pinkDark, red } from "@/utils/colors";
 import { View, Text, TextInput } from "react-native";
 import { CircleAlert } from "lucide-react-native";
-import { FetalWeightWidgetProps } from "../_widgets";
+import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 
-export const AbdominalCircumferenceInput = () => {
-    const widgetData = useWidgetStoreContext<FetalWeightWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext<(date: FetalWeightWidgetProps) => void>((store) => store.setWidgetData);
+export const FemurLengthInput = () => {
+    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(date: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
 
-    const onChangeAbdominalCircumference = (text: string) => {
+    const onChangeFemurLength = (text: string) => {
         const re = /[+-]?([0-9]*[.])?[0-9]+/
         if (text === "")
-            setWidgetData({ ...widgetData, abdominalCircumference: undefined })
+            setWidgetData({ ...widgetData, femurLength: undefined })
         if (re.test(text))
-            setWidgetData({ ...widgetData, abdominalCircumference: parseFloat(text) })
+            setWidgetData({ ...widgetData, femurLength: parseFloat(text) })
     };
 
     return (
@@ -34,7 +34,7 @@ export const AbdominalCircumferenceInput = () => {
                     color: pinkDark.pink3
                 }}
             >
-                Périmètre Abdominal
+                Longueur Fémorale
             </Text>
 
             <View style={{
@@ -45,15 +45,15 @@ export const AbdominalCircumferenceInput = () => {
             }}
             >
                 <TextInput
-                    value={widgetData?.abdominalCircumference?.toString() ?? ""}
-                    onChangeText={onChangeAbdominalCircumference}
+                    value={widgetData?.femurLength?.toString() ?? ""}
+                    onChangeText={onChangeFemurLength}
                     keyboardType='numeric'
                     style={{
                         flex: 1,
                         textAlign: "center",
                         backgroundColor: pink.pink4,
                         paddingHorizontal: 20,
-                        borderColor: widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9,
+                        borderColor: widgetData?.isFemurLengthValid ? pink.pink7 : red.red9,
                         borderWidth: 2,
                         borderTopLeftRadius: 16,
                         borderBottomLeftRadius: 16,
@@ -63,14 +63,14 @@ export const AbdominalCircumferenceInput = () => {
                         fontWeight: "700",
                     }}
                     maxLength={5}
-                    cursorColor={widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9}
-                    selectionColor={widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9}
+                    cursorColor={widgetData?.isFemurLengthValid ? pink.pink7 : red.red9}
+                    selectionColor={widgetData?.isFemurLengthValid ? pink.pink7 : red.red9}
                 >
 
                 </TextInput>
 
                 <View style={{
-                    backgroundColor: widgetData?.isAbdominalCircumferenceValid ? pink.pink7 : red.red9,
+                    backgroundColor: widgetData?.isFemurLengthValid ? pink.pink7 : red.red9,
                     height: 60,
                     width: 60,
                     borderTopRightRadius: 16,
@@ -81,7 +81,7 @@ export const AbdominalCircumferenceInput = () => {
                     <Text style={{
                         fontWeight: "700",
                         fontSize: 22,
-                        color: widgetData?.isAbdominalCircumferenceValid ? pinkDark.pink7 : pink.pink4
+                        color: widgetData?.isFemurLengthValid ? pinkDark.pink7 : pink.pink4
                     }}>
                         mm
                     </Text>
@@ -90,7 +90,7 @@ export const AbdominalCircumferenceInput = () => {
             </View>
 
             {
-                !widgetData?.isAbdominalCircumferenceValid &&
+                !widgetData?.isFemurLengthValid &&
 
                 <View style={{
                     flexDirection: "row",
@@ -120,7 +120,7 @@ export const AbdominalCircumferenceInput = () => {
                             fontSize: 16,
                             color: pink.pink4
                         }}>
-                            Le périmètre abdominal doit être renseigné
+                            La longueur fémorale doit être renseignée
                         </Text>
                     </View>
 

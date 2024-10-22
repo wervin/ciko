@@ -3,14 +3,17 @@ import { pink, pinkDark, red } from "@/utils/colors";
 import { CalendarClock, CircleAlert, } from "lucide-react-native";
 import { View, Text } from "react-native";
 import { PregnancyStartDateWidgetProps } from "../_widgets";
+import { gestationalAge } from "./gestationalAgeCurve";
 
 
 export const GestationalAge = () => {
     const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
 
-    const gestationalAge = widgetData?.gestationalAge;
+    const gestationalAgeCurve = widgetData?.gestationalAgeCurve;
     const isValid = widgetData?.isValid ?? false;
     const isPresent = widgetData?.isPresent ?? false;
+    const crownRumpLength = widgetData?.crownRumpLength ?? 0;
+    const age = isValid && isPresent ? gestationalAge(crownRumpLength, gestationalAgeCurve) : undefined;
 
     return (
         <View
@@ -58,7 +61,7 @@ export const GestationalAge = () => {
                             fontWeight: "700"
                         }}
                     >
-                        <Text>{gestationalAge ? `${Math.trunc(gestationalAge / 7)} SA ${gestationalAge % 7} J` : "-"}</Text>
+                        <Text>{age ? `${Math.trunc(age / 7)} SA ${age % 7} J` : "-"}</Text>
                     </Text>
                 </View>
 
