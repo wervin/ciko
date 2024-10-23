@@ -9,6 +9,8 @@ import withScrollView from "@/app/widgets/_components/wrapper";
 import { FemurLengthInput } from "./femurLengthInput";
 import { ResultModal } from "./resultModal";
 import { ReferenceTableInput } from "./referenceTableInput";
+import { BiparietalDiameterInput } from "./biparietalDiameterInput";
+import { FetalWeight } from "./fetalWeight";
 
 const FetalGrowth = () => {
     const widget = useWidgetStoreContext((store) => store.widget);
@@ -39,8 +41,10 @@ const FetalGrowth = () => {
                 <ReferenceTableInput />
                 <GestationalAgePicker />
                 <HeadCircumferenceInput />
-                {/* <AbdominalCircumferenceInput /> */}
-                {/* <FemurLengthInput /> */}
+                <AbdominalCircumferenceInput />
+                <FemurLengthInput />
+                <BiparietalDiameterInput />
+                <FetalWeight />
             </View>
         </View>
     );

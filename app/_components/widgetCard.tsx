@@ -1,8 +1,8 @@
 import { View, Text, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
-import { Widget } from "@/components/widgets";
-import PressableOpacity from "@/components/ui/pressableOpacity";
+import { Widget } from "@/components/widget";
+import PressableOpacity from "@/components/pressableOpacity";
 
 export const WidgetCard = (widget: Widget) => {
     const router = useRouter();

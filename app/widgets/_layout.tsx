@@ -1,4 +1,4 @@
-import { Widget } from '@/components/widgets';
+import { Widget } from '@/components/widget';
 import { Stack } from 'expo-router';
 import { Header } from './_components/header';
 import { View, Text, Linking } from 'react-native';

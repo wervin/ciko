@@ -43,7 +43,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 onPress={() => setDayModalVisible(true)}
                 style={{
                     height: 60,
-                    backgroundColor: pink.pink7,
+                    backgroundColor: pink.pink6,
                     borderTopLeftRadius: 16,
                     borderBottomLeftRadius: 16,
                     borderRightWidth: 1,
@@ -197,7 +197,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 style={{
                     flex: 1,
                     height: 60,
-                    backgroundColor: pink.pink7,
+                    backgroundColor: pink.pink6,
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     paddingHorizontal: 10,
@@ -347,7 +347,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 onPress={() => setYearModalVisible(true)}
                 style={{
                     height: 60,
-                    backgroundColor: pink.pink7,
+                    backgroundColor: pink.pink6,
                     borderTopRightRadius: 16,
                     borderBottomRightRadius: 16,
                     borderLeftWidth: 1,

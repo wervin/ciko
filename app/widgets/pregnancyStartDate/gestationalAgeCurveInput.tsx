@@ -3,7 +3,7 @@ import { blackA, gray, grayA, pink, pinkA, pinkDark, pinkDarkA, whiteA } from "@
 import { View, Text, Pressable } from "react-native";
 import { PregnancyStartDateWidgetProps } from "../_widgets";
 import { GestationalAgeCurveType, GestationalAgeCurves } from "./gestationalAgeCurve";
-import PressableOpacity from "@/components/ui/pressableOpacity";
+import PressableOpacity from "@/components/pressableOpacity";
 import { Check } from "lucide-react-native";
 
 export const GestationalAgeCurveInput = () => {

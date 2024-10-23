@@ -1,7 +1,7 @@
 import { View, Text, Modal, Pressable } from "react-native";
 import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { X, ScatterChart, Check } from "lucide-react-native";
-import PressableOpacity from "@/components/ui/pressableOpacity";
+import PressableOpacity from "@/components/pressableOpacity";
 import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { CartesianChart, Line } from "victory-native";

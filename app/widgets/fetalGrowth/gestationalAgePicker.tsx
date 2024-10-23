@@ -1,11 +1,10 @@
 import { blackA, pink, pinkDark } from "@/utils/colors";
 import { Check, ChevronDown, X } from "lucide-react-native";
 import { useState } from "react";
-import { View, Text, Modal, FlatList, Pressable, StyleSheet } from "react-native";
-import { Shadow } from "react-native-shadow-2";
+import { View, Text, Modal, FlatList, Pressable } from "react-native";
 import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import PressableOpacity from "@/components/ui/pressableOpacity";
+import PressableOpacity from "@/components/pressableOpacity";
 
 interface DayModalProps {
     visible: boolean;
@@ -153,7 +152,7 @@ const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
     const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext<(data: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
 
-    const weeks = Array.from({ length: 27 }, (_, i) => i + 14);
+    const weeks = Array.from({ length: 29 }, (_, i) => i + 14);
     const day = widgetData?.gestationalAge ? widgetData.gestationalAge % 7 : 0;
     const week = widgetData?.gestationalAge ? Math.trunc(widgetData.gestationalAge / 7) : 0;
 
@@ -322,7 +321,7 @@ export const GestationalAgePicker = () => {
                         style={{
                             width: "50%",
                             height: 60,
-                            backgroundColor: pink.pink7,
+                            backgroundColor: pink.pink6,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
                             borderRightWidth: 1,
@@ -351,7 +350,7 @@ export const GestationalAgePicker = () => {
                         style={{
                             width: "50%",
                             height: 60,
-                            backgroundColor: pink.pink7,
+                            backgroundColor: pink.pink6,
                             borderTopRightRadius: 16,
                             borderBottomRightRadius: 16,
                             alignItems: 'center',

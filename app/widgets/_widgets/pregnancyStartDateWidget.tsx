@@ -1,4 +1,4 @@
-import { Widget } from '@/components/widgets';
+import { Widget } from '@/components/widget';
 import { randomUUID } from "expo-crypto";
 import { Text, Linking, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';

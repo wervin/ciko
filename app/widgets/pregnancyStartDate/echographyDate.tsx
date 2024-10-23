@@ -1,6 +1,6 @@
 import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { View, Text, Pressable, Modal } from "react-native";
-import DatePicker from "@/components/ui/dataPicker";
+import DatePicker from "@/components/datePicker";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { PregnancyStartDateWidget, PregnancyStartDateWidgetProps } from "../_widgets";
 

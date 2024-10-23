@@ -3,7 +3,7 @@ import { pink, pinkDark } from "@/utils/colors";
 import { View, Text, Pressable } from "react-native";
 import { FetalGrowthWidgetProps } from "../_widgets";
 import { ReferenceTableType, ReferenceTables } from "./referenceTables";
-import PressableOpacity from "@/components/ui/pressableOpacity";
+import PressableOpacity from "@/components/pressableOpacity";
 import { Check } from "lucide-react-native";
 
 export const ReferenceTableInput = () => {

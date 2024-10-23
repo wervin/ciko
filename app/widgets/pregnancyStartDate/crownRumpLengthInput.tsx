@@ -69,7 +69,7 @@ export const CrownRumpLengthInput = () => {
                         flex: 1,
                         backgroundColor: pink.pink4,
                         paddingHorizontal: 20,
-                        borderColor: pink.pink7,
+                        borderColor: pink.pink6,
                         borderWidth: 2,
                         borderTopLeftRadius: 16,
                         borderBottomLeftRadius: 16,
@@ -86,7 +86,7 @@ export const CrownRumpLengthInput = () => {
                 </TextInput>
 
                 <View style={{
-                    backgroundColor: pink.pink7,
+                    backgroundColor: pink.pink6,
                     height: 60,
                     width: 60,
                     borderTopRightRadius: 16,

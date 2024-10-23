@@ -1,9 +1,10 @@
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { pink, pinkDark, red } from "@/utils/colors";
-import { CalendarClock, CircleAlert, } from "lucide-react-native";
+import { orange, pink, pinkDark, red, yellowDark } from "@/utils/colors";
+import { CalendarClock, CircleAlert, TriangleAlert } from "lucide-react-native";
 import { View, Text } from "react-native";
 import { PregnancyStartDateWidgetProps } from "../_widgets";
 import { gestationalAge } from "./gestationalAgeCurve";
+import { yellow } from "@/utils/colors/dark/yellow";
 
 
 export const GestationalAge = () => {
@@ -13,7 +14,7 @@ export const GestationalAge = () => {
     const isValid = widgetData?.isValid ?? false;
     const isPresent = widgetData?.isPresent ?? false;
     const crownRumpLength = widgetData?.crownRumpLength ?? 0;
-    const age = isValid && isPresent ? gestationalAge(crownRumpLength, gestationalAgeCurve) : undefined;
+    const age = isPresent ? gestationalAge(crownRumpLength, gestationalAgeCurve) : undefined;
 
     return (
         <View
@@ -61,7 +62,7 @@ export const GestationalAge = () => {
                             fontWeight: "700"
                         }}
                     >
-                        <Text>{age ? `${Math.trunc(age / 7)} SA ${age % 7} J` : "-"}</Text>
+                        {age ? `${Math.trunc(age / 7)} SA ${age % 7} J` : "-"}
                     </Text>
                 </View>
 
@@ -144,9 +145,9 @@ export const GestationalAge = () => {
                     <View
                         style={{
                             flex: 1,
-                            backgroundColor: red.red9,
+                            backgroundColor: yellowDark.yellow11,
                             paddingHorizontal: 20,
-                            borderColor: red.red9,
+                            borderColor: yellowDark.yellow11,
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
@@ -167,7 +168,7 @@ export const GestationalAge = () => {
                     </View>
 
                     <View style={{
-                        backgroundColor: red.red9,
+                        backgroundColor: yellowDark.yellow11,
                         height: 60,
                         width: 60,
                         borderTopRightRadius: 16,
@@ -175,7 +176,7 @@ export const GestationalAge = () => {
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <CircleAlert size={24} color={pink.pink4} />
+                        <TriangleAlert size={24} color={pink.pink4} />
                     </View>
 
                 </View>

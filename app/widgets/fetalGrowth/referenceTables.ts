@@ -795,6 +795,52 @@ export function updateGraph(
         point.observed = observed;
 }
 
+
+export function computeOmsGraphAbdominalCircumference(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: computeExpectedMeasurement(ga, acOmsCoefficients[2]).measurement,
+            quantile10: computeExpectedMeasurement(ga, acOmsCoefficients[3]).measurement,
+            quantile25: computeExpectedMeasurement(ga, acOmsCoefficients[4]).measurement,
+            quantile50: computeExpectedMeasurement(ga, acOmsCoefficients[5]).measurement,
+            quantile75: computeExpectedMeasurement(ga, acOmsCoefficients[6]).measurement,
+            quantile90: computeExpectedMeasurement(ga, acOmsCoefficients[7]).measurement,
+            quantile95: computeExpectedMeasurement(ga, acOmsCoefficients[8]).measurement,
+        };
+    });
+}
+
+export function computeIntergrowthGraphAbdominalCircumference(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: percentileAC(ga, 5),
+            quantile10: percentileAC(ga, 10),
+            quantile25: percentileAC(ga, 25),
+            quantile50: percentileAC(ga, 50),
+            quantile75: percentileAC(ga, 75),
+            quantile90: percentileAC(ga, 90),
+            quantile95: percentileAC(ga, 95),
+        };
+    });
+}
+
 export function computeOmsPercentileAbdominalCircumference(
     age: number,
     observedMeasurement: number
@@ -813,6 +859,52 @@ export function computeIntergrowthPercentileAbdominalCircumference(
     return percentile;
 }
 
+
+export function computeOmsGraphBiparietalDiameter(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: computeExpectedMeasurement(ga, bpdOmsCoefficients[2]).measurement,
+            quantile10: computeExpectedMeasurement(ga, bpdOmsCoefficients[3]).measurement,
+            quantile25: computeExpectedMeasurement(ga, bpdOmsCoefficients[4]).measurement,
+            quantile50: computeExpectedMeasurement(ga, bpdOmsCoefficients[5]).measurement,
+            quantile75: computeExpectedMeasurement(ga, bpdOmsCoefficients[6]).measurement,
+            quantile90: computeExpectedMeasurement(ga, bpdOmsCoefficients[7]).measurement,
+            quantile95: computeExpectedMeasurement(ga, bpdOmsCoefficients[8]).measurement,
+        };
+    });
+}
+
+export function computeIntergrowthGraphBiparietalDiameter(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: percentileBPD(ga, 5),
+            quantile10: percentileBPD(ga, 10),
+            quantile25: percentileBPD(ga, 25),
+            quantile50: percentileBPD(ga, 50),
+            quantile75: percentileBPD(ga, 75),
+            quantile90: percentileBPD(ga, 90),
+            quantile95: percentileBPD(ga, 95),
+        };
+    });
+}
+
 export function computeOmsPercentileBiparietalDiameter(
     age: number,
     observedMeasurement: number
@@ -829,6 +921,52 @@ export function computeIntergrowthPercentileBiparietalDiameter(
     const z = computeZScore(observedMeasurement, mean, sd);
     const percentile = percentileFromZScore(z);
     return percentile;
+}
+
+
+export function computeOmsGraphFemurLength(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: computeExpectedMeasurement(ga, flOmsCoefficients[2]).measurement,
+            quantile10: computeExpectedMeasurement(ga, flOmsCoefficients[3]).measurement,
+            quantile25: computeExpectedMeasurement(ga, flOmsCoefficients[4]).measurement,
+            quantile50: computeExpectedMeasurement(ga, flOmsCoefficients[5]).measurement,
+            quantile75: computeExpectedMeasurement(ga, flOmsCoefficients[6]).measurement,
+            quantile90: computeExpectedMeasurement(ga, flOmsCoefficients[7]).measurement,
+            quantile95: computeExpectedMeasurement(ga, flOmsCoefficients[8]).measurement,
+        };
+    });
+}
+
+export function computeIntergrowthGraphFemurLength(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: percentileFL(ga, 5),
+            quantile10: percentileFL(ga, 10),
+            quantile25: percentileFL(ga, 25),
+            quantile50: percentileFL(ga, 50),
+            quantile75: percentileFL(ga, 75),
+            quantile90: percentileFL(ga, 90),
+            quantile95: percentileFL(ga, 95),
+        };
+    });
 }
 
 export function computeOmsPercentileFemurLength(
@@ -910,6 +1048,52 @@ export function computeIntergrowthPercentileHeadCircumference(
     const z = computeZScore(observedMeasurement, mean, sd);
     const percentile = percentileFromZScore(z);
     return percentile;
+}
+
+
+export function computeOmsGraphEstimatedFetalWeight(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: computeExpectedMeasurement(ga, efwOmsCoefficients[2]).measurement,
+            quantile10: computeExpectedMeasurement(ga, efwOmsCoefficients[3]).measurement,
+            quantile25: computeExpectedMeasurement(ga, efwOmsCoefficients[4]).measurement,
+            quantile50: computeExpectedMeasurement(ga, efwOmsCoefficients[5]).measurement,
+            quantile75: computeExpectedMeasurement(ga, efwOmsCoefficients[6]).measurement,
+            quantile90: computeExpectedMeasurement(ga, efwOmsCoefficients[7]).measurement,
+            quantile95: computeExpectedMeasurement(ga, efwOmsCoefficients[8]).measurement,
+        };
+    });
+}
+
+export function computeIntergrowthGraphEstimatedFetalWeight(
+    age: number
+): ReferencePoint[] {
+    const start = (age - 2) * 7;
+    const end = (age + 2) * 7;
+
+    return Array.from({ length: (end - start + 1) }, (_, i) => {
+        const ga = (i + start) / 7;
+        return {
+            gaDay: i + start,
+            gaWeek: ga,
+            quantile05: percentileEFW(ga, 5),
+            quantile10: percentileEFW(ga, 10),
+            quantile25: percentileEFW(ga, 25),
+            quantile50: percentileEFW(ga, 50),
+            quantile75: percentileEFW(ga, 75),
+            quantile90: percentileEFW(ga, 90),
+            quantile95: percentileEFW(ga, 95),
+        };
+    });
 }
 
 export function computeOmsPercentileEstimatedFetalWeight(

@@ -1,143 +1,51 @@
-import { pink, pinkDark, red } from "@/utils/colors";
-import { View, Text, TextInput } from "react-native";
-import { CircleAlert } from "lucide-react-native";
 import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { ReferenceTables, computeIntergrowthGraphFemurLength, computeIntergrowthPercentileFemurLength, computeOmsGraphFemurLength, computeOmsPercentileFemurLength, updateGraph } from "./referenceTables";
+import { GraphInput } from "./graphInput";
+
 
 export const FemurLengthInput = () => {
     const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext<(date: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
 
-    const onChangeFemurLength = (text: string) => {
-        const re = /[+-]?([0-9]*[.])?[0-9]+/
-        if (text === "")
-            setWidgetData({ ...widgetData, femurLength: undefined })
-        if (re.test(text))
-            setWidgetData({ ...widgetData, femurLength: parseFloat(text) })
+    const isFemurLengthValid = widgetData?.isFemurLengthValid ?? false;
+    const femurLength = widgetData?.femurLength ?? 0;
+    const referenceTable = widgetData?.referenceTable ?? ReferenceTables.Intergrowth;
+    const gestationalAge = widgetData?.gestationalAge ?? 0;
+
+    const graphData = referenceTable === ReferenceTables.Intergrowth ?
+        computeIntergrowthGraphFemurLength(Math.trunc(gestationalAge / 7)) :
+        computeOmsGraphFemurLength(Math.trunc(gestationalAge / 7));
+
+    updateGraph(graphData, gestationalAge, femurLength);
+
+    const femurLengthPercentile = referenceTable === ReferenceTables.Intergrowth ?
+        computeIntergrowthPercentileFemurLength(gestationalAge / 7, femurLength) :
+        computeOmsPercentileFemurLength(gestationalAge / 7, femurLength);
+
+    const femurLengthPercentileLabel = femurLengthPercentile < 1 ?
+        '<1%'
+        :
+        femurLengthPercentile > 99 ?
+            '>99%'
+            :
+            `${femurLengthPercentile.toFixed(1)}%`;
+
+    const setObserved = (isObservedValid: boolean, observed?: number) => {
+        setWidgetData({ ...widgetData, isFemurLengthValid: isObservedValid, femurLength: observed });
     };
 
     return (
-        <View
-            style={{
-                gap: 10,
-                padding: 10,
-                backgroundColor: pink.pink4,
-                borderRadius: 16,
-                borderWidth: 1,
-                borderColor: pink.pink6
-            }}
-        >
-            <Text
-                style={{
-                    fontSize: 24,
-                    fontWeight: "700",
-                    color: pinkDark.pink3
-                }}
-            >
-                Longueur Fémorale
-            </Text>
-
-            <View style={{
-                flexDirection: "row",
-                height: 60,
-                width: "100%",
-                alignItems: "center",
-            }}
-            >
-                <TextInput
-                    value={widgetData?.femurLength?.toString() ?? ""}
-                    onChangeText={onChangeFemurLength}
-                    keyboardType='numeric'
-                    style={{
-                        flex: 1,
-                        textAlign: "center",
-                        backgroundColor: pink.pink4,
-                        paddingHorizontal: 20,
-                        borderColor: widgetData?.isFemurLengthValid ? pink.pink7 : red.red9,
-                        borderWidth: 2,
-                        borderTopLeftRadius: 16,
-                        borderBottomLeftRadius: 16,
-                        height: 60,
-                        color: pinkDark.pink3,
-                        fontSize: 22,
-                        fontWeight: "700",
-                    }}
-                    maxLength={5}
-                    cursorColor={widgetData?.isFemurLengthValid ? pink.pink7 : red.red9}
-                    selectionColor={widgetData?.isFemurLengthValid ? pink.pink7 : red.red9}
-                >
-
-                </TextInput>
-
-                <View style={{
-                    backgroundColor: widgetData?.isFemurLengthValid ? pink.pink7 : red.red9,
-                    height: 60,
-                    width: 60,
-                    borderTopRightRadius: 16,
-                    borderBottomRightRadius: 16,
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}>
-                    <Text style={{
-                        fontWeight: "700",
-                        fontSize: 22,
-                        color: widgetData?.isFemurLengthValid ? pinkDark.pink7 : pink.pink4
-                    }}>
-                        mm
-                    </Text>
-                </View>
-
-            </View>
-
-            {
-                !widgetData?.isFemurLengthValid &&
-
-                <View style={{
-                    flexDirection: "row",
-                    height: 60,
-                    width: "100%",
-                    alignItems: "center",
-                }}
-                >
-                    <View
-                        style={{
-                            flex: 1,
-                            backgroundColor: red.red9,
-                            paddingHorizontal: 20,
-                            borderColor: red.red9,
-                            borderWidth: 2,
-                            borderTopLeftRadius: 16,
-                            borderBottomLeftRadius: 16,
-                            height: 60,
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}
-                    >
-                        <Text style={{
-                            textAlign: "center",
-                            textAlignVertical: "center",
-                            fontWeight: "700",
-                            fontSize: 16,
-                            color: pink.pink4
-                        }}>
-                            La longueur fémorale doit être renseignée
-                        </Text>
-                    </View>
-
-                    <View style={{
-                        backgroundColor: red.red9,
-                        height: 60,
-                        width: 60,
-                        borderTopRightRadius: 16,
-                        borderBottomRightRadius: 16,
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}>
-                        <CircleAlert size={24} color={pink.pink4} />
-                    </View>
-
-                </View>
-            }
-        </View>
+        <GraphInput
+            title="Longueur Fémorale"
+            unit="mm"
+            placeholder="Saisir une longueur"
+            graphData={graphData}
+            gestationalAge={gestationalAge}
+            percentileLabel={femurLengthPercentileLabel}
+            observed={femurLength}
+            isObservedValid={isFemurLengthValid}
+            setObserved={setObserved}
+        />
     );
 };

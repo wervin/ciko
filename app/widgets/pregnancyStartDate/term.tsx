@@ -1,6 +1,6 @@
-import { pink, pinkDark, red } from "@/utils/colors";
+import { pink, pinkDark, red, yellowDark } from "@/utils/colors";
 import { View, Text } from "react-native";
-import { CalendarHeart, CircleAlert } from 'lucide-react-native';
+import { CalendarHeart, CircleAlert, TriangleAlert } from 'lucide-react-native';
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { PregnancyStartDateWidgetProps } from "../_widgets";
 import { gestationalAge } from "./gestationalAgeCurve";
@@ -13,7 +13,7 @@ export const Term = () => {
     const isValid = widgetData?.isValid ?? false;
     const isPresent = widgetData?.isPresent ?? false;
     const crownRumpLength = widgetData?.crownRumpLength ?? 0;
-    const age = isValid && isPresent ? gestationalAge(crownRumpLength, gestationalAgeCurve) : undefined;
+    const age = isPresent ? gestationalAge(crownRumpLength, gestationalAgeCurve) : undefined;
 
 
     const termDate = (age: number) => {
@@ -153,9 +153,9 @@ export const Term = () => {
                     <View
                         style={{
                             flex: 1,
-                            backgroundColor: red.red9,
+                            backgroundColor: yellowDark.yellow11,
                             paddingHorizontal: 20,
-                            borderColor: red.red9,
+                            borderColor: yellowDark.yellow11,
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
@@ -176,7 +176,7 @@ export const Term = () => {
                     </View>
 
                     <View style={{
-                        backgroundColor: red.red9,
+                        backgroundColor: yellowDark.yellow11,
                         height: 60,
                         width: 60,
                         borderTopRightRadius: 16,
@@ -184,7 +184,7 @@ export const Term = () => {
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <CircleAlert size={24} color={pink.pink4} />
+                        <TriangleAlert size={24} color={pink.pink4} />
                     </View>
 
                 </View>

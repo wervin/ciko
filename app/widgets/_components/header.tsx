@@ -4,7 +4,7 @@ import { X, Info } from 'lucide-react-native';
 import { Link, useRouter } from "expo-router";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useState } from "react";
-import PressableOpacity from "@/components/ui/pressableOpacity";
+import PressableOpacity from "@/components/pressableOpacity";
 
 export const Header = () => {
     const router = useRouter();

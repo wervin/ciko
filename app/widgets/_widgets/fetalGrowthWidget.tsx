@@ -1,4 +1,4 @@
-import { Widget } from '@/components/widgets';
+import { Widget } from '@/components/widget';
 import { randomUUID } from "expo-crypto";
 import { Text, Linking, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
@@ -10,10 +10,12 @@ export interface FetalGrowthWidgetProps {
     isHeadCircumferenceValid: boolean;
     isAbdominalCircumferenceValid: boolean;
     isFemurLengthValid: boolean;
+    isBiparietalDiameterValid: boolean;
     gestationalAge: number;
     headCircumference?: number;
     abdominalCircumference?: number;
     femurLength?: number;
+    biparietalDiameter?: number;
 };
 
 export const FetalGrowthWidgetData: FetalGrowthWidgetProps = {
@@ -22,10 +24,12 @@ export const FetalGrowthWidgetData: FetalGrowthWidgetProps = {
     isHeadCircumferenceValid: false,
     isAbdominalCircumferenceValid: false,
     isFemurLengthValid: false,
+    isBiparietalDiameterValid: false,
     gestationalAge: 98,
     headCircumference: undefined,
-    abdominalCircumference: 240,
-    femurLength: 53
+    abdominalCircumference: undefined,
+    femurLength: undefined,
+    biparietalDiameter: undefined
 };
 
 const FetalGrowthWidgetDescription = () => {
