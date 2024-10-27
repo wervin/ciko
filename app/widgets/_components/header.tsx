@@ -118,7 +118,7 @@ export const Header = () => {
 
                         <PressableOpacity
                             style={{
-                                backgroundColor: pink.pink7,
+                                backgroundColor: pink.pink6,
                                 borderRadius: 24,
                                 padding: 5,
                             }}
@@ -131,48 +131,44 @@ export const Header = () => {
                             />
                         </PressableOpacity>
 
+                        {/* <View style={{ flex: 1 }} /> */}
+
                         <PressableOpacity
                             onPress={() => setDescriptionModalVisible(true)}
                             style={{
-                                width: 150,
                                 height: 50,
                                 borderRadius: 16,
+                                gap: 10,
+                                paddingLeft: 10,
                                 flexDirection: "row",
                                 alignItems: "center",
                                 justifyContent: "space-between",
-                                backgroundColor: pink.pink7,
+                                backgroundColor: pink.pink6,
                             }}
                         >
-                            <View style={{
-                                flex: 1,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexDirection: "row",
-                            }}>
-                                <Text
-                                    style={{
-                                        fontSize: 24,
-                                        fontWeight: "700",
-                                        color: pinkDark.pink7
-                                    }}
-                                >
-                                    {widget?.title}
-                                </Text>
-                            </View>
+                            <Text
+                                style={{
+                                    fontSize: 18,
+                                    fontWeight: "800",
+                                    color: pinkDark.pink7
+                                }}
+                            >
+                                {widget?.subtitle}
+                            </Text>
 
                             <View style={{
                                 borderTopRightRadius: 16,
                                 borderBottomRightRadius: 16,
                                 height: 50,
                                 width: 40,
-                                backgroundColor: pinkDark.pink7,
+                                backgroundColor: pink.pink7,
                                 alignItems: "center",
                                 justifyContent: "center"
                             }}>
                                 <Info
                                     width={24}
                                     height={24}
-                                    color={pink.pink7}
+                                    color={pinkDark.pink7}
                                 />
                             </View>
                         </PressableOpacity>

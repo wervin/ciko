@@ -3,6 +3,7 @@ import { randomUUID } from "expo-crypto";
 import { Text, Linking, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
 import { ReferenceTableType, ReferenceTables } from '../fetalGrowth/referenceTables';
+import FetalGrowthIcon  from "@/assets/images/growth.svg"
 
 export interface FetalGrowthWidgetProps {
     visible: boolean;
@@ -51,5 +52,6 @@ export const FetalGrowthWidget: Widget = {
     subtitle: 'Croissance Fœtale',
     description: () => <FetalGrowthWidgetDescription />,
     footer: () => <View style={{ borderTopColor: pink.pink6, borderTopWidth: 1 }} />,
+    icon: () => <FetalGrowthIcon color={pinkDark.pink7} />,
     page: "/widgets/fetalGrowth"
 }

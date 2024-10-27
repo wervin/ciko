@@ -3,6 +3,7 @@ import { randomUUID } from "expo-crypto";
 import { Text, Linking, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
 import { GestationalAgeCurveType, GestationalAgeCurves } from '../pregnancyStartDate/gestationalAgeCurve';
+import PregnancyStartDateIcon from "@/assets/images/ddg.svg"
 
 export interface PregnancyStartDateWidgetProps {
     visible: boolean;
@@ -39,5 +40,6 @@ export const PregnancyStartDateWidget: Widget = {
     subtitle: 'Date de Début de Grossesse',
     description: () => <PregnancyStartDateWidgetDescription />,
     footer: () => <View style={{ borderTopColor: pink.pink6, borderTopWidth: 1 }} />,
+    icon: () => <PregnancyStartDateIcon color={pinkDark.pink7} />,
     page: "/widgets/pregnancyStartDate"
 }

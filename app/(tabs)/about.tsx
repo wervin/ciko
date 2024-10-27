@@ -4,6 +4,7 @@ import { HandCoins, HandHeart, Info, Bug, CircleUser, LucideIcon } from 'lucide-
 import { ComponentType } from 'react';
 import withScrollView from '../_components/wrapper';
 import { Shadow } from 'react-native-shadow-2';
+import PressableOpacity from '@/components/pressableOpacity';
 
 // Ciko offre un accès rapide à un ensemble d'outils d'obstétrique pour les professionnels de la santé.
 
@@ -15,48 +16,49 @@ interface AboutCardProps {
 interface AboutButtonProps {
     label: string;
     Icon: LucideIcon;
-    foregroundColor: string;
-    backgroundColor: string;
+    primaryColor: string;
+    secondaryColor: string;
+    textColor: string;
 };
 
 const Version = () => {
     return (
-        <AboutButton label={"v1.0.0"} Icon={Info} foregroundColor={pinkDark.pink7} backgroundColor={pink.pink7} />
+        <AboutButton label={"v1.0.0"} Icon={Info} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
     );
 };
 
 const Contact = () => {
     return (
-        <AboutButton label={"wervin.dev"} Icon={CircleUser} foregroundColor={pinkDark.pink7} backgroundColor={pink.pink7} />
+        <AboutButton label={"wervin.dev"} Icon={CircleUser} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
     );
 };
 
 const Report = () => {
     // https://github.com/wervin/ciko/issues
     return (
-        <AboutButton label={"Signaler un problème"} Icon={Bug} foregroundColor={violetDark.violet7} backgroundColor={violet.violet7} />
+        <AboutButton label={"Signaler un problème"} Icon={Bug} primaryColor={violet.violet6} secondaryColor={violet.violet7} textColor={violetDark.violet7} />
     );
 };
 const Rate = () => {
     return (
-        <AboutButton label={"Noter Ciko"} Icon={HandHeart} foregroundColor={pinkDark.pink7} backgroundColor={pink.pink7} />
+        <AboutButton label={"Noter Ciko"} Icon={HandHeart} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
     );
 };
 
 const Donate = () => {
     return (
-        <AboutButton label={"Soutenir Ciko"} Icon={HandCoins} foregroundColor={purpleDark.purple7} backgroundColor={purple.purple7} />
+        <AboutButton label={"Soutenir Ciko"} Icon={HandCoins} primaryColor={purple.purple6} secondaryColor={purple.purple7} textColor={purpleDark.purple7} />
     );
 };
 
-const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutButtonProps) => {
+const AboutButton = ({ label, Icon, primaryColor, secondaryColor, textColor }: AboutButtonProps) => {
     return (
 
-        <Pressable
+        <PressableOpacity
             style={{
-                backgroundColor: backgroundColor,
                 height: 50,
                 borderRadius: 16,
+                backgroundColor: primaryColor,
                 alignItems: "center",
                 flexDirection: "row",
                 justifyContent: "space-between"
@@ -67,7 +69,7 @@ const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutBut
                     style={{
                         fontSize: 24,
                         fontWeight: "600",
-                        color: foregroundColor,
+                        color: textColor,
                         textAlignVertical: "center"
                     }}
                 >
@@ -76,7 +78,7 @@ const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutBut
             </View>
 
             <View style={{
-                backgroundColor: foregroundColor,
+                backgroundColor: secondaryColor,
                 alignItems: "center",
                 justifyContent: "center",
                 borderTopRightRadius: 16,
@@ -85,10 +87,10 @@ const AboutButton = ({ label, Icon, foregroundColor, backgroundColor }: AboutBut
                 width: 50
             }}
             >
-                <Icon size={28} color={backgroundColor} />
+                <Icon size={28} color={textColor} />
             </View>
 
-        </Pressable>
+        </PressableOpacity>
     );
 };
 

@@ -7,5 +7,6 @@ export type Widget = {
     subtitle: string,
     description: () => ReactNode,
     footer?: () => ReactNode,
+    icon: () => ReactNode,
     page: StaticRoutes,
 };

@@ -14,51 +14,44 @@ export const WidgetCard = (widget: Widget) => {
     return (
         <PressableOpacity
             style={{
-                height: 90,
+                height: 80,
                 width: "100%",
-                backgroundColor: pink.pink4,
-                borderColor: pink.pink6,
-                borderWidth: 1,
-                borderRadius: 16,
-                alignItems: "center",
-                justifyContent: "space-around",
-                gap: 10,
-                padding: 10,
                 flexDirection: "row",
             }}
             onPress={handlePress}
         >
             <View style={{
-                backgroundColor: pink.pink7,
-                alignItems: "center",
-                justifyContent: "center",
-                width: 80,
-                height: 60,
-                borderRadius: 16,
-                flexDirection: "row",
-            }}
-            >
-                <Text style={{
-                    fontSize: 28,
-                    fontWeight: "800",
-                    color: pinkDark.pink7
-                }}
-                >
-                    {widget.title}
-                </Text>
-            </View>
-
-            <View style={{
                 flex: 1,
+                backgroundColor: pink.pink5,
+                borderColor: pink.pink6,
+                borderWidth: 1,
+                borderTopLeftRadius: 16,
+                borderBottomLeftRadius: 16,
+                justifyContent: "center",
+                paddingLeft: 20
             }}>
                 <Text style={{
                     fontSize: 24,
                     fontWeight: "700",
-                    color: pinkDark.pink3
+                    color: pinkDark.pink7,
                 }}
                 >
                     {widget.subtitle}
                 </Text>
+            </View>
+
+            <View style={{
+                backgroundColor: pink.pink6,
+                alignItems: "center",
+                justifyContent: "center",
+                width: 80,
+                height: 80,
+                borderTopRightRadius: 16,
+                borderBottomRightRadius: 16,
+                flexDirection: "row",
+            }}
+            >
+                {widget.icon()}
             </View>
         </PressableOpacity>
     );
