@@ -11,6 +11,7 @@ import { ResultModal } from "./resultModal";
 import { ReferenceTableInput } from "./referenceTableInput";
 import { BiparietalDiameterInput } from "./biparietalDiameterInput";
 import { FetalWeight } from "./fetalWeight";
+import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
 
 const FetalGrowth = () => {
     const widget = useWidgetStoreContext((store) => store.widget);
@@ -40,6 +41,7 @@ const FetalGrowth = () => {
             }}>
                 <ReferenceTableInput />
                 <GestationalAgePicker />
+                <PregnancyStartDatePicker />
                 <HeadCircumferenceInput />
                 <AbdominalCircumferenceInput />
                 <FemurLengthInput />

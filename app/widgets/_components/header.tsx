@@ -131,8 +131,6 @@ export const Header = () => {
                             />
                         </PressableOpacity>
 
-                        {/* <View style={{ flex: 1 }} /> */}
-
                         <PressableOpacity
                             onPress={() => setDescriptionModalVisible(true)}
                             style={{
@@ -149,7 +147,7 @@ export const Header = () => {
                             <Text
                                 style={{
                                     fontSize: 18,
-                                    fontWeight: "800",
+                                    fontWeight: "700",
                                     color: pinkDark.pink7
                                 }}
                             >

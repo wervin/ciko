@@ -152,7 +152,7 @@ const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
     const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext<(data: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
 
-    const weeks = Array.from({ length: 29 }, (_, i) => i + 14);
+    const weeks = Array.from({ length: 41 }, (_, i) => i + 2);
     const day = widgetData?.gestationalAge ? widgetData.gestationalAge % 7 : 0;
     const week = widgetData?.gestationalAge ? Math.trunc(widgetData.gestationalAge / 7) : 0;
 

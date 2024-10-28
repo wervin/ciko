@@ -4,7 +4,6 @@ import { CalendarClock, CircleAlert, TriangleAlert } from "lucide-react-native";
 import { View, Text } from "react-native";
 import { PregnancyStartDateWidgetProps } from "../_widgets";
 import { gestationalAge } from "./gestationalAgeCurve";
-import { yellow } from "@/utils/colors/dark/yellow";
 
 
 export const GestationalAge = () => {

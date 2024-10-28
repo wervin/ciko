@@ -12,6 +12,7 @@ import { SharedValue, useDerivedValue } from "react-native-reanimated";
 interface GraphState {
     x: number;
     y: {
+        gaDay: number;
         observed: number;
         quantile05: number;
         quantile10: number;
@@ -30,7 +31,8 @@ interface GraphPercentileIndicatorItem {
 }
 
 interface GraphPercentileToolTipProps {
-    state: ChartPressState<GraphState>
+    state: ChartPressState<GraphState>;
+    yUnit: string;
 };
 
 interface GraphObservedToolTipProps {
@@ -38,6 +40,7 @@ interface GraphObservedToolTipProps {
     percentileLabel: string;
     observed: number;
     pointsObserved: PointsArray;
+    yUnit: string;
 };
 
 interface GraphProps {
@@ -59,60 +62,60 @@ interface GraphModalProps {
     observed: number;
 };
 
-const GraphPercentileToolTip = ({ state }: GraphPercentileToolTipProps) => {
+const GraphPercentileToolTip = ({ state, yUnit }: GraphPercentileToolTipProps) => {
     const font = useFont(require('@/assets/fonts/SpaceMono-Regular.ttf'), 12);
 
     const ga = useDerivedValue(() => {
-        return `${Math.trunc(state.x.value.value)}SA ${(state.x.value.value * 7) % 7}J`
+        return `${Math.trunc(state.y.gaDay.value.value / 7)}SA ${state.y.gaDay.value.value % 7}J`
     });
 
     const percentileItems: GraphPercentileIndicatorItem[] = [
         {
             quantile: '95%',
             value: useDerivedValue(() => {
-                return state.y.quantile95.value.value.toFixed(2)
+                return state.y.quantile95.value.value.toFixed(0) + yUnit
             }),
             color: red.red9,
         },
         {
             quantile: '90%',
             value: useDerivedValue(() => {
-                return state.y.quantile90.value.value.toFixed(2)
+                return state.y.quantile90.value.value.toFixed(0) + yUnit
             }),
             color: red.red8,
         },
         {
             quantile: '75%',
             value: useDerivedValue(() => {
-                return state.y.quantile75.value.value.toFixed(2)
+                return state.y.quantile75.value.value.toFixed(0) + yUnit
             }),
             color: red.red7,
         },
         {
             quantile: '50%',
             value: useDerivedValue(() => {
-                return state.y.quantile50.value.value.toFixed(2)
+                return state.y.quantile50.value.value.toFixed(0) + yUnit
             }),
             color: pink.pink10,
         },
         {
             quantile: '25%',
             value: useDerivedValue(() => {
-                return state.y.quantile25.value.value.toFixed(2)
+                return state.y.quantile25.value.value.toFixed(0) + yUnit
             }),
             color: purple.purple7,
         },
         {
             quantile: '10%',
             value: useDerivedValue(() => {
-                return state.y.quantile10.value.value.toFixed(2)
+                return state.y.quantile10.value.value.toFixed(0) + yUnit
             }),
             color: purple.purple8,
         },
         {
             quantile: '5%',
             value: useDerivedValue(() => {
-                return state.y.quantile05.value.value.toFixed(2)
+                return state.y.quantile05.value.value.toFixed(0) + yUnit
             }),
             color: purple.purple9,
         },
@@ -157,7 +160,7 @@ const GraphPercentileToolTip = ({ state }: GraphPercentileToolTipProps) => {
                             />
 
                             <SkiaText
-                                x={92}
+                                x={102}
                                 y={32 + index * 12}
                                 text={item.value}
                                 font={font}
@@ -171,7 +174,7 @@ const GraphPercentileToolTip = ({ state }: GraphPercentileToolTipProps) => {
     )
 };
 
-const GraphObservedToolTip = ({ percentileLabel, gestationalAge, observed, pointsObserved }: GraphObservedToolTipProps) => {
+const GraphObservedToolTip = ({ percentileLabel, gestationalAge, observed, pointsObserved, yUnit }: GraphObservedToolTipProps) => {
     const font = useFont(require('@/assets/fonts/SpaceMono-Regular.ttf'), 12);
 
     return (
@@ -213,9 +216,9 @@ const GraphObservedToolTip = ({ percentileLabel, gestationalAge, observed, point
             />
 
             <SkiaText
-                x={66 + percentileLabel.length * 7 + 5}
+                x={66 + percentileLabel.length * 7 + 10}
                 y={32}
-                text={observed.toFixed(2)}
+                text={observed.toFixed(0) + yUnit}
                 font={font}
                 color={pinkDark.pink7}
             />
@@ -232,6 +235,7 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
         x: 0,
         y: {
             observed: 0,
+            gaDay: 0,
             quantile05: 0,
             quantile10: 0,
             quantile25: 0,
@@ -249,6 +253,7 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
                     data={graphData}
                     xKey="gaWeek"
                     yKeys={[
+                        "gaDay",
                         "observed",
                         "quantile05",
                         "quantile10",
@@ -298,6 +303,7 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
                                 isActive ?
                                     <GraphPercentileToolTip
                                         state={state}
+                                        yUnit={yUnit}
                                     />
                                     :
                                     <GraphObservedToolTip
@@ -305,6 +311,7 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
                                         gestationalAge={gestationalAge}
                                         observed={observed}
                                         pointsObserved={points.observed}
+                                        yUnit={yUnit}
                                     />
                             }
                         </>
