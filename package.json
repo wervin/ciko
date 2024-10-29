@@ -48,7 +48,8 @@
     "simple-statistics": "^7.8.7",
     "trianglify": "^4.1.1",
     "victory-native": "^41.6.2",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "expo-dev-client": "~4.0.28"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

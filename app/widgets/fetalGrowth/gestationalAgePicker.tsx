@@ -226,7 +226,7 @@ const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
                 }}>
                     <FlatList
                         data={weeks}
-                        initialScrollIndex={week > 17 ? week - 17 : 0}
+                        initialScrollIndex={week > 5 ? week - 5 : 0}
                         getItemLayout={(_, index) => ({
                             length: (ITEM_HEIGHT + 1),
                             offset: (ITEM_HEIGHT + 1) * index,

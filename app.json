@@ -7,7 +7,7 @@
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "backgroundColor":  "#f9d8ec",
+    "backgroundColor": "#f9d8ec",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#f9d8ec"
       },
       "package": "com.wervin.ciko"
@@ -29,7 +29,7 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/icon.png"
     },
     "plugins": [
       "expo-router",
@@ -45,6 +45,7 @@
       "eas": {
         "projectId": "6d2295e6-84eb-4c04-8c94-625857a304a6"
       }
-    }
+    },
+    "owner": "wervin"
   }
 }

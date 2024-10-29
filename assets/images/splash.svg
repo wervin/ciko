@@ -52,10 +52,10 @@
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Drop Shadow"
        id="filter3870"
-       x="-0.010479646"
-       y="-0.010548453"
-       width="1.0296923"
-       height="1.0298873">
+       x="-0.024802044"
+       y="-0.024964889"
+       width="1.0583371"
+       height="1.0587202">
       <feFlood
          flood-opacity="0.498039"
          flood-color="rgb(0,0,0)"
@@ -69,7 +69,7 @@
          id="feComposite3862" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="3"
+         stdDeviation="7.1000613"
          result="blur"
          id="feGaussianBlur3864" />
       <feOffset
@@ -97,7 +97,7 @@
      showgrid="false"
      showguides="true"
      inkscape:zoom="0.37344372"
-     inkscape:cx="562.33373"
+     inkscape:cx="566.3504"
      inkscape:cy="1507.59"
      inkscape:window-width="1920"
      inkscape:window-height="969"
@@ -106,7 +106,7 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg3550" />
   <ellipse
-     style="opacity:0.838539;fill:#feeef8;stroke-width:12.7028;stroke-linecap:round;filter:url(#filter3870);fill-opacity:1"
+     style="opacity:1;fill:#feeef8;stroke-width:12.7028;stroke-linecap:round;filter:url(#filter3870);fill-opacity:1"
      id="path3858"
      cx="643.59631"
      cy="1411.2822"

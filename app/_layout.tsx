@@ -1,7 +1,7 @@
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { pink, pinkDark } from '@/utils/colors'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SvgXml } from 'react-native-svg';
@@ -65,14 +65,14 @@ const RootLayout = () => {
     if (error) throw error;
   }, [error]);
 
-  useEffect(() => {
+  const onLayoutRootView = useCallback(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
 
   return (
-    <>
+    <View onLayout={onLayoutRootView}>
       <TrianglifyBackground />
       <Trianglify />
       {
@@ -90,7 +90,7 @@ const RootLayout = () => {
           />
         </SafeAreaView>
       }
-    </>
+    </View>
   );
 };
 
