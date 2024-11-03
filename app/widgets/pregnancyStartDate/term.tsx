@@ -23,6 +23,25 @@ export const Term = () => {
         return d;
     }
 
+    const formatDateInFrench = (date: Date) => {
+        const options: Intl.DateTimeFormatOptions = {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        };
+
+        // Format the date using the French locale
+        const formattedDate = date.toLocaleDateString('fr-FR', options);
+
+        // Capitalize the first letter of the month
+        return formattedDate.replace(
+            /([0-9]+ )([a-z\u00E0-\u00FC])/,
+            (_, daySpace, monthFirstLetter) => {
+                return daySpace + monthFirstLetter.toUpperCase();
+            }
+        );
+    }
+
     return (
         <View
             style={{
@@ -70,7 +89,7 @@ export const Term = () => {
                             fontWeight: "700"
                         }}
                     >
-                        {age ? termDate(age).toLocaleDateString() : "-"}
+                        {age ? formatDateInFrench(termDate(age)) : "-"}
                     </Text>
                 </View>
 

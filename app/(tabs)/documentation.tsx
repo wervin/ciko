@@ -3,11 +3,11 @@ import withScrollView from '../_components/wrapper';
 
 // Tab Layout with 2 tabs "Document" "Reference"
 
-const Info = () => {
+const Documentation = () => {
     return (
         <View>
         </View>
     );
 }
 
-export default withScrollView(Info);
+export default withScrollView(Documentation);

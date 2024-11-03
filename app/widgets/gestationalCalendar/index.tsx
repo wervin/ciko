@@ -3,6 +3,9 @@ import withScrollView from "../_components/wrapper";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useEffect } from "react";
 import { GestationalCalendarWidget, GestationalCalendarWidgetData } from "../_widgets";
+import { GestationalAgePicker } from "./gestationalAgePicker";
+import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
+import { EchographyDates } from "./echographyDates";
 
 const GestationalCalendar = () => {
 
@@ -16,6 +19,7 @@ const GestationalCalendar = () => {
     }, []);
 
     return (
+        widget &&
         <View
             style={{
                 width: "100%",
@@ -25,7 +29,16 @@ const GestationalCalendar = () => {
                 alignItems: 'center',
             }}
         >
-
+            <View style={{
+                width: "100%",
+                padding: 10,
+                gap: 10
+            }}>
+                <GestationalAgePicker />
+                <PregnancyStartDatePicker />
+                <EchographyDates />
+                {/* Congé maternité */}
+            </View>
         </View>
     );
 };

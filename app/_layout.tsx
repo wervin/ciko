@@ -1,7 +1,6 @@
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import React, { useCallback, useEffect } from 'react';
+import { Stack, SplashScreen } from 'expo-router';
+import React, { useCallback, useEffect, useState } from 'react';
 import { pink, pinkDark } from '@/utils/colors'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SvgXml } from 'react-native-svg';
@@ -12,7 +11,15 @@ export {
   ErrorBoundary,
 } from 'expo-router';
 
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
+
 const { width, height } = Dimensions.get('screen');
+
+type TrianglifyProps = {
+  trianglifyXml: string;
+};
+
 
 const TrianglifyBackground = () => {
   return (
@@ -28,68 +35,75 @@ const TrianglifyBackground = () => {
   );
 };
 
-const Trianglify = React.memo(() => {
-  const trianglify_xml = trianglify({
-    cellSize: 42,
-    xColors: ['#feeef8', '#f3c6e2'],
-    colorFunction: colorFunctions.sparkle(0.5),
-    width: width,
-    height: height
-  }).toSVG().toString();
-
+const Trianglify: React.FC<TrianglifyProps> = React.memo(({ trianglifyXml }) => {
   return (
     <SvgXml
-      xml={trianglify_xml}
+      xml={trianglifyXml}
       width={width}
       height={height}
       style={{
-        position: "absolute",
+        position: 'absolute',
         top: 0,
-        left: 0
+        left: 0,
       }}
     />
   );
 });
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
 const RootLayout = () => {
-  const [loaded, error] = useFonts({
+  const [trianglifyXml, setTrianglifyXml] = useState<string | null>(null);
+
+  const [fontsLoaded, fontsError] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     Righteous: require('../assets/fonts/Righteous-Regular.ttf'),
   });
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+    if (fontsError) throw fontsError;
+  }, [fontsError]);
 
-  const onLayoutRootView = useCallback(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+  useEffect(() => {
+    async function prepare() {
+      const trianglifyXml = trianglify({
+        cellSize: 42,
+        xColors: ['#feeef8', '#f3c6e2'],
+        colorFunction: colorFunctions.sparkle(0.5),
+        width: width,
+        height: height,
+      }).toSVG().toString();
+
+      setTrianglifyXml(trianglifyXml);
     }
-  }, [loaded]);
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded && trianglifyXml) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, trianglifyXml]);
+
+  if (!fontsLoaded || !trianglifyXml) {
+    return null;
+  }
 
   return (
-    <View onLayout={onLayoutRootView}>
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <TrianglifyBackground />
-      <Trianglify />
-      {
-        loaded &&
-        <SafeAreaView style={{ width: "100%", height: "100%", backgroundColor: "transparent" }}>
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              contentStyle: { backgroundColor: "transparent" },
-              navigationBarColor: pink.pink5,
-              statusBarColor: pink.pink5,
-              statusBarStyle: "dark",
-              animation: "fade",
-            }}
-          />
-        </SafeAreaView>
-      }
+      <Trianglify trianglifyXml={trianglifyXml} />
+      <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent' }}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: 'transparent' },
+            navigationBarColor: pink.pink5,
+            statusBarColor: pink.pink5,
+            statusBarStyle: 'dark',
+            animation: 'fade',
+          }}
+        />
+      </SafeAreaView>
     </View>
   );
 };

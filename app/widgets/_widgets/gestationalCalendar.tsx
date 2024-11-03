@@ -6,18 +6,20 @@ import GestationalCalendarIcon from "@/assets/images/pregnancy.svg"
 
 export interface GestationalCalendarWidgetProps {
     visible: boolean;
+    gestationalAge: number;
 };
 
 const GestationalCalendarWidgetDescription = () => {
     return (
         <Text style={{ fontSize: 18, color: pinkDark.pink3 }}>
-            TODO
+            Ce calculateur récapitule les dates clés pour le suivi de la grossesse
         </Text>
     );
 };
 
 export const GestationalCalendarWidgetData: GestationalCalendarWidgetProps = {
-    visible: false
+    visible: false,
+    gestationalAge: 14,
 };
 
 export const GestationalCalendarWidget: Widget = {

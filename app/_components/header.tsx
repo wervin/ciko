@@ -11,31 +11,26 @@ export const Header = () => {
                 borderBottomWidth: 1,
                 width: "100%",
                 height: 80,
+                flexDirection: "row",
+                alignItems: "center",
+                paddingLeft: 10,
+                gap: 5
             }}
         >
-
             <Image
                 style={{
-                    position: "absolute",
-                    top: "50%",
-                    transform: [{ translateY: -32 }],
-                    left: 20,
-                    width: 64,
-                    height: 64
+                    width: 48,
+                    height: 48,
                 }}
                 source={require("@/assets/images/logo.png")}
             />
 
             <Text
                 style={{
-                    position: "absolute",
-                    top: "50%",
-                    transform: [{ translateY: -32 }],
-                    left: 86,
-                    fontSize: 60,
+                    fontSize: 48,
                     fontFamily: "Righteous",
-                    fontWeight: "600",
-                    color: pinkDark.pink3
+                    color: pinkDark.pink7,
+                    height: 49
                 }}
             >
                 ciko
