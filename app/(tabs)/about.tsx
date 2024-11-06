@@ -36,18 +36,12 @@ const Contact = () => {
 const Report = () => {
     // https://github.com/wervin/ciko/issues
     return (
-        <AboutButton label={"Signaler un problème"} Icon={Bug} primaryColor={violet.violet6} secondaryColor={violet.violet7} textColor={violetDark.violet7} />
+        <AboutButton label={"Signaler un problème"} Icon={Bug} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
     );
 };
 const Rate = () => {
     return (
         <AboutButton label={"Noter Ciko"} Icon={HandHeart} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
-    );
-};
-
-const Donate = () => {
-    return (
-        <AboutButton label={"Soutenir Ciko"} Icon={HandCoins} primaryColor={purple.purple6} secondaryColor={purple.purple7} textColor={purpleDark.purple7} />
     );
 };
 
@@ -133,7 +127,7 @@ const About = () => {
         >
             <AboutCard label="Version" components={[Version]} />
             <AboutCard label="Contact" components={[Contact]} />
-            <AboutCard label="Aider Ciko" components={[Rate, Donate, Report]} />
+            <AboutCard label="Aider Ciko" components={[Rate, Report]} />
         </View>
     );
 }

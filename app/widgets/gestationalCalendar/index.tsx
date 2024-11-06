@@ -6,6 +6,7 @@ import { GestationalCalendarWidget, GestationalCalendarWidgetData } from "../_wi
 import { GestationalAgePicker } from "./gestationalAgePicker";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
 import { EchographyDates } from "./echographyDates";
+import { MaternityLeaveDates } from "./maternityLeaveDates";
 
 const GestationalCalendar = () => {
 
@@ -37,7 +38,7 @@ const GestationalCalendar = () => {
                 <GestationalAgePicker />
                 <PregnancyStartDatePicker />
                 <EchographyDates />
-                {/* Congé maternité */}
+                <MaternityLeaveDates />
             </View>
         </View>
     );

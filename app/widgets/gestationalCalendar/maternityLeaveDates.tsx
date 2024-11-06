@@ -6,14 +6,13 @@ import { Goal } from "lucide-react-native";
 import { ReactNode } from "react";
 
 
-interface EchographieCardProps {
+interface MaternityLeaveCardProps {
     start: number;
-    mid: number;
     end: number;
     title: () => ReactNode;
 };
 
-const EchographieCard = ({ start, mid, end, title }: EchographieCardProps) => {
+const MaternityLeaveCard = ({ start, end, title }: MaternityLeaveCardProps) => {
     const widgetData = useWidgetStoreContext<GestationalCalendarWidgetProps>((store) => store.widgetData);
 
     const gestationalAge = widgetData?.gestationalAge ?? 0;
@@ -50,11 +49,9 @@ const EchographieCard = ({ start, mid, end, title }: EchographieCardProps) => {
     }
 
     const startDate = getDateFromGestationalAge(start);
-    const midDate = getDateFromGestationalAge(mid);
     const endDate = getDateFromGestationalAge(end);
 
     const startGestationalAge = start % 7 ? `${Math.trunc(start / 7)}SA ${start % 7}J` : `${Math.trunc(start / 7)}SA`;
-    const midGestationalAge = mid % 7 ? `${Math.trunc(mid / 7)}SA ${mid % 7}J` : `${Math.trunc(mid / 7)}SA`;
     const endGestationalAge = end % 7 ? `${Math.trunc(end / 7)}SA ${end % 7}J` : `${Math.trunc(end / 7)}SA`;
 
     return (
@@ -67,6 +64,7 @@ const EchographieCard = ({ start, mid, end, title }: EchographieCardProps) => {
             <View style={{
                 gap: 5,
             }}>
+
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                     <View
                         style={{
@@ -150,53 +148,11 @@ const EchographieCard = ({ start, mid, end, title }: EchographieCardProps) => {
                     </Text>
                 </View>
             </View>
-
-            <View style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                backgroundColor: pink.pink6,
-                padding: 5,
-                borderRadius: 16
-            }}>
-                <View style={{
-                    height: 25,
-                    borderRadius: 16,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: 10
-                }}>
-                    <Goal size={20} color={pinkDark.pink7} />
-
-                    <Text
-                        style={{
-                            fontSize: 14,
-                            fontWeight: "700",
-                            color: pinkDark.pink7
-                        }}
-                    >
-                        {formatDateInFrench(midDate)}
-                    </Text>
-                </View>
-
-                <Text
-                    style={{
-                        fontSize: 14,
-                        fontWeight: "700",
-                        color: pinkDark.pink7,
-                        paddingHorizontal: 8
-                    }}
-                >
-                    {midGestationalAge}
-                </Text>
-
-            </View>
         </View>
     );
 };
 
-export const EchographyDates = () => {
+export const MaternityLeaveDates = () => {
 
     return (
         <View
@@ -216,109 +172,62 @@ export const EchographyDates = () => {
                     color: pinkDark.pink3
                 }}
             >
-                Echographies
+                Congé Maternité
             </Text>
 
-            <EchographieCard
-                start={77}
-                mid={84}
-                end={97}
+            <MaternityLeaveCard
+                start={245}
+                end={357}
                 title={() =>
-                    <>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "600",
-                                color: pinkDark.pink7
-                            }}
-                        >1</Text>
-
-                        <Text
-                            style={{
-                                fontWeight: "600",
-                                lineHeight: 17,
-                                marginLeft: -1,
-                                fontSize: 9,
-                                color: pinkDark.pink7
-                            }}
-                        >ère</Text>
-
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "600",
-                                color: pinkDark.pink7
-                            }}
-                        > Echographie</Text>
-                    </>
+                    <Text
+                        style={{
+                            fontSize: 18,
+                            fontWeight: "600",
+                            color: pinkDark.pink7
+                        }}
+                    >&lt;2 Enfants à Charge</Text>
                 }
             />
 
-            <EchographieCard
-                start={140}
-                mid={154}
-                end={175}
+            <MaternityLeaveCard
+                start={231}
+                end={413}
                 title={() =>
-                    <>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "600",
-                                color: pinkDark.pink7
-                            }}
-                        >2</Text>
-
-                        <Text
-                            style={{
-                                fontWeight: "600",
-                                lineHeight: 17,
-                                fontSize: 9,
-                                color: pinkDark.pink7
-                            }}
-                        >ème</Text>
-
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "600",
-                                color: pinkDark.pink7
-                            }}
-                        > Echographie</Text>
-                    </>
+                    <Text
+                        style={{
+                            fontSize: 18,
+                            fontWeight: "600",
+                            color: pinkDark.pink7
+                        }}
+                    >2+ Enfants à Charge</Text>
                 }
             />
 
-            <EchographieCard
-                start={210}
-                mid={224}
-                end={245}
+            <MaternityLeaveCard
+                start={203}
+                end={441}
                 title={() =>
-                    <>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "600",
-                                color: pinkDark.pink7
-                            }}
-                        >3</Text>
+                    <Text
+                        style={{
+                            fontSize: 18,
+                            fontWeight: "600",
+                            color: pinkDark.pink7
+                        }}
+                    >Gémellaire</Text>
+                }
+            />
 
-                        <Text
-                            style={{
-                                fontWeight: "600",
-                                lineHeight: 17,
-                                fontSize: 9,
-                                color: pinkDark.pink7
-                            }}
-                        >ème</Text>
-
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "600",
-                                color: pinkDark.pink7
-                            }}
-                        > Echographie</Text>
-                    </>
+            <MaternityLeaveCard
+                start={119}
+                end={441}
+                title={() =>
+                    <Text
+                        style={{
+                            fontSize: 18,
+                            fontWeight: "600",
+                            color: pinkDark.pink7
+                        }}
+                    >Triplés et +</Text>
                 }
             />
         </View >
