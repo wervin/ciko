@@ -12,7 +12,6 @@ import { SharedValue, useDerivedValue } from "react-native-reanimated";
 interface GraphState {
     x: number;
     y: {
-        gaDay: number;
         observed: number;
         quantile05: number;
         quantile10: number;
@@ -66,7 +65,7 @@ const GraphPercentileToolTip = ({ state, yUnit }: GraphPercentileToolTipProps) =
     const font = useFont(require('@/assets/fonts/SpaceMono-Regular.ttf'), 12);
 
     const ga = useDerivedValue(() => {
-        return `${Math.trunc(state.y.gaDay.value.value / 7)}SA ${state.y.gaDay.value.value % 7}J`
+        return `${Math.trunc(state.x.value.value / 7)}SA ${state.x.value.value % 7}J`
     });
 
     const percentileItems: GraphPercentileIndicatorItem[] = [
@@ -229,13 +228,12 @@ const GraphObservedToolTip = ({ percentileLabel, gestationalAge, observed, point
 const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: GraphProps) => {
     const font = useFont(require('@/assets/fonts/SpaceMono-Regular.ttf'), 12);
 
-    const gaWeek = Math.trunc(gestationalAge / 7);
+    const gaWeek = Math.trunc(gestationalAge / 7) * 7;
 
     const { state, isActive } = useChartPressState<GraphState>({
         x: 0,
         y: {
             observed: 0,
-            gaDay: 0,
             quantile05: 0,
             quantile10: 0,
             quantile25: 0,
@@ -251,9 +249,8 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
             <View style={{ height: 300, borderColor: pink.pink6, borderWidth: 1, borderRadius: 16 }}>
                 <CartesianChart
                     data={graphData}
-                    xKey="gaWeek"
+                    xKey="gaDay"
                     yKeys={[
-                        "gaDay",
                         "observed",
                         "quantile05",
                         "quantile10",
@@ -268,9 +265,10 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
                         font: font,
                         labelColor: pinkDark.pink7,
                         tickCount: 3,
+                        tickValues: [gaWeek - 7, gaWeek, gaWeek + 7],
                         lineColor: pink.pink6,
                         lineWidth: 1,
-                        formatXLabel: (label) => `${label}SA`
+                        formatXLabel: (label) => `${Math.trunc(label / 7)}SA`
                     }}
                     yAxis={[{
                         font: font,
@@ -279,7 +277,7 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
                         lineWidth: 1,
                         formatYLabel: (label) => `${label}${yUnit}`
                     }]}
-                    domain={{ x: [gaWeek - 1.1, gaWeek + 1.2] }}
+                    domain={{ x: [gaWeek - 10, gaWeek + 10] }}
                     chartPressState={state}
                 >
                     {({ points }) => (

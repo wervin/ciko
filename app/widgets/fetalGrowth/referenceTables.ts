@@ -9,7 +9,6 @@ export type ReferenceTableType = typeof ReferenceTables[keyof typeof ReferenceTa
 
 export interface ReferencePoint extends Record<string, unknown> {
     gaDay: number;
-    gaWeek: number;
     observed?: number;
     quantile05: number;
     quantile10: number;
@@ -807,7 +806,6 @@ export function computeOmsGraphAbdominalCircumference(
 
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: computeExpectedMeasurement(ga, acOmsCoefficients[2]).measurement,
             quantile10: computeExpectedMeasurement(ga, acOmsCoefficients[3]).measurement,
             quantile25: computeExpectedMeasurement(ga, acOmsCoefficients[4]).measurement,
@@ -829,7 +827,6 @@ export function computeIntergrowthGraphAbdominalCircumference(
         const ga = (i + start) / 7;
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: percentileAC(ga, 5),
             quantile10: percentileAC(ga, 10),
             quantile25: percentileAC(ga, 25),
@@ -871,7 +868,6 @@ export function computeOmsGraphBiparietalDiameter(
 
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: computeExpectedMeasurement(ga, bpdOmsCoefficients[2]).measurement,
             quantile10: computeExpectedMeasurement(ga, bpdOmsCoefficients[3]).measurement,
             quantile25: computeExpectedMeasurement(ga, bpdOmsCoefficients[4]).measurement,
@@ -893,7 +889,6 @@ export function computeIntergrowthGraphBiparietalDiameter(
         const ga = (i + start) / 7;
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: percentileBPD(ga, 5),
             quantile10: percentileBPD(ga, 10),
             quantile25: percentileBPD(ga, 25),
@@ -935,7 +930,6 @@ export function computeOmsGraphFemurLength(
 
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: computeExpectedMeasurement(ga, flOmsCoefficients[2]).measurement,
             quantile10: computeExpectedMeasurement(ga, flOmsCoefficients[3]).measurement,
             quantile25: computeExpectedMeasurement(ga, flOmsCoefficients[4]).measurement,
@@ -957,7 +951,6 @@ export function computeIntergrowthGraphFemurLength(
         const ga = (i + start) / 7;
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: percentileFL(ga, 5),
             quantile10: percentileFL(ga, 10),
             quantile25: percentileFL(ga, 25),
@@ -998,7 +991,6 @@ export function computeOmsGraphHeadCircumference(
 
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: computeExpectedMeasurement(ga, hcOmsCoefficients[2]).measurement,
             quantile10: computeExpectedMeasurement(ga, hcOmsCoefficients[3]).measurement,
             quantile25: computeExpectedMeasurement(ga, hcOmsCoefficients[4]).measurement,
@@ -1020,7 +1012,6 @@ export function computeIntergrowthGraphHeadCircumference(
         const ga = (i + start) / 7;
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: percentileHC(ga, 5),
             quantile10: percentileHC(ga, 10),
             quantile25: percentileHC(ga, 25),
@@ -1062,7 +1053,6 @@ export function computeOmsGraphEstimatedFetalWeight(
 
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: computeExpectedMeasurement(ga, efwOmsCoefficients[2]).measurement,
             quantile10: computeExpectedMeasurement(ga, efwOmsCoefficients[3]).measurement,
             quantile25: computeExpectedMeasurement(ga, efwOmsCoefficients[4]).measurement,
@@ -1084,7 +1074,6 @@ export function computeIntergrowthGraphEstimatedFetalWeight(
         const ga = (i + start) / 7;
         return {
             gaDay: i + start,
-            gaWeek: ga,
             quantile05: percentileEFW(ga, 5),
             quantile10: percentileEFW(ga, 10),
             quantile25: percentileEFW(ga, 25),

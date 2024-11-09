@@ -165,15 +165,15 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="0.69551417"
-     inkscape:cx="-37.382416"
-     inkscape:cy="70.451476"
+     inkscape:zoom="1.0691034"
+     inkscape:cx="188.47569"
+     inkscape:cy="248.80662"
      inkscape:window-width="1920"
      inkscape:window-height="969"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg3550" />
+     inkscape:current-layer="g3904" />
   <rect
      style="fill:#f9d8ec;fill-opacity:1;stroke:none;stroke-width:1.98141;stroke-linecap:round;stroke-linejoin:round"
      id="rect1308"
@@ -232,13 +232,13 @@
        d="m 222.10443,96.99959 c -7.17402,7.8305 -12.47327,17.4112 -15.45249,27.6261 -1.67776,5.7525 -2.64164,11.7313 -2.75951,17.7178 l 17.67715,-8.4171 z" />
     <path
        id="path3713"
-       style="opacity:1;fill:#fcc0c0;stroke-width:5.9531;stroke-linecap:round"
+       style="opacity:1;fill:#fcc8c8;stroke-width:5.9531;stroke-linecap:round"
        d="m 325.79732,134.12019 c 1.3256,16.7251 -8.31361,29.5253 -24.8283,38.3027 -16.51468,8.7774 -37.29766,8.9022 -53.95173,0.3241 -8.32704,-4.2891 -15.72025,-13.2655 -20.00042,-21.8983 -4.28017,-8.6329 -5.44729,-16.9223 -5.44729,-16.9223"
        sodipodi:nodetypes="csssc"
        inkscape:label="joues_haut" />
     <path
        id="path3014-1"
-       style="opacity:1;fill:#fcf8f8;stroke-width:5.9531;stroke-linecap:round"
+       style="opacity:1;fill:#fcdcdc;stroke-width:5.9531;stroke-linecap:round;fill-opacity:1"
        inkscape:label="crane_avant"
        d="m 265.69075,76.92239 c -2.40415,0.052 -4.80428,0.2515 -7.18365,0.5978 -9.51744,1.3851 -18.67432,5.1127 -26.50893,10.6912 -3.60641,2.5678 -6.90885,5.5301 -9.89374,8.7882 l -0.53485,36.9268 104.22774,0.1938 c -0.12494,-2.3504 -0.34242,-4.6959 -0.73348,-7.017 -1.74943,-10.3835 -6.16003,-20.3238 -12.78697,-28.5068 -6.62692,-8.183 -15.46526,-14.5798 -25.35591,-18.1927 -6.77539,-2.4749 -14.01776,-3.6385 -21.23021,-3.4813 z" />
     <ellipse
