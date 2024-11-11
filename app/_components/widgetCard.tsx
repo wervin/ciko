@@ -28,10 +28,10 @@ export const WidgetCard = (widget: Widget) => {
                 borderTopLeftRadius: 16,
                 borderBottomLeftRadius: 16,
                 justifyContent: "center",
-                paddingLeft: 20
+                paddingHorizontal: 10
             }}>
                 <Text style={{
-                    fontSize: 24,
+                    fontSize: 22,
                     fontWeight: "700",
                     color: pinkDark.pink7,
                 }}
