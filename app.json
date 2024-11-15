@@ -3,6 +3,7 @@
     "name": "Ciko",
     "slug": "ciko",
     "version": "1.0.0",
+    "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",

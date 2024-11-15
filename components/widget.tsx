@@ -1,4 +1,4 @@
-import { StaticRoutes } from "expo-router"
+import { Href } from "expo-router"
 import { ReactNode } from "react"
 
 export type Widget = {
@@ -8,5 +8,5 @@ export type Widget = {
     description: () => ReactNode,
     footer?: () => ReactNode,
     icon: () => ReactNode,
-    page: StaticRoutes,
+    page: Href,
 };

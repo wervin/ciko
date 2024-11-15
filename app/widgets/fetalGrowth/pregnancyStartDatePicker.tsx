@@ -20,7 +20,7 @@ export const PregnancyStartDatePicker = () => {
         const d = new Date()
         const diffInMs = d.getTime() - date.getTime();
         const ga = Math.round(diffInMs / (1000 * 60 * 60 * 24)) + 14;
-        setWidgetData({ ...widgetData, gestationalAge: ga < 14 ? gestationalAge : ga })
+        setWidgetData({ ...widgetData, gestationalAge: ga < 14 ? 14 : ga })
     }
 
     return (

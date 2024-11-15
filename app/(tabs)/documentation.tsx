@@ -25,7 +25,7 @@ interface DocumentCardProps {
 const documents: Document[] = [
     {
         id: randomUUID(),
-        title: "Rapport et Recommendations",
+        title: "Rapport et Recommandations",
         subtitle: "CNEOF 2023",
         asset: Asset.fromModule(require("@/assets/data/cneof-2023.pdf")),
         icon: () => <ClipboardList color={pinkDark.pink7} size={60} strokeWidth={1.25} />

@@ -1,4 +1,4 @@
-import { pink, pinkDark, red, yellowDark } from "@/utils/colors";
+import { pink, pinkDark, red, whiteA, yellowDark } from "@/utils/colors";
 import { View, Text } from "react-native";
 import { CalendarDays, CircleAlert, TriangleAlert } from 'lucide-react-native';
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
@@ -135,7 +135,7 @@ export const PregnancyStartDate = () => {
                             textAlignVertical: "center",
                             fontWeight: "700",
                             fontSize: 16,
-                            color: pink.pink4
+                            color: whiteA.whiteA12
                         }}>
                             La longueur cranio-caudale doit être renseignée
                         </Text>
@@ -150,7 +150,7 @@ export const PregnancyStartDate = () => {
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <CircleAlert size={24} color={pink.pink4} />
+                        <CircleAlert size={24} color={whiteA.whiteA12} />
                     </View>
 
                 </View>
@@ -185,7 +185,7 @@ export const PregnancyStartDate = () => {
                             textAlignVertical: "center",
                             fontWeight: "700",
                             fontSize: 16,
-                            color: pink.pink4
+                            color: whiteA.whiteA12
                         }}>
                             La longueur cranio-caudale doit être comprise entre 15 et 95 mm
                         </Text>
@@ -200,7 +200,7 @@ export const PregnancyStartDate = () => {
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <TriangleAlert size={24} color={pink.pink4} />
+                        <TriangleAlert size={24} color={whiteA.whiteA12} />
                     </View>
 
                 </View>

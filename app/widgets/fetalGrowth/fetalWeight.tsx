@@ -1,5 +1,5 @@
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { pink, pinkDark, red } from "@/utils/colors";
+import { pink, pinkDark, red, whiteA } from "@/utils/colors";
 import { CircleAlert, LineChart } from "lucide-react-native";
 import { View, Text } from "react-native";
 import { FetalGrowthWidgetProps } from "../_widgets";
@@ -217,7 +217,7 @@ export const FetalWeight = () => {
                                 textAlignVertical: "center",
                                 fontWeight: "700",
                                 fontSize: 16,
-                                color: pink.pink4
+                                color: whiteA.whiteA12
                             }}>
                                 Le périmètre crânien doit être renseigné
                             </Text>
@@ -232,7 +232,7 @@ export const FetalWeight = () => {
                             alignItems: "center",
                             justifyContent: "center"
                         }}>
-                            <CircleAlert size={24} color={pink.pink4} />
+                            <CircleAlert size={24} color={whiteA.whiteA12} />
                         </View>
                     </View>
                 }
@@ -266,7 +266,7 @@ export const FetalWeight = () => {
                                 textAlignVertical: "center",
                                 fontWeight: "700",
                                 fontSize: 16,
-                                color: pink.pink4
+                                color: whiteA.whiteA12
                             }}>
                                 Le périmètre abdominal doit être renseigné
                             </Text>
@@ -281,7 +281,7 @@ export const FetalWeight = () => {
                             alignItems: "center",
                             justifyContent: "center"
                         }}>
-                            <CircleAlert size={24} color={pink.pink4} />
+                            <CircleAlert size={24} color={whiteA.whiteA12} />
                         </View>
                     </View>
                 }
@@ -315,7 +315,7 @@ export const FetalWeight = () => {
                                 textAlignVertical: "center",
                                 fontWeight: "700",
                                 fontSize: 16,
-                                color: pink.pink4
+                                color: whiteA.whiteA12
                             }}>
                                 La longueur fémorale doit être renseignée
                             </Text>
@@ -330,7 +330,7 @@ export const FetalWeight = () => {
                             alignItems: "center",
                             justifyContent: "center"
                         }}>
-                            <CircleAlert size={24} color={pink.pink4} />
+                            <CircleAlert size={24} color={whiteA.whiteA12} />
                         </View>
                     </View>
                 }

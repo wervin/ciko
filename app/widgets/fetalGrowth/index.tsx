@@ -7,11 +7,11 @@ import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { FetalGrowthWidget, FetalGrowthWidgetData } from "../_widgets";
 import withScrollView from "@/app/widgets/_components/wrapper";
 import { FemurLengthInput } from "./femurLengthInput";
-import { ResultModal } from "./resultModal";
 import { ReferenceTableInput } from "./referenceTableInput";
 import { BiparietalDiameterInput } from "./biparietalDiameterInput";
 import { FetalWeight } from "./fetalWeight";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
+import { Term } from "./term";
 
 const FetalGrowth = () => {
     const widget = useWidgetStoreContext((store) => store.widget);
@@ -42,10 +42,11 @@ const FetalGrowth = () => {
                 <ReferenceTableInput />
                 <GestationalAgePicker />
                 <PregnancyStartDatePicker />
+                <Term />
+                <BiparietalDiameterInput />
                 <HeadCircumferenceInput />
                 <AbdominalCircumferenceInput />
                 <FemurLengthInput />
-                <BiparietalDiameterInput />
                 <FetalWeight />
             </View>
         </View>

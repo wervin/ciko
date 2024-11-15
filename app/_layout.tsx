@@ -5,7 +5,8 @@ import { pink, pinkDark } from '@/utils/colors'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SvgXml } from 'react-native-svg';
 import trianglify, { colorFunctions } from 'trianglify';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, Platform, View } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 export {
   ErrorBoundary,
@@ -58,6 +59,9 @@ const RootLayout = () => {
     Righteous: require('../assets/fonts/Righteous-Regular.ttf'),
   });
 
+  const { colors } = useTheme();
+  colors.background = "transparent";
+
   useEffect(() => {
     if (fontsError) throw fontsError;
   }, [fontsError]);
@@ -92,18 +96,17 @@ const RootLayout = () => {
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <TrianglifyBackground />
       <Trianglify trianglifyXml={trianglifyXml} />
-      <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent' }}>
+      {/* <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent' }}> */}
         <Stack
           screenOptions={{
             headerShown: false,
-            contentStyle: { backgroundColor: 'transparent' },
             navigationBarColor: pink.pink5,
-            statusBarColor: pink.pink5,
-            statusBarStyle: 'dark',
+            statusBarBackgroundColor: pink.pink5,
             animation: 'fade',
           }}
+          
         />
-      </SafeAreaView>
+      {/* </SafeAreaView> */}
     </View>
   );
 };

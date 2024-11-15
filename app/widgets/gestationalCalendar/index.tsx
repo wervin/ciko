@@ -7,6 +7,7 @@ import { GestationalAgePicker } from "./gestationalAgePicker";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
 import { EchographyDates } from "./echographyDates";
 import { MaternityLeaveDates } from "./maternityLeaveDates";
+import { Term } from "./term";
 
 const GestationalCalendar = () => {
 
@@ -37,6 +38,7 @@ const GestationalCalendar = () => {
             }}>
                 <GestationalAgePicker />
                 <PregnancyStartDatePicker />
+                <Term />
                 <EchographyDates />
                 <MaternityLeaveDates />
             </View>

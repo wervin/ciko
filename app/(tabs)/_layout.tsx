@@ -1,84 +1,138 @@
 import { Tabs } from 'expo-router';
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "../_components/header";
 import { pink, pinkDark } from '@/utils/colors';
-import { Animated, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
-import { Calculator, CalendarRange, Info, Library, LucideIcon, View } from 'lucide-react-native'
-import { BottomTabBarButtonProps } from "@react-navigation/bottom-tabs";
+import { Animated, Text, StyleSheet, Pressable, StyleProp, ViewStyle, GestureResponderEvent, View } from 'react-native';
+import { Calculator, Info, Library, LucideIcon } from 'lucide-react-native'
+import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 
-interface TabBarAnimatedButtonProps {
-  props: BottomTabBarButtonProps,
-  label: string,
-  Icon: LucideIcon
+const TabBarIndex = {
+  Widgets: 0,
+  Documents: 1,
+  About: 2
 };
 
-const TabBarAnimatedButton = ({ props, label, Icon }: TabBarAnimatedButtonProps) => {
+export type TabBarIndexType = typeof TabBarIndex[keyof typeof TabBarIndex];
+
+interface TabBarAnimatedButtonProps {
+  index: TabBarIndexType;
+  currentIndex: TabBarIndexType;
+  setCurrentIndex: (index: TabBarIndexType) => void;
+  style?: StyleProp<ViewStyle>;
+  onPress?: (event: GestureResponderEvent) => void;
+  label: string;
+  Icon: LucideIcon;
+};
+
+const TabBarAnimatedButton = ({ index, currentIndex, setCurrentIndex, style, onPress, label, Icon }: TabBarAnimatedButtonProps) => {
+
   const widthAnim = useRef(new Animated.Value(20)).current;
+
+  const isSelected = index === currentIndex;
 
   useEffect(() => {
     Animated.timing(widthAnim, {
-      toValue: props.accessibilityState?.selected ? 50 : 20,
+      toValue: isSelected ? 50 : 20,
       duration: 300,
       useNativeDriver: false,
     }).start();
   });
 
-  const animatedStyle = {
-    width: widthAnim.interpolate({
-      inputRange: [20, 50],
-      outputRange: ['20%', '50%'],
-    }),
+  const handleOnPress = (event: GestureResponderEvent) => {
+    onPress && onPress(event);
+    setCurrentIndex(index);
   };
 
   return (
-    <Pressable {...props} style={[props.style, { alignContent: "center", justifyContent: "center" }]}>
+    <Pressable onPress={handleOnPress} style={[style, { alignContent: "center", justifyContent: "center" }]}>
       <Animated.View
-        style={[props.accessibilityState?.selected ? styles.tabBarIconSelected : styles.tabBarIcon, animatedStyle]}
+        style={{
+          width: widthAnim.interpolate({
+            inputRange: [20, 50],
+            outputRange: ['20%', '50%'],
+          }),
+        }}
       >
-        <Icon
-          color={props.accessibilityState?.selected ? pinkDark.pink7 : pinkDark.pink3}
-          size={32}
-        />
+        <View
+          style={{
+            backgroundColor: isSelected ? pink.pink7 : 'transparent',
+            padding: 4,
+            borderRadius: 16,
+            alignItems: "center",
+            justifyContent: "center"
+
+          }}
+        >
+          <Icon
+            color={isSelected ? pinkDark.pink7 : pinkDark.pink3}
+            size={32}
+          />
+        </View>
       </Animated.View>
 
-      <Text style={props.accessibilityState?.selected ? styles.tabBarLabelSelected : styles.tabBarLabel}>{label}</Text>
+      <Text style={isSelected ? styles.tabBarLabelSelected : styles.tabBarLabel}>{label}</Text>
     </Pressable>
   );
 };
 
 export default function TabLayout() {
+  const [currentIndex, setCurrentIndex] = useState<TabBarIndexType>(0);
+
   return (
     <Tabs
-      sceneContainerStyle={{
-        backgroundColor: "transparent"
-      }}
       screenOptions={{
         header: () => <Header />,
+        sceneStyle: { backgroundColor: 'transparent' },
+        animation: 'none',
         tabBarStyle: {
           height: 80,
           backgroundColor: pink.pink5,
           elevation: 0,
-          borderTopColor: pink.pink6,
-          borderTopWidth: 1
+          borderColor: pink.pink6,
+          borderTopWidth: 1,
         },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          tabBarButton: (props) => <TabBarAnimatedButton props={props} label={'Calculateurs'} Icon={Calculator}></TabBarAnimatedButton>
+          tabBarButton: (props) =>
+            <TabBarAnimatedButton
+              index={TabBarIndex.Widgets}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+              style={props.style as StyleProp<ViewStyle>}
+              onPress={props.onPress}
+              label={'Calculateurs'}
+              Icon={Calculator} />
         }}
       />
       <Tabs.Screen
         name="documentation"
         options={{
-          tabBarButton: (props) => <TabBarAnimatedButton props={props} label={'Documents'} Icon={Library}></TabBarAnimatedButton>
+          tabBarButton: (props) =>
+            <TabBarAnimatedButton
+              index={TabBarIndex.Documents}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+              style={props.style as StyleProp<ViewStyle>}
+              onPress={props.onPress}
+              label={'Documents'}
+              Icon={Library} />
         }}
       />
       <Tabs.Screen
         name="about"
         options={{
-          tabBarButton: (props) => <TabBarAnimatedButton props={props} label={'À Propos'} Icon={Info}></TabBarAnimatedButton>
+          tabBarButton: (props) =>
+            <TabBarAnimatedButton
+              index={TabBarIndex.About}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+              style={props.style as StyleProp<ViewStyle>}
+              onPress={props.onPress}
+              label={'À Propos'}
+              Icon={Info} />
         }}
       />
     </Tabs>

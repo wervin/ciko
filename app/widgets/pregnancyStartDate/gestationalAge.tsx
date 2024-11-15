@@ -1,5 +1,5 @@
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { orange, pink, pinkDark, red, yellowDark } from "@/utils/colors";
+import { orange, pink, pinkDark, red, whiteA, yellowDark } from "@/utils/colors";
 import { CalendarClock, CircleAlert, TriangleAlert } from "lucide-react-native";
 import { View, Text } from "react-native";
 import { PregnancyStartDateWidgetProps } from "../_widgets";
@@ -110,7 +110,7 @@ export const GestationalAge = () => {
                             textAlignVertical: "center",
                             fontWeight: "700",
                             fontSize: 16,
-                            color: pink.pink4
+                            color: whiteA.whiteA12
                         }}>
                             La longueur cranio-caudale doit être renseignée
                         </Text>
@@ -125,7 +125,7 @@ export const GestationalAge = () => {
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <CircleAlert size={24} color={pink.pink4} />
+                        <CircleAlert size={24} color={whiteA.whiteA12} />
                     </View>
 
                 </View>
@@ -160,7 +160,7 @@ export const GestationalAge = () => {
                             textAlignVertical: "center",
                             fontWeight: "700",
                             fontSize: 16,
-                            color: pink.pink4
+                            color: whiteA.whiteA12
                         }}>
                             La longueur cranio-caudale doit être comprise entre 15 et 95 mm
                         </Text>
@@ -175,7 +175,7 @@ export const GestationalAge = () => {
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                        <TriangleAlert size={24} color={pink.pink4} />
+                        <TriangleAlert size={24} color={whiteA.whiteA12} />
                     </View>
 
                 </View>

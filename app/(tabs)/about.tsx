@@ -171,21 +171,21 @@ const AboutView = ({ label, Icon, primaryColor, secondaryColor, textColor }: Abo
 
 const AboutCard = ({ label, components }: AboutCardProps) => {
     return (
-        <View style={{
-            width: "100%",
-            gap: 10,
-            padding: 10,
-            backgroundColor: pink.pink4,
-            borderWidth: 1,
-            borderColor: pink.pink6,
-            borderRadius: 16
-        }}
+        <View
+            style={{
+                gap: 10,
+                padding: 10,
+                backgroundColor: pink.pink4,
+                borderRadius: 16,
+                borderWidth: 1,
+                borderColor: pink.pink6
+            }}
         >
             <Text
                 style={{
                     fontSize: 24,
-                    fontWeight: "800",
-                    color: pinkDark.pink5
+                    fontWeight: "700",
+                    color: pinkDark.pink3
                 }}
             >
                 {label}
@@ -207,8 +207,8 @@ const About = () => {
             }}
         >
             <AboutCard label="Version" components={[Version]} />
-            <AboutCard label="Contact" components={[Contact]} />
-            <AboutCard label="Aider Ciko" components={[Rate, Report]} />
+            {/* <AboutCard label="Contact" components={[Contact]} />
+            <AboutCard label="Aider Ciko" components={[Rate, Report]} /> */}
         </View>
     );
 }
