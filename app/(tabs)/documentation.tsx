@@ -8,7 +8,7 @@ import * as FileSystem from 'expo-file-system';
 import { ReactNode, useState } from 'react';
 import { randomUUID } from 'expo-crypto';
 import { ClipboardList } from 'lucide-react-native';
-import EchographyIcon from "@/assets/images/echo.svg"
+import EchographyIcon from "@/assets/images/echo.svg";
 
 type Document = {
     id: string,
@@ -41,6 +41,7 @@ const documents: Document[] = [
 
 const DocumentCard = ({ document }: DocumentCardProps) => {
     const [isIntentActive, setIsIntentActive] = useState(false);
+    const [htmlContent, setHtmlContent] = useState<string | null>(null);
 
     const openPDF = async () => {
         if (isIntentActive) return;
@@ -73,15 +74,25 @@ const DocumentCard = ({ document }: DocumentCardProps) => {
             }
         }
         else if (Platform.OS === 'ios') {
-            // Open the file with Linking
-            const fileUri = encodeURI(assetUri);
-            if (await Linking.canOpenURL(fileUri)) {
-                await Linking.openURL(fileUri);
-            }
+            // Define the destination path in the document directory
+            const destPath = `${FileSystem.documentDirectory}example.pdf`;
+
+            // Copy the PDF to the document directory
+            await FileSystem.copyAsync({
+                from: assetUri,
+                to: destPath,
+            });
+
+            console.log("assetUri: " + assetUri);
+            console.log("destPath: " + destPath);
+            console.log(await Linking.canOpenURL(destPath));
+            // Use Linking to open the PDF
+            await Linking.openURL(destPath);
         }
     };
 
     return (
+
         <PressableOpacity
             style={{
                 height: 90,

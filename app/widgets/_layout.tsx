@@ -27,6 +27,7 @@ const WidgetLayout = () => {
                         contentStyle: {
                             backgroundColor: "transparent",
                         },
+                        animation: 'none',
                     }}
                 />
             </WidgetStoreProvider>

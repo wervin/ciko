@@ -90,6 +90,7 @@ export default function TabLayout() {
           elevation: 0,
           borderColor: pink.pink6,
           borderTopWidth: 1,
+          paddingBottom: 0,
         },
       }}
     >

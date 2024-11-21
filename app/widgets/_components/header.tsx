@@ -146,7 +146,7 @@ export const Header = () => {
                         >
                             <Text
                                 style={{
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: "700",
                                     color: pinkDark.pink7
                                 }}

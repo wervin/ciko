@@ -15,14 +15,19 @@ export {
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-const { width, height } = Dimensions.get('screen');
-
 type TrianglifyProps = {
   trianglifyXml: string;
+  width: number;
+  height: number;
 };
 
 
-const TrianglifyBackground = () => {
+type TrianglifyBackgroundProps = {
+  width: number;
+  height: number;
+};
+
+const TrianglifyBackground = ({ width, height }: TrianglifyBackgroundProps) => {
   return (
     <View
       style={{
@@ -36,7 +41,7 @@ const TrianglifyBackground = () => {
   );
 };
 
-const Trianglify: React.FC<TrianglifyProps> = React.memo(({ trianglifyXml }) => {
+const Trianglify: React.FC<TrianglifyProps> = React.memo(({ trianglifyXml, width, height }) => {
   return (
     <SvgXml
       xml={trianglifyXml}
@@ -53,6 +58,8 @@ const Trianglify: React.FC<TrianglifyProps> = React.memo(({ trianglifyXml }) => 
 
 const RootLayout = () => {
   const [trianglifyXml, setTrianglifyXml] = useState<string | null>(null);
+  const [parentDimensions, setParentDimensions] = useState<{ width: number; height: number } | null>(null);
+  const [safeAreaDimensionsReady, setSafeAreaDimensionsReady] = useState(false);
 
   const [fontsLoaded, fontsError] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -68,45 +75,59 @@ const RootLayout = () => {
 
   useEffect(() => {
     async function prepare() {
-      const trianglifyXml = trianglify({
-        cellSize: 42,
-        xColors: ['#feeef8', '#f3c6e2'],
-        colorFunction: colorFunctions.sparkle(0.5),
-        width: width,
-        height: height,
-      }).toSVG().toString();
+      if (parentDimensions) {
+        const trianglifyXml = trianglify({
+          cellSize: 42,
+          xColors: ['#feeef8', '#f3c6e2'],
+          colorFunction: colorFunctions.sparkle(0.5),
+          width: parentDimensions.width,
+          height: parentDimensions.height,
+        }).toSVG().toString();
 
-      setTrianglifyXml(trianglifyXml);
+        setTrianglifyXml(trianglifyXml);
+      }
     }
 
     prepare();
-  }, []);
+  }, [parentDimensions]);
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded && trianglifyXml) {
-      await SplashScreen.hideAsync();
+  const onLayoutSafeAreaView = (event: any) => {
+    const { width, height } = event.nativeEvent.layout;
+    if (width !== parentDimensions?.width || height !== parentDimensions?.height) {
+      setParentDimensions({ width, height });
+      setSafeAreaDimensionsReady(true);
     }
-  }, [fontsLoaded, trianglifyXml]);
+  };
 
-  if (!fontsLoaded || !trianglifyXml) {
+  // Hide splash screen when all resources are ready
+  useEffect(() => {
+    if (fontsLoaded && trianglifyXml && safeAreaDimensionsReady) {
+      (async () => {
+        await SplashScreen.hideAsync();
+      })();
+    }
+  }, [fontsLoaded, trianglifyXml, safeAreaDimensionsReady]);
+
+  if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <TrianglifyBackground />
-      <Trianglify trianglifyXml={trianglifyXml} />
-      {/* <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent' }}> */}
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            navigationBarColor: pink.pink5,
-            statusBarBackgroundColor: pink.pink5,
-            animation: 'fade',
-          }}
-          
-        />
-      {/* </SafeAreaView> */}
+    <View style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: pink.pink5 }}>
+        <View style={{ flex: 1 }} onLayout={onLayoutSafeAreaView}>
+          {parentDimensions && <TrianglifyBackground {...parentDimensions} />}
+          {parentDimensions && trianglifyXml && <Trianglify trianglifyXml={trianglifyXml} {...parentDimensions} />}
+          <Stack
+            screenOptions={{
+              headerShown: false,
+              navigationBarColor: pink.pink5,
+              statusBarBackgroundColor: pink.pink5,
+              animation: 'none',
+            }}
+          />
+        </View>
+      </SafeAreaView>
     </View>
   );
 };
