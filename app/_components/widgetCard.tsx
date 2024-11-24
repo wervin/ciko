@@ -36,7 +36,7 @@ export const WidgetCard = (widget: Widget) => {
                     color: pinkDark.pink7,
                 }}
                 >
-                    {widget.subtitle}
+                    {widget.title}
                 </Text>
             </View>
 

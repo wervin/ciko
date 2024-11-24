@@ -32,7 +32,7 @@ interface AboutButtonProps {
 
 const Version = () => {
     return (
-        <AboutView label={"v1.0.0"} Icon={Info} primaryColor={pink.pink5} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
+        <AboutView label={"v1.0.0"} Icon={Info} primaryColor={pink.pink5} secondaryColor={pink.pink6} textColor={pinkDark.pink7} />
     );
 };
 

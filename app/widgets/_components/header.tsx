@@ -1,7 +1,7 @@
 import { View, Text, Pressable, Modal, Keyboard } from "react-native";
-import { blackA, pink, pinkA, pinkDark } from "@/utils/colors";
+import { blackA, pink, pinkDark } from "@/utils/colors";
 import { X, Info } from 'lucide-react-native';
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useState } from "react";
 import PressableOpacity from "@/components/pressableOpacity";
@@ -151,7 +151,7 @@ export const Header = () => {
                                     color: pinkDark.pink7
                                 }}
                             >
-                                {widget?.subtitle}
+                                {widget?.title}
                             </Text>
 
                             <View style={{

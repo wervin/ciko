@@ -48,8 +48,7 @@ const FetalGrowthWidgetDescription = () => {
 
 export const FetalGrowthWidget: Widget = {
     id: randomUUID(),
-    title: 'CF',
-    subtitle: 'Croissance Fœtale',
+    title: 'Croissance Fœtale',
     description: () => <FetalGrowthWidgetDescription />,
     footer: () => <View style={{ borderTopColor: pink.pink6, borderTopWidth: 1 }} />,
     icon: () => <FetalGrowthIcon color={pinkDark.pink7} />,

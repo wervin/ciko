@@ -40,6 +40,7 @@
         "backgroundColor": "#f9d8ec",
         "resizeMode": "contain"
       },
+      "softwareKeyboardLayoutMode": "pan",
       "package": "com.wervin.ciko"
     },
     "plugins": [
