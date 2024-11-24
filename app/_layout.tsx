@@ -7,6 +7,7 @@ import { SvgXml } from 'react-native-svg';
 import trianglify, { colorFunctions } from 'trianglify';
 import { Dimensions, Platform, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export {
   ErrorBoundary,
@@ -112,6 +113,21 @@ const RootLayout = () => {
     return null;
   }
 
+  const screenOptions: NativeStackNavigationOptions = Platform.OS == "ios" ?
+    {
+      headerShown: false,
+      navigationBarColor: pink.pink5,
+      statusBarBackgroundColor: pink.pink5,
+      animation: 'none',
+    } :
+    {
+      headerShown: false,
+      navigationBarColor: pink.pink5,
+      statusBarBackgroundColor: pink.pink5,
+      statusBarStyle: "dark",
+      animation: 'none',
+    };
+
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: pink.pink5 }}>
@@ -119,12 +135,7 @@ const RootLayout = () => {
           {parentDimensions && <TrianglifyBackground {...parentDimensions} />}
           {parentDimensions && trianglifyXml && <Trianglify trianglifyXml={trianglifyXml} {...parentDimensions} />}
           <Stack
-            screenOptions={{
-              headerShown: false,
-              navigationBarColor: pink.pink5,
-              statusBarBackgroundColor: pink.pink5,
-              animation: 'none',
-            }}
+            screenOptions={screenOptions}
           />
         </View>
       </SafeAreaView>

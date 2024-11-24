@@ -207,8 +207,6 @@ const About = () => {
             }}
         >
             <AboutCard label="Version" components={[Version]} />
-            {/* <AboutCard label="Contact" components={[Contact]} />
-            <AboutCard label="Aider Ciko" components={[Rate, Report]} /> */}
         </View>
     );
 }

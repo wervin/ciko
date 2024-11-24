@@ -5,12 +5,12 @@
     "version": "1.0.0",
     "newArchEnabled": true,
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/platform/all/icon/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#f9d8ec",
     "splash": {
-      "image": "./assets/images/splash/xxxhdpi.png",
+      "image": "./assets/platform/all/splashscreen/xxxhdpi.png",
       "backgroundColor": "#f9d8ec",
       "resizeMode": "contain"
     },
@@ -21,27 +21,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "com.wervin.ciko",
+      "icon": {
+        "light": "./assets/platform/ios/icon/light.png"
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive/foreground.png"
+        "foregroundImage": "./assets/platform/android/icon/foreground.png"
       },
       "splash": {
-        "mdpi": "./assets/images/splash/mdpi.png",
-        "hdpi": "./assets/images/splash/hdpi.png",
-        "xhdpi": "./assets/images/splash/xhdpi.png",
-        "xxhdpi": "./assets/images/splash/xxhdpi.png",
-        "xxxhdpi": "./assets/images/splash/xxxhdpi.png",
+        "mdpi": "./assets/platform/all/splashscreen/mdpi.png",
+        "hdpi": "./assets/platform/all/splashscreen/hdpi.png",
+        "xhdpi": "./assets/platform/all/splashscreen/xhdpi.png",
+        "xxhdpi": "./assets/platform/all/splashscreen/xxhdpi.png",
+        "xxxhdpi": "./assets/platform/all/splashscreen/xxxhdpi.png",
         "backgroundColor": "#f9d8ec",
         "resizeMode": "contain"
       },
       "package": "com.wervin.ciko"
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/icon.png"
     },
     "plugins": [
       "expo-router",

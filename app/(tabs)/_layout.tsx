@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "../_components/header";
 import { pink, pinkDark } from '@/utils/colors';
 import { Animated, Text, StyleSheet, Pressable, StyleProp, ViewStyle, GestureResponderEvent, View } from 'react-native';
-import { Calculator, Info, Library, LucideIcon } from 'lucide-react-native'
+import { Info, PencilRuler, LucideIcon } from 'lucide-react-native'
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 
 const TabBarIndex = {
@@ -104,22 +104,8 @@ export default function TabLayout() {
               setCurrentIndex={setCurrentIndex}
               style={props.style as StyleProp<ViewStyle>}
               onPress={props.onPress}
-              label={'Calculateurs'}
-              Icon={Calculator} />
-        }}
-      />
-      <Tabs.Screen
-        name="documentation"
-        options={{
-          tabBarButton: (props) =>
-            <TabBarAnimatedButton
-              index={TabBarIndex.Documents}
-              currentIndex={currentIndex}
-              setCurrentIndex={setCurrentIndex}
-              style={props.style as StyleProp<ViewStyle>}
-              onPress={props.onPress}
-              label={'Documents'}
-              Icon={Library} />
+              label={'Outils'}
+              Icon={PencilRuler} />
         }}
       />
       <Tabs.Screen

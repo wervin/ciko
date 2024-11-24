@@ -3,7 +3,7 @@ import { randomUUID } from "expo-crypto";
 import { Text, Linking, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
 import { GestationalAgeCurveType, GestationalAgeCurves } from '../pregnancyStartDate/gestationalAgeCurve';
-import PregnancyStartDateIcon from "@/assets/images/ddg.svg"
+import PregnancyStartDateIcon from "@/assets/icons/ddg.svg"
 
 export interface PregnancyStartDateWidgetProps {
     visible: boolean;

@@ -2,7 +2,7 @@ import { Widget } from '@/components/widget';
 import { randomUUID } from "expo-crypto";
 import { Text, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
-import GestationalCalendarIcon from "@/assets/images/pregnancy.svg"
+import GestationalCalendarIcon from "@/assets/icons/pregnancy.svg"
 
 export interface GestationalCalendarWidgetProps {
     visible: boolean;

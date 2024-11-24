@@ -22,7 +22,7 @@ export const Header = () => {
                     width: 48,
                     height: 48,
                 }}
-                source={require("@/assets/images/logo.png")}
+                source={require("@/assets/icons/ciko.png")}
             />
 
             <Text

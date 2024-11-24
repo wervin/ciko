@@ -3,7 +3,7 @@ import { randomUUID } from "expo-crypto";
 import { Text, Linking, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
 import { ReferenceTableType, ReferenceTables } from '../fetalGrowth/referenceTables';
-import FetalGrowthIcon  from "@/assets/images/growth.svg"
+import FetalGrowthIcon  from "@/assets/icons/growth.svg"
 
 export interface FetalGrowthWidgetProps {
     visible: boolean;
