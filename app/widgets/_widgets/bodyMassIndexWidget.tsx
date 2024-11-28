@@ -5,7 +5,7 @@ import { pink, pinkDark } from '@/utils/colors';
 import BodyMassIndexIcon from "@/assets/icons/imc.svg"
 
 export interface BodyMassIndexWidgetProps {
-    visible: boolean;
+    dummy: boolean;
 };
 
 const BodyMassIndexWidgetDescription = () => {
@@ -17,7 +17,7 @@ const BodyMassIndexWidgetDescription = () => {
 };
 
 export const BodyMassIndexWidgetData: BodyMassIndexWidgetProps = {
-    visible: false,
+    dummy: false,
 };
 
 export const BodyMassIndexWidget: Widget = {

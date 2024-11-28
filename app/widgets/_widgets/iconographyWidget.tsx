@@ -3,9 +3,10 @@ import { randomUUID } from "expo-crypto";
 import { Linking, Text, View } from 'react-native';
 import { pink, pinkDark } from '@/utils/colors';
 import EchographyIcon from "@/assets/icons/echo.svg"
+import { Iconography } from '../iconography/iconography';
 
 export interface IconographyWidgetProps {
-    visible: boolean;
+    iconography?: Iconography;
 };
 
 const IconographyWidgetDescription = () => {
@@ -18,7 +19,7 @@ const IconographyWidgetDescription = () => {
 };
 
 export const IconographyWidgetData: IconographyWidgetProps = {
-    visible: false,
+    iconography: undefined
 };
 
 export const IconographyWidget: Widget = {

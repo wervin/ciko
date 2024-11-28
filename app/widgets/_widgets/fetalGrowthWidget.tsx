@@ -6,7 +6,6 @@ import { ReferenceTableType, ReferenceTables } from '../fetalGrowth/referenceTab
 import FetalGrowthIcon  from "@/assets/icons/growth.svg"
 
 export interface FetalGrowthWidgetProps {
-    visible: boolean;
     referenceTable: ReferenceTableType;
     isHeadCircumferenceValid: boolean;
     isAbdominalCircumferenceValid: boolean;
@@ -20,7 +19,6 @@ export interface FetalGrowthWidgetProps {
 };
 
 export const FetalGrowthWidgetData: FetalGrowthWidgetProps = {
-    visible: false,
     referenceTable: ReferenceTables.Intergrowth,
     isHeadCircumferenceValid: false,
     isAbdominalCircumferenceValid: false,

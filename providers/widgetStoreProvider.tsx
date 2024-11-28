@@ -1,7 +1,7 @@
 import { createStore } from 'zustand';
 import { ReactNode, createContext, useContext, useRef } from 'react';
 import { StoreApi, useStore } from 'zustand';
-import { Widget } from '@/components/widgets';
+import { Widget } from '@/components/widget';
 
 interface WidgetState {
     widget: Widget | undefined;

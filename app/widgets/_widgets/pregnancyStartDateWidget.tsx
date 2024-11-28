@@ -6,7 +6,6 @@ import { GestationalAgeCurveType, GestationalAgeCurves } from '../pregnancyStart
 import PregnancyStartDateIcon from "@/assets/icons/ddg.svg"
 
 export interface PregnancyStartDateWidgetProps {
-    visible: boolean;
     isValid: boolean;
     isPresent: boolean;
     gestationalAgeCurve: GestationalAgeCurveType;
@@ -26,7 +25,6 @@ const PregnancyStartDateWidgetDescription = () => {
 };
 
 export const PregnancyStartDateWidgetData: PregnancyStartDateWidgetProps = {
-    visible: false,
     isValid: true,
     isPresent: false,
     gestationalAgeCurve: GestationalAgeCurves.Intergrowth,

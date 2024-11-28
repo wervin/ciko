@@ -5,7 +5,6 @@ import { pink, pinkDark } from '@/utils/colors';
 import GestationalCalendarIcon from "@/assets/icons/pregnancy.svg"
 
 export interface GestationalCalendarWidgetProps {
-    visible: boolean;
     gestationalAge: number;
 };
 
@@ -18,7 +17,6 @@ const GestationalCalendarWidgetDescription = () => {
 };
 
 export const GestationalCalendarWidgetData: GestationalCalendarWidgetProps = {
-    visible: false,
     gestationalAge: 14,
 };
 

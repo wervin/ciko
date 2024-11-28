@@ -5,7 +5,7 @@ import { pink, pinkDark } from '@/utils/colors';
 import PeakSystolicVelocityIcon from "@/assets/icons/psv.svg"
 
 export interface PeakSystolicVelocityWidgetProps {
-    visible: boolean;
+    dummy: boolean;
 };
 
 // https://pubmed.ncbi.nlm.nih.gov/10620643/
@@ -19,7 +19,7 @@ const PeakSystolicVelocityWidgetDescription = () => {
 };
 
 export const PeakSystolicVelocityWidgetData: PeakSystolicVelocityWidgetProps = {
-    visible: false,
+    dummy: false,
 };
 
 export const PeakSystolicVelocityWidget: Widget = {
