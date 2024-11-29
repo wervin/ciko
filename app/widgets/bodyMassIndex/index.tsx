@@ -3,8 +3,11 @@ import withScrollView from "../_components/wrapper";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useEffect } from "react";
 import { BodyMassIndexWidget, BodyMassIndexWidgetData } from "../_widgets";
+import { WeightInput } from "./weightInput";
+import { SizeInput } from "./sizeInput";
+import { BodyMassIndex } from "./bodyMassIndex";
 
-const Iconography = () => {
+const BodyMassIndexView = () => {
 
     const widget = useWidgetStoreContext((store) => store.widget);
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
@@ -31,9 +34,12 @@ const Iconography = () => {
                 padding: 10,
                 gap: 10
             }}>
+                <WeightInput />
+                <SizeInput />
+                <BodyMassIndex />
             </View>
         </View>
     );
 };
 
-export default withScrollView(Iconography);
+export default withScrollView(BodyMassIndexView);
