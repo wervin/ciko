@@ -70,8 +70,7 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                 >
                     <TextInput
                         onChangeText={onChangeObserved}
-                        keyboardType='numeric'
-                        multiline={Platform.OS === "ios" ? false : true}
+                        keyboardType='number-pad'
                         placeholder={placeholder}
                         placeholderTextColor={pink.pink6}
                         style={{

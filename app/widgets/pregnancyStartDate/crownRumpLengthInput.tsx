@@ -61,8 +61,7 @@ export const CrownRumpLengthInput = () => {
             >
                 <TextInput
                     onChangeText={onChangeCrownRumpLength}
-                    keyboardType='numeric'
-                    multiline={Platform.OS === "ios" ? false : true}
+                    keyboardType='number-pad'
                     placeholder="Saisir une longueur"
                     placeholderTextColor={pink.pink6}
                     style={{
