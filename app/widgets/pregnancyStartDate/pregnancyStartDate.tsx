@@ -53,7 +53,7 @@ export const PregnancyStartDate = () => {
         >
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}
@@ -63,7 +63,7 @@ export const PregnancyStartDate = () => {
 
             <View
                 style={{
-                    height: 60,
+                    height: 50,
                     borderRadius: 16,
                     flexDirection: "row",
                 }}
@@ -96,7 +96,7 @@ export const PregnancyStartDate = () => {
                     justifyContent: "center",
                     borderTopRightRadius: 16,
                     borderBottomRightRadius: 16,
-                    width: 60
+                    width: 50
                 }}
                 >
                     <CalendarDays
@@ -111,7 +111,7 @@ export const PregnancyStartDate = () => {
 
                 <View style={{
                     flexDirection: "row",
-                    height: 60,
+                    height: 50,
                     width: "100%",
                     alignItems: "center",
                 }}
@@ -125,7 +125,7 @@ export const PregnancyStartDate = () => {
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
-                            height: 60,
+                            height: 50,
                             alignItems: "center",
                             justifyContent: "center"
                         }}
@@ -143,8 +143,8 @@ export const PregnancyStartDate = () => {
 
                     <View style={{
                         backgroundColor: red.red9,
-                        height: 60,
-                        width: 60,
+                        height: 50,
+                        width: 50,
                         borderTopRightRadius: 16,
                         borderBottomRightRadius: 16,
                         alignItems: "center",
@@ -161,7 +161,7 @@ export const PregnancyStartDate = () => {
 
                 <View style={{
                     flexDirection: "row",
-                    height: 60,
+                    height: 50,
                     width: "100%",
                     alignItems: "center",
                 }}
@@ -175,7 +175,7 @@ export const PregnancyStartDate = () => {
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
-                            height: 60,
+                            height: 50,
                             alignItems: "center",
                             justifyContent: "center"
                         }}
@@ -193,8 +193,8 @@ export const PregnancyStartDate = () => {
 
                     <View style={{
                         backgroundColor: yellowDark.yellow11,
-                        height: 60,
-                        width: 60,
+                        height: 50,
+                        width: 50,
                         borderTopRightRadius: 16,
                         borderBottomRightRadius: 16,
                         alignItems: "center",

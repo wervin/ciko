@@ -80,7 +80,7 @@ export const FetalWeight = () => {
             >
                 <Text
                     style={{
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: "700",
                         color: pinkDark.pink3
                     }}
@@ -90,7 +90,7 @@ export const FetalWeight = () => {
 
                 <View
                     style={{
-                        height: 60,
+                        height: 50,
                         borderRadius: 16,
                         flexDirection: "row",
                     }}
@@ -122,7 +122,7 @@ export const FetalWeight = () => {
                             isValid &&
 
                             <View style={{
-                                height: 60,
+                                height: 50,
                                 paddingHorizontal: 5,
                                 alignItems: "center",
                                 justifyContent: "center"
@@ -175,12 +175,12 @@ export const FetalWeight = () => {
                         justifyContent: "center",
                         borderTopRightRadius: 16,
                         borderBottomRightRadius: 16,
-                        width: 60
+                        width: 50
                     }}
                     >
                         <Text style={{
                             fontWeight: "700",
-                            fontSize: 22,
+                            fontSize: 18,
                             color: pinkDark.pink7
                         }}>
                             g
@@ -193,7 +193,7 @@ export const FetalWeight = () => {
 
                     <View style={{
                         flexDirection: "row",
-                        height: 60,
+                        height: 50,
                         width: "100%",
                         alignItems: "center",
                     }}
@@ -207,7 +207,7 @@ export const FetalWeight = () => {
                                 borderWidth: 2,
                                 borderTopLeftRadius: 16,
                                 borderBottomLeftRadius: 16,
-                                height: 60,
+                                height: 50,
                                 alignItems: "center",
                                 justifyContent: "center"
                             }}
@@ -225,8 +225,8 @@ export const FetalWeight = () => {
 
                         <View style={{
                             backgroundColor: red.red9,
-                            height: 60,
-                            width: 60,
+                            height: 50,
+                            width: 50,
                             borderTopRightRadius: 16,
                             borderBottomRightRadius: 16,
                             alignItems: "center",
@@ -242,7 +242,7 @@ export const FetalWeight = () => {
 
                     <View style={{
                         flexDirection: "row",
-                        height: 60,
+                        height: 50,
                         width: "100%",
                         alignItems: "center",
                     }}
@@ -256,7 +256,7 @@ export const FetalWeight = () => {
                                 borderWidth: 2,
                                 borderTopLeftRadius: 16,
                                 borderBottomLeftRadius: 16,
-                                height: 60,
+                                height: 50,
                                 alignItems: "center",
                                 justifyContent: "center"
                             }}
@@ -274,8 +274,8 @@ export const FetalWeight = () => {
 
                         <View style={{
                             backgroundColor: red.red9,
-                            height: 60,
-                            width: 60,
+                            height: 50,
+                            width: 50,
                             borderTopRightRadius: 16,
                             borderBottomRightRadius: 16,
                             alignItems: "center",
@@ -291,7 +291,7 @@ export const FetalWeight = () => {
 
                     <View style={{
                         flexDirection: "row",
-                        height: 60,
+                        height: 50,
                         width: "100%",
                         alignItems: "center",
                     }}
@@ -305,7 +305,7 @@ export const FetalWeight = () => {
                                 borderWidth: 2,
                                 borderTopLeftRadius: 16,
                                 borderBottomLeftRadius: 16,
-                                height: 60,
+                                height: 50,
                                 alignItems: "center",
                                 justifyContent: "center"
                             }}
@@ -323,8 +323,8 @@ export const FetalWeight = () => {
 
                         <View style={{
                             backgroundColor: red.red9,
-                            height: 60,
-                            width: 60,
+                            height: 50,
+                            width: 50,
                             borderTopRightRadius: 16,
                             borderBottomRightRadius: 16,
                             alignItems: "center",

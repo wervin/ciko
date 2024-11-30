@@ -60,7 +60,7 @@ const firstTrimesterIconographyList: Iconography[] = [
         title: "Coupe Axiale de l'Abdomen",
         subtitles: [],
         description: "Coupe axiale de l'abdomen, passant par les structures abdominales",
-        criteria: ["Visualisation de l'estomac en position habituelle", "Mesure du diamètre abdominal transverse avec les calipers en place"],
+        criteria: ["Visualisation de l'estomac en position habituelle", "Mesure du diamètre abdominal transverse"],
         images: [require("@/assets/data/iconography/1_4.png")],
         alternatives: [
             {
@@ -276,7 +276,7 @@ const secondTrimesterIconographyList: Iconography[] = [
         title: "Coupe Para-Sagittale Gauche",
         subtitles: [],
         description: "Coupe para-sagittale gauche, passant par la coupole diaphragmatique gauche et les structures du tronc",
-        criteria: ["interface thoraco-abdominale gauche", "Présence, aspect et position de l'estomac", "Aspect des poumons"],
+        criteria: ["Interface thoraco-abdominale gauche", "Présence, aspect et position de l'estomac", "Aspect des poumons"],
         images: [require("@/assets/data/iconography/2_10.png")],
         alternatives: []
     },

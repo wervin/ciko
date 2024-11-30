@@ -51,7 +51,7 @@ export const Header = () => {
                         flexDirection: "row"
                     }}>
                         <Text style={{
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: "700",
                             color: pinkDark.pink7
                         }}>
@@ -148,7 +148,8 @@ export const Header = () => {
                                 style={{
                                     fontSize: 16,
                                     fontWeight: "700",
-                                    color: pinkDark.pink7
+                                    color: pinkDark.pink7,
+                                    maxWidth: 250,
                                 }}
                             >
                                 {widget?.title}

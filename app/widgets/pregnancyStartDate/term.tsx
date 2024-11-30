@@ -56,7 +56,7 @@ export const Term = () => {
 
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}
@@ -66,7 +66,7 @@ export const Term = () => {
 
             <View
                 style={{
-                    height: 60,
+                    height: 50,
                     borderRadius: 16,
                     flexDirection: "row",
                 }}
@@ -99,7 +99,7 @@ export const Term = () => {
                     justifyContent: "center",
                     borderTopRightRadius: 16,
                     borderBottomRightRadius: 16,
-                    width: 60
+                    width: 50
                 }}
                 >
                     <CalendarHeart
@@ -114,7 +114,7 @@ export const Term = () => {
 
                 <View style={{
                     flexDirection: "row",
-                    height: 60,
+                    height: 50,
                     width: "100%",
                     alignItems: "center",
                 }}
@@ -128,7 +128,7 @@ export const Term = () => {
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
-                            height: 60,
+                            height: 50,
                             alignItems: "center",
                             justifyContent: "center"
                         }}
@@ -146,8 +146,8 @@ export const Term = () => {
 
                     <View style={{
                         backgroundColor: red.red9,
-                        height: 60,
-                        width: 60,
+                        height: 50,
+                        width: 50,
                         borderTopRightRadius: 16,
                         borderBottomRightRadius: 16,
                         alignItems: "center",
@@ -164,7 +164,7 @@ export const Term = () => {
 
                 <View style={{
                     flexDirection: "row",
-                    height: 60,
+                    height: 50,
                     width: "100%",
                     alignItems: "center",
                 }}
@@ -178,7 +178,7 @@ export const Term = () => {
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
-                            height: 60,
+                            height: 50,
                             alignItems: "center",
                             justifyContent: "center"
                         }}
@@ -196,8 +196,8 @@ export const Term = () => {
 
                     <View style={{
                         backgroundColor: yellowDark.yellow11,
-                        height: 60,
-                        width: 60,
+                        height: 50,
+                        width: 50,
                         borderTopRightRadius: 16,
                         borderBottomRightRadius: 16,
                         alignItems: "center",

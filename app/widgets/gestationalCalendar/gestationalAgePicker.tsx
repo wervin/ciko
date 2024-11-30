@@ -61,7 +61,7 @@ const DayModal = ({ visible, setVisible }: DayModalProps) => {
                     flexDirection: "row"
                 }}>
                     <Text style={{
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: "700",
                         color: pinkDark.pink7
                     }}>
@@ -191,7 +191,7 @@ const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
                     flexDirection: "row"
                 }}>
                     <Text style={{
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: "700",
                         color: pinkDark.pink7
                     }}>
@@ -300,7 +300,7 @@ export const GestationalAgePicker = () => {
             >
                 <Text
                     style={{
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: "700",
                         color: pinkDark.pink3
                     }}
@@ -310,7 +310,7 @@ export const GestationalAgePicker = () => {
 
                 <View
                     style={{
-                        height: 60,
+                        height: 50,
                         flexDirection: 'row',
                         justifyContent: 'space-around',
                         alignItems: 'center',
@@ -320,7 +320,7 @@ export const GestationalAgePicker = () => {
                         onPress={() => setWeekModalVisible(true)}
                         style={{
                             width: "50%",
-                            height: 60,
+                            height: 50,
                             backgroundColor: pink.pink6,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
@@ -349,7 +349,7 @@ export const GestationalAgePicker = () => {
                         onPress={() => setDayModalVisible(true)}
                         style={{
                             width: "50%",
-                            height: 60,
+                            height: 50,
                             backgroundColor: pink.pink6,
                             borderTopRightRadius: 16,
                             borderBottomRightRadius: 16,

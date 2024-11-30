@@ -37,7 +37,7 @@ export const WeightInput = () => {
         >
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}
@@ -47,9 +47,14 @@ export const WeightInput = () => {
 
             <View style={{
                 flexDirection: "row",
-                height: 60,
+                height: 50,
                 width: "100%",
                 alignItems: "center",
+                overflow: "hidden",
+                borderRadius: 16,
+                borderWidth: 2,
+                borderColor: pink.pink6,
+                backgroundColor: pink.pink6
             }}
             >
                 <TextInput
@@ -61,11 +66,7 @@ export const WeightInput = () => {
                         flex: 1,
                         backgroundColor: pink.pink4,
                         paddingHorizontal: 20,
-                        borderColor: pink.pink6,
-                        borderWidth: 2,
-                        borderTopLeftRadius: 16,
-                        borderBottomLeftRadius: 16,
-                        height: 60,
+                        height: 50,
                         color: pinkDark.pink3,
                         fontSize: 22,
                         fontWeight: "700",
@@ -79,16 +80,14 @@ export const WeightInput = () => {
 
                 <View style={{
                     backgroundColor: pink.pink6,
-                    height: 60,
-                    width: 60,
-                    borderTopRightRadius: 16,
-                    borderBottomRightRadius: 16,
+                    height: 50,
+                    width: 50,
                     alignItems: "center",
                     justifyContent: "center"
                 }}>
                     <Text style={{
                         fontWeight: "700",
-                        fontSize: 22,
+                        fontSize: 18,
                         color: pinkDark.pink7
                     }}>
                         kg

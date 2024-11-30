@@ -21,7 +21,7 @@ export const IconographyCard = ({ iconography }: IconographyCardProps) => {
             <View
                 style={{
                     width: "100%",
-                    height: 60,
+                    height: 50,
                     flexDirection: "row",
                 }}
             >
@@ -45,8 +45,8 @@ export const IconographyCard = ({ iconography }: IconographyCardProps) => {
 
                     < Image
                         style={{
-                            width: 60,
-                            height: 60,
+                            width: 50,
+                            height: 50,
                             borderRadius: 16
                         }}
                         source={iconography.images[0]}
@@ -61,7 +61,7 @@ export const IconographyCard = ({ iconography }: IconographyCardProps) => {
                         key={index}
                         style={{
                             width: "100%",
-                            height: 60,
+                            height: 50,
                             flexDirection: "row",
                             borderRadius: 16,
                         }}

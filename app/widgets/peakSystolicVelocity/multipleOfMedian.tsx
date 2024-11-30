@@ -1,19 +1,17 @@
-import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { orange, pink, pinkDark, red, whiteA, yellowDark } from "@/utils/colors";
-import { CalendarClock, CircleAlert, TriangleAlert } from "lucide-react-native";
+import { pink, pinkDark, red, whiteA, yellowDark } from "@/utils/colors";
 import { View, Text } from "react-native";
-import { PregnancyStartDateWidgetProps } from "../_widgets";
-import { gestationalAge } from "./gestationalAgeCurve";
+import { CircleAlert, TriangleAlert, Stethoscope } from 'lucide-react-native';
+import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
+import { PeakSystolicVelocityWidgetProps } from "../_widgets";
 
+export const MultipleOfMedian = () => {
+    const widgetData = useWidgetStoreContext<PeakSystolicVelocityWidgetProps>((store) => store.widgetData);
 
-export const GestationalAge = () => {
-    const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
+    const gestationalAge = widgetData?.gestationalAge;
+    const peakSystolicVelocity = widgetData?.peakSystolicVelocity;
 
-    const gestationalAgeCurve = widgetData?.gestationalAgeCurve;
-    const isValid = widgetData?.isValid ?? false;
-    const isPresent = widgetData?.isPresent ?? false;
-    const crownRumpLength = widgetData?.crownRumpLength ?? 0;
-    const age = isPresent ? gestationalAge(crownRumpLength, gestationalAgeCurve) : undefined;
+    const psv = Math.exp(2.30921 + 0.0463954 * (gestationalAge / 7));
+    const mom = peakSystolicVelocity ? peakSystolicVelocity / psv : undefined;
 
     return (
         <View
@@ -33,35 +31,39 @@ export const GestationalAge = () => {
                     color: pinkDark.pink3
                 }}
             >
-                Age Gestationnel
+                Multiple de la Médiane
             </Text>
 
             <View
                 style={{
                     height: 50,
                     borderRadius: 16,
-                    flexDirection: "row",
+                    flexDirection: "row"
                 }}
             >
                 <View style={{
                     flex: 1,
                     backgroundColor: pink.pink5,
+                    borderColor: pink.pink5,
+                    borderWidth: 2,
                     alignItems: "center",
-                    justifyContent: "center",
                     borderTopLeftRadius: 16,
                     borderBottomLeftRadius: 16,
+                    flexDirection: "row",
+                    paddingHorizontal: 10,
+                    gap: 10
                 }}
                 >
                     <Text
                         style={{
-                            textAlign: "center",
-                            textAlignVertical: "center",
+                            flex: 1,
                             color: pinkDark.pink3,
+                            textAlign: "center",
                             fontSize: 22,
                             fontWeight: "700"
                         }}
                     >
-                        {age ? `${Math.trunc(age / 7)} SA ${age % 7} J` : "-"}
+                        {mom ? mom.toFixed(1) : "-"}
                     </Text>
                 </View>
 
@@ -74,15 +76,18 @@ export const GestationalAge = () => {
                     width: 50
                 }}
                 >
-                    <CalendarClock
-                        color={pinkDark.pink7}
-                        size={24}
-                    />
+                    <Text style={{
+                        fontWeight: "700",
+                        fontSize: 18,
+                        color: pinkDark.pink7
+                    }}>
+                        MoM
+                    </Text>
                 </View>
             </View>
 
             {
-                !isPresent &&
+                peakSystolicVelocity === undefined &&
 
                 <View style={{
                     flexDirection: "row",
@@ -112,7 +117,7 @@ export const GestationalAge = () => {
                             fontSize: 16,
                             color: whiteA.whiteA12
                         }}>
-                            La longueur cranio-caudale doit être renseignée
+                            Le pic systolique de vélocité doit être renseignée
                         </Text>
                     </View>
 
@@ -130,56 +135,6 @@ export const GestationalAge = () => {
 
                 </View>
             }
-
-            {
-                !isValid &&
-
-                <View style={{
-                    flexDirection: "row",
-                    height: 50,
-                    width: "100%",
-                    alignItems: "center",
-                }}
-                >
-                    <View
-                        style={{
-                            flex: 1,
-                            backgroundColor: yellowDark.yellow11,
-                            paddingHorizontal: 20,
-                            borderColor: yellowDark.yellow11,
-                            borderWidth: 2,
-                            borderTopLeftRadius: 16,
-                            borderBottomLeftRadius: 16,
-                            height: 50,
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}
-                    >
-                        <Text style={{
-                            textAlign: "center",
-                            textAlignVertical: "center",
-                            fontWeight: "700",
-                            fontSize: 16,
-                            color: whiteA.whiteA12
-                        }}>
-                            La longueur cranio-caudale doit être comprise entre 15 et 95 mm
-                        </Text>
-                    </View>
-
-                    <View style={{
-                        backgroundColor: yellowDark.yellow11,
-                        height: 50,
-                        width: 50,
-                        borderTopRightRadius: 16,
-                        borderBottomRightRadius: 16,
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}>
-                        <TriangleAlert size={24} color={whiteA.whiteA12} />
-                    </View>
-
-                </View>
-            }
         </View>
     );
-}
+};

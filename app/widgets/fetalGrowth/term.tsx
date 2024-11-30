@@ -49,7 +49,7 @@ export const Term = () => {
 
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}
@@ -59,7 +59,7 @@ export const Term = () => {
 
             <View
                 style={{
-                    height: 60,
+                    height: 50,
                     borderRadius: 16,
                     flexDirection: "row",
                 }}
@@ -92,7 +92,7 @@ export const Term = () => {
                     justifyContent: "center",
                     borderTopRightRadius: 16,
                     borderBottomRightRadius: 16,
-                    width: 60
+                    width: 50
                 }}
                 >
                     <CalendarHeart

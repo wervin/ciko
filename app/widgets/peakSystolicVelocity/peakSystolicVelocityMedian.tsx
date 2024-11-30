@@ -1,39 +1,14 @@
-import { pink, pinkDark, red, yellowDark } from "@/utils/colors";
+import { pink, pinkDark } from "@/utils/colors";
 import { View, Text } from "react-native";
-import { CalendarHeart, CircleAlert, TriangleAlert } from 'lucide-react-native';
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { GestationalCalendarWidgetProps } from "../_widgets";
+import { PeakSystolicVelocityWidgetProps } from "../_widgets";
 
-export const Term = () => {
-    const widgetData = useWidgetStoreContext<GestationalCalendarWidgetProps>((store) => store.widgetData);
+export const PeakSystolicVelocityMedian = () => {
+    const widgetData = useWidgetStoreContext<PeakSystolicVelocityWidgetProps>((store) => store.widgetData);
 
-    const gestationalAge = widgetData?.gestationalAge ?? 0;
+    const gestationalAge = widgetData?.gestationalAge;
 
-    const termDate = () => {
-        const d = new Date();
-        d.setDate(d.getDate() - gestationalAge + 14);
-        d.setDate(d.getDate() + 273);
-        return d;
-    }
-
-    const formatDateInFrench = (date: Date) => {
-        const options: Intl.DateTimeFormatOptions = {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-        };
-
-        // Format the date using the French locale
-        const formattedDate = date.toLocaleDateString('fr-FR', options);
-
-        // Capitalize the first letter of the month
-        return formattedDate.replace(
-            /([0-9]+ )([a-z\u00E0-\u00FC])/,
-            (_, daySpace, monthFirstLetter) => {
-                return daySpace + monthFirstLetter.toUpperCase();
-            }
-        );
-    }
+    const psv = Math.exp(2.30921 + 0.0463954 * (gestationalAge / 7));
 
     return (
         <View
@@ -46,7 +21,6 @@ export const Term = () => {
                 borderColor: pink.pink6
             }}
         >
-
             <Text
                 style={{
                     fontSize: 20,
@@ -54,14 +28,14 @@ export const Term = () => {
                     color: pinkDark.pink3
                 }}
             >
-                Terme
+                Pic Systolique de Vélocité Médian de l'Artère Cérébrale Moyenne
             </Text>
 
             <View
                 style={{
                     height: 50,
                     borderRadius: 16,
-                    flexDirection: "row",
+                    flexDirection: "row"
                 }}
             >
                 <View style={{
@@ -70,19 +44,23 @@ export const Term = () => {
                     borderColor: pink.pink5,
                     borderWidth: 2,
                     alignItems: "center",
-                    justifyContent: "center",
                     borderTopLeftRadius: 16,
                     borderBottomLeftRadius: 16,
+                    flexDirection: "row",
+                    paddingHorizontal: 10,
+                    gap: 10
                 }}
                 >
                     <Text
                         style={{
+                            flex: 1,
                             color: pinkDark.pink3,
+                            textAlign: "center",
                             fontSize: 22,
                             fontWeight: "700"
                         }}
                     >
-                        {formatDateInFrench(termDate())}
+                        {psv.toFixed(1)}
                     </Text>
                 </View>
 
@@ -95,10 +73,13 @@ export const Term = () => {
                     width: 50
                 }}
                 >
-                    <CalendarHeart
-                        color={pinkDark.pink7}
-                        size={24}
-                    />
+                    <Text style={{
+                        fontWeight: "700",
+                        fontSize: 18,
+                        color: pinkDark.pink7
+                    }}>
+                        cm/s
+                    </Text>
                 </View>
             </View>
         </View>

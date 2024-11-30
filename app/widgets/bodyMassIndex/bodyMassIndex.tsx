@@ -35,7 +35,7 @@ export const BodyMassIndex = () => {
         >
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}
@@ -45,9 +45,9 @@ export const BodyMassIndex = () => {
 
             <View
                 style={{
-                    height: 60,
+                    height: 50,
                     borderRadius: 16,
-                    flexDirection: "row",
+                    flexDirection: "row"
                 }}
             >
                 <View style={{
@@ -97,7 +97,7 @@ export const BodyMassIndex = () => {
                     justifyContent: "center",
                     borderTopRightRadius: 16,
                     borderBottomRightRadius: 16,
-                    width: 60
+                    width: 50
                 }}
                 >
                     <Stethoscope
@@ -112,7 +112,7 @@ export const BodyMassIndex = () => {
 
                 <View style={{
                     flexDirection: "row",
-                    height: 60,
+                    height: 50,
                     width: "100%",
                     alignItems: "center",
                 }}
@@ -126,7 +126,7 @@ export const BodyMassIndex = () => {
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
-                            height: 60,
+                            height: 50,
                             alignItems: "center",
                             justifyContent: "center"
                         }}
@@ -144,8 +144,8 @@ export const BodyMassIndex = () => {
 
                     <View style={{
                         backgroundColor: red.red9,
-                        height: 60,
-                        width: 60,
+                        height: 50,
+                        width: 50,
                         borderTopRightRadius: 16,
                         borderBottomRightRadius: 16,
                         alignItems: "center",
@@ -162,7 +162,7 @@ export const BodyMassIndex = () => {
 
                 <View style={{
                     flexDirection: "row",
-                    height: 60,
+                    height: 50,
                     width: "100%",
                     alignItems: "center",
                 }}
@@ -176,7 +176,7 @@ export const BodyMassIndex = () => {
                             borderWidth: 2,
                             borderTopLeftRadius: 16,
                             borderBottomLeftRadius: 16,
-                            height: 60,
+                            height: 50,
                             alignItems: "center",
                             justifyContent: "center"
                         }}
@@ -194,8 +194,8 @@ export const BodyMassIndex = () => {
 
                     <View style={{
                         backgroundColor: red.red9,
-                        height: 60,
-                        width: 60,
+                        height: 50,
+                        width: 50,
                         borderTopRightRadius: 16,
                         borderBottomRightRadius: 16,
                         alignItems: "center",

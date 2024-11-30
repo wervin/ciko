@@ -14,7 +14,7 @@ export const WidgetCard = (widget: Widget) => {
     return (
         <PressableOpacity
             style={{
-                height: 80,
+                height: 70,
                 width: "100%",
                 flexDirection: "row",
             }}
@@ -31,7 +31,7 @@ export const WidgetCard = (widget: Widget) => {
                 paddingHorizontal: 10
             }}>
                 <Text style={{
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: "700",
                     color: pinkDark.pink7,
                 }}
@@ -44,8 +44,8 @@ export const WidgetCard = (widget: Widget) => {
                 backgroundColor: pink.pink6,
                 alignItems: "center",
                 justifyContent: "center",
-                width: 80,
-                height: 80,
+                width: 70,
+                height: 70,
                 borderTopRightRadius: 16,
                 borderBottomRightRadius: 16,
                 flexDirection: "row",

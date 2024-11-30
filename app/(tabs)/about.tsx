@@ -21,108 +21,9 @@ interface AboutViewProps {
     textColor: string;
 };
 
-interface AboutButtonProps {
-    label: string;
-    onPress: () => void;
-    Icon: LucideIcon;
-    primaryColor: string;
-    secondaryColor: string;
-    textColor: string;
-};
-
 const Version = () => {
     return (
         <AboutView label={"v1.0.0"} Icon={Info} primaryColor={pink.pink5} secondaryColor={pink.pink6} textColor={pinkDark.pink7} />
-    );
-};
-
-const Contact = () => {
-    const url = "https://wervin.dev";
-    const onPress = () => {
-        Linking.canOpenURL(url).then(supported => {
-            if (supported) {
-                Linking.openURL(url);
-            }
-        });
-    };
-    return (
-        <AboutButton label={"wervin.dev"} onPress={onPress} Icon={CircleUser} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
-    );
-};
-
-const Report = () => {
-    const url = "https://github.com/wervin/ciko/issues";
-    const onPress = () => {
-        Linking.canOpenURL(url).then(supported => {
-            if (supported) {
-                Linking.openURL(url);
-            }
-        });
-    };
-    return (
-        <AboutButton label={"Signaler un problème"} onPress={onPress} Icon={Bug} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
-    );
-};
-const Rate = () => {
-    const url = Platform.select({
-        ios: 'itms-apps://itunes.apple.com/app/idYOUR_APP_ID',
-        android: 'market://details?id=com.einnovation.temu',
-    });
-    const onPress = () => {
-        if (url) {
-            Linking.canOpenURL(url).then(supported => {
-                if (supported) {
-                    Linking.openURL(url);
-                }
-            });
-        }
-    };
-    return (
-        <AboutButton label={"Noter Ciko"} onPress={onPress} Icon={HandHeart} primaryColor={pink.pink6} secondaryColor={pink.pink7} textColor={pinkDark.pink7} />
-    );
-};
-
-const AboutButton = ({ label, onPress, Icon, primaryColor, secondaryColor, textColor }: AboutButtonProps) => {
-    return (
-
-        <PressableOpacity
-            onPress={onPress}
-            style={{
-                height: 50,
-                borderRadius: 16,
-                backgroundColor: primaryColor,
-                alignItems: "center",
-                flexDirection: "row",
-                justifyContent: "space-between"
-            }}
-        >
-            <View style={{ flex: 1, paddingLeft: 16 }}>
-                <Text
-                    style={{
-                        fontSize: 24,
-                        fontWeight: "600",
-                        color: textColor,
-                        textAlignVertical: "center"
-                    }}
-                >
-                    {label}
-                </Text>
-            </View>
-
-            <View style={{
-                backgroundColor: secondaryColor,
-                alignItems: "center",
-                justifyContent: "center",
-                borderTopRightRadius: 16,
-                borderBottomRightRadius: 16,
-                height: 50,
-                width: 50
-            }}
-            >
-                <Icon size={28} color={textColor} />
-            </View>
-
-        </PressableOpacity>
     );
 };
 
@@ -183,7 +84,7 @@ const AboutCard = ({ label, components }: AboutCardProps) => {
         >
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 22,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}

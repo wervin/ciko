@@ -36,7 +36,7 @@ export const PregnancyStartDatePicker = () => {
         >
             <Text
                 style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}

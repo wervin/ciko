@@ -53,7 +53,7 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
             >
                 <Text
                     style={{
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: "700",
                         color: pinkDark.pink3
                     }}
@@ -63,9 +63,14 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
 
                 <View style={{
                     flexDirection: "row",
-                    height: 60,
+                    height: 50,
                     width: "100%",
                     alignItems: "center",
+                    overflow: "hidden",
+                    borderRadius: 16,
+                    borderWidth: 2,
+                    borderColor: pink.pink6,
+                    backgroundColor: pink.pink6
                 }}
                 >
                     <TextInput
@@ -77,15 +82,7 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                             flex: 1,
                             backgroundColor: pink.pink4,
                             paddingHorizontal: 20,
-                            borderLeftWidth: 2,
-                            borderTopWidth: 2,
-                            borderBottomWidth: 2,
-                            borderLeftColor: pink.pink6,
-                            borderTopColor: pink.pink6,
-                            borderBottomColor: pink.pink6,
-                            borderTopLeftRadius: 16,
-                            borderBottomLeftRadius: 16,
-                            height: 60,
+                            height: 50,
                             color: pinkDark.pink3,
                             fontSize: 22,
                             fontWeight: "700",
@@ -98,12 +95,9 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                         isObservedValid &&
 
                         <View style={{
-                            borderTopWidth: 2,
-                            borderBottomWidth: 2,
-                            borderTopColor: pink.pink6,
-                            borderBottomColor: pink.pink6,
-                            height: 60,
+                            height: 50,
                             paddingHorizontal: 5,
+                            backgroundColor: pink.pink4,
                             alignItems: "center",
                             justifyContent: "center"
                         }}>
@@ -111,7 +105,7 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                                 style={{
                                     backgroundColor: pink.pink6,
                                     borderRadius: 16,
-                                    height: 46,
+                                    height: 36,
                                     width: 110,
                                     alignItems: "center",
                                     justifyContent: "space-between",
@@ -132,7 +126,7 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                                 </Text>
                                 <View style={{
                                     backgroundColor: pink.pink7,
-                                    height: 46,
+                                    height: 36,
                                     width: 40,
                                     borderTopRightRadius: 16,
                                     borderBottomRightRadius: 16,
@@ -150,19 +144,17 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
 
                     <View style={{
                         backgroundColor: pink.pink6,
-                        height: 60,
-                        width: 60,
-                        borderTopRightRadius: 16,
-                        borderBottomRightRadius: 16,
+                        height: 50,
+                        width: 50,
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
                         <Text style={{
                             fontWeight: "700",
-                            fontSize: 22,
+                            fontSize: 18,
                             color: pinkDark.pink7
                         }}>
-                            mm
+                            {unit}
                         </Text>
                     </View>
                 </View>

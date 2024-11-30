@@ -32,7 +32,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
     return (
         <View
             style={{
-                height: 60,
+                height: 50,
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 alignItems: 'center',
@@ -42,7 +42,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
             <PressableOpacity
                 onPress={() => setDayModalVisible(true)}
                 style={{
-                    height: 60,
+                    height: 50,
                     backgroundColor: pink.pink6,
                     borderTopLeftRadius: 16,
                     borderBottomLeftRadius: 16,
@@ -103,7 +103,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                         flexDirection: "row"
                     }}>
                         <Text style={{
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: "700",
                             color: pinkDark.pink7
                         }}>
@@ -196,7 +196,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                 onPress={() => setMonthModalVisible(true)}
                 style={{
                     flex: 1,
-                    height: 60,
+                    height: 50,
                     backgroundColor: pink.pink6,
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -252,7 +252,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                         flexDirection: "row"
                     }}>
                         <Text style={{
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: "700",
                             color: pinkDark.pink7
                         }}>
@@ -346,7 +346,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
             <PressableOpacity
                 onPress={() => setYearModalVisible(true)}
                 style={{
-                    height: 60,
+                    height: 50,
                     backgroundColor: pink.pink6,
                     borderTopRightRadius: 16,
                     borderBottomRightRadius: 16,
@@ -407,7 +407,7 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                         flexDirection: "row"
                     }}>
                         <Text style={{
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: "700",
                             color: pinkDark.pink7
                         }}>
