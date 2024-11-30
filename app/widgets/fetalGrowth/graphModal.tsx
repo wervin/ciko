@@ -372,7 +372,7 @@ export const GraphModal = ({ title, visible, setVisible, graphData, yUnit, gesta
                                 }}>
 
                                     <Text style={{
-                                        fontSize: 20,
+                                        fontSize: 22,
                                         fontWeight: "700",
                                         color: pinkDark.pink7
                                     }}>

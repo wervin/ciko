@@ -167,7 +167,7 @@ export const MaternityLeaveDates = () => {
         >
             <Text
                 style={{
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}

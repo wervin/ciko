@@ -26,7 +26,7 @@ export const MultipleOfMedian = () => {
         >
             <Text
                 style={{
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: "700",
                     color: pinkDark.pink3
                 }}
@@ -117,7 +117,7 @@ export const MultipleOfMedian = () => {
                             fontSize: 16,
                             color: whiteA.whiteA12
                         }}>
-                            Le pic systolique de vélocité doit être renseignée
+                            Le pic systolique de vélocité doit être renseigné
                         </Text>
                     </View>
 

@@ -4,12 +4,12 @@
 <svg
    version="1.1"
    id="svg3550"
-   width="432"
-   height="432"
-   viewBox="0 0 432 432"
-   sodipodi:docname="foreground.svg"
+   width="1024"
+   height="1024"
+   viewBox="0 0 1024 1024"
+   sodipodi:docname="light.svg"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   inkscape:export-filename="foreground.png"
+   inkscape:export-filename="light.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -96,9 +96,9 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="1.3400484"
-     inkscape:cx="110.44377"
-     inkscape:cy="239.54359"
+     inkscape:zoom="0.18798764"
+     inkscape:cx="234.05794"
+     inkscape:cy="792.6053"
      inkscape:window-width="1920"
      inkscape:window-height="969"
      inkscape:window-x="0"
@@ -107,7 +107,7 @@
      inkscape:current-layer="svg3550" />
   <g
      id="g3904-6"
-     transform="matrix(0.61940687,0,0,0.61940687,67.679298,57.43184)"
+     transform="matrix(1.9626102,0,0,1.9626102,42.041181,9.5717845)"
      style="display:inline">
     <path
        id="path2704-61-7"

@@ -61,7 +61,7 @@ export const IconographyCard = ({ iconography }: IconographyCardProps) => {
                         key={index}
                         style={{
                             width: "100%",
-                            height: 50,
+                            height: 60,
                             flexDirection: "row",
                             borderRadius: 16,
                         }}
@@ -100,7 +100,7 @@ export const IconographyCard = ({ iconography }: IconographyCardProps) => {
                                 style={{
                                     width: 50,
                                     height: 50,
-                                    borderRadius: 16
+                                    borderRadius: 12
                                 }}
                                 source={alternative.images[0]}
                             />

@@ -121,17 +121,16 @@ export const IconographyModal = () => {
                                             }}>
                                                 {widgetData?.iconography?.description}
                                             </Text>
-                                            <View style={{ backgroundColor: pink.pink6, borderRadius: 16, padding: 5}}>
+                                            <View style={{ backgroundColor: pink.pink6, borderRadius: 16, padding: 5, gap: 10 }}>
                                                 {
                                                     widgetData?.iconography?.criteria.map((criteria, index) => (
                                                         <View
                                                             key={index}
                                                             style={{
-                                                                height: 40,
                                                                 borderRadius: 16,
                                                                 alignItems: "center",
                                                                 flexDirection: "row",
-                                                                gap: 10
+                                                                gap: 10,
                                                             }}
                                                         >
                                                             <Goal size={20} color={pinkDark.pink7} />
@@ -141,7 +140,8 @@ export const IconographyModal = () => {
                                                                     flex: 1,
                                                                     fontSize: 14,
                                                                     fontWeight: "700",
-                                                                    color: pinkDark.pink7
+                                                                    color: pinkDark.pink7,
+
                                                                 }}
                                                             >
                                                                 {criteria}
