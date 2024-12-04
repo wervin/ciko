@@ -9,6 +9,7 @@ interface ScrollViewWrapperProps {
 
 const ScrollViewWrapper: React.FC<ScrollViewWrapperProps> = ({ children }) => {
     const isFocused = useIsFocused();
+
     return (
         isFocused &&
         <View

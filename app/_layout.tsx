@@ -2,10 +2,10 @@ import { useFonts } from 'expo-font';
 import { Stack, SplashScreen } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
 import { pink, pinkDark } from '@/utils/colors'
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { SvgXml } from 'react-native-svg';
 import trianglify, { colorFunctions } from 'trianglify';
-import { Dimensions, Platform, View } from 'react-native';
+import { Dimensions, KeyboardAvoidingView, Platform, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
@@ -61,6 +61,7 @@ const RootLayout = () => {
   const [trianglifyXml, setTrianglifyXml] = useState<string | null>(null);
   const [parentDimensions, setParentDimensions] = useState<{ width: number; height: number } | null>(null);
   const [safeAreaDimensionsReady, setSafeAreaDimensionsReady] = useState(false);
+  const insets = useSafeAreaInsets();
 
   const [fontsLoaded, fontsError] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -93,6 +94,8 @@ const RootLayout = () => {
   }, [parentDimensions]);
 
   const onLayoutSafeAreaView = (event: any) => {
+    if (safeAreaDimensionsReady)
+      return;
     const { width, height } = event.nativeEvent.layout;
     if (width !== parentDimensions?.width || height !== parentDimensions?.height) {
       setParentDimensions({ width, height });
@@ -132,14 +135,20 @@ const RootLayout = () => {
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: pink.pink5 }}>
         <View style={{ flex: 1 }} onLayout={onLayoutSafeAreaView}>
-          {parentDimensions && <TrianglifyBackground {...parentDimensions} />}
-          {parentDimensions && trianglifyXml && <Trianglify trianglifyXml={trianglifyXml} {...parentDimensions} />}
-          <Stack
-            screenOptions={screenOptions}
-          />
+          <KeyboardAvoidingView
+            style={{ flex: 1, overflow: "hidden" }}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 50 : 0}
+          >
+            {parentDimensions && <TrianglifyBackground {...parentDimensions} />}
+            {parentDimensions && trianglifyXml && <Trianglify trianglifyXml={trianglifyXml} {...parentDimensions} />}
+            <Stack
+              screenOptions={screenOptions}
+            />
+          </KeyboardAvoidingView >
         </View>
       </SafeAreaView>
-    </View>
+    </View >
   );
 };
 

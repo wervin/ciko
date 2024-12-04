@@ -25,6 +25,9 @@
       "bundleIdentifier": "com.wervin.ciko",
       "icon": {
         "light": "./assets/platform/ios/icon/light.png"
+      },
+      "config": {
+        "usesNonExemptEncryption": false
       }
     },
     "android": {
@@ -40,7 +43,6 @@
         "backgroundColor": "#f9d8ec",
         "resizeMode": "contain"
       },
-      "softwareKeyboardLayoutMode": "pan",
       "package": "com.wervin.ciko"
     },
     "plugins": [
