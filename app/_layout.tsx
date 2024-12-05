@@ -13,8 +13,8 @@ export {
   ErrorBoundary,
 } from 'expo-router';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
 
 type TrianglifyProps = {
   trianglifyXml: string;
@@ -106,9 +106,7 @@ const RootLayout = () => {
   // Hide splash screen when all resources are ready
   useEffect(() => {
     if (fontsLoaded && trianglifyXml && safeAreaDimensionsReady) {
-      (async () => {
-        await SplashScreen.hideAsync();
-      })();
+      SplashScreen.hide();
     }
   }, [fontsLoaded, trianglifyXml, safeAreaDimensionsReady]);
 

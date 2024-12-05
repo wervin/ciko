@@ -5,15 +5,10 @@
     "version": "1.0.0",
     "newArchEnabled": true,
     "orientation": "portrait",
-    "icon": "./assets/platform/all/icon/icon.png",
+    "icon": "./assets/platform/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#f9d8ec",
-    "splash": {
-      "image": "./assets/platform/all/splashscreen/xxxhdpi.png",
-      "backgroundColor": "#f9d8ec",
-      "resizeMode": "contain"
-    },
     "androidStatusBar": {
       "translucent": true
     },
@@ -21,33 +16,32 @@
       "**/*"
     ],
     "ios": {
+      "icon":{
+        "light": "./assets/platform/icon-ios.png"
+      },
       "supportsTablet": false,
       "bundleIdentifier": "com.wervin.ciko",
-      "icon": {
-        "light": "./assets/platform/ios/icon/light.png"
-      },
       "config": {
         "usesNonExemptEncryption": false
       }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/platform/android/icon/foreground.png"
-      },
-      "splash": {
-        "mdpi": "./assets/platform/all/splashscreen/mdpi.png",
-        "hdpi": "./assets/platform/all/splashscreen/hdpi.png",
-        "xhdpi": "./assets/platform/all/splashscreen/xhdpi.png",
-        "xxhdpi": "./assets/platform/all/splashscreen/xxhdpi.png",
-        "xxxhdpi": "./assets/platform/all/splashscreen/xxxhdpi.png",
-        "backgroundColor": "#f9d8ec",
-        "resizeMode": "contain"
+        "foregroundImage": "./assets/platform/icon-android.png"
       },
       "package": "com.wervin.ciko"
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#f9d8ec",
+          "image": "./assets/platform/splash-icon.png",
+          "imageWidth": 200
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
