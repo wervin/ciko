@@ -35,7 +35,7 @@ export const PregnancyStartDateWidgetData: PregnancyStartDateWidgetProps = {
 export const PregnancyStartDateWidget: Widget = {
     id: randomUUID(),
 
-    title: 'Date de Début de Grossesse',
+    title: 'Datation',
     description: () => <PregnancyStartDateWidgetDescription />,
     footer: () => <View style={{ borderTopColor: pink.pink6, borderTopWidth: 1 }} />,
     icon: () => <PregnancyStartDateIcon color={pinkDark.pink7} />,

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Ciko",
     "slug": "ciko",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./assets/platform/icon.png",
@@ -23,6 +23,9 @@
       "bundleIdentifier": "com.wervin.ciko",
       "config": {
         "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "CFBundleDevelopmentRegion": "fr-FR"
       }
     },
     "android": {
