@@ -22,7 +22,7 @@ export const GestationalCalendarWidgetData: GestationalCalendarWidgetProps = {
 
 export const GestationalCalendarWidget: Widget = {
     id: randomUUID(),
-    title: 'Calendrier Gestationel',
+    title: 'Calendrier Gestationnel',
     description: () => <GestationalCalendarWidgetDescription />,
     footer: () => <View style={{ borderTopColor: pink.pink6, borderTopWidth: 1 }} />,
     icon: () => <GestationalCalendarIcon color={pinkDark.pink7} />,

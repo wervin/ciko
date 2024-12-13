@@ -8,6 +8,10 @@ import trianglify, { colorFunctions } from 'trianglify';
 import { Dimensions, KeyboardAvoidingView, Platform, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import {
+  configureReanimatedLogger,
+  ReanimatedLogLevel,
+} from 'react-native-reanimated';
 
 export {
   ErrorBoundary,
@@ -15,6 +19,10 @@ export {
 
 SplashScreen.preventAutoHideAsync();
 
+configureReanimatedLogger({
+  level: ReanimatedLogLevel.warn,
+  strict: false
+});
 
 type TrianglifyProps = {
   trianglifyXml: string;
