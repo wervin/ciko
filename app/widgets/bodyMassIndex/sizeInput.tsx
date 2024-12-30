@@ -1,5 +1,5 @@
 import { pink, pinkDark } from "@/utils/colors";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Platform } from "react-native";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { BodyMassIndexWidgetProps } from "../_widgets";
 
@@ -8,15 +8,16 @@ export const SizeInput = () => {
     const setWidgetData = useWidgetStoreContext<(data: BodyMassIndexWidgetProps) => void>((store) => store.setWidgetData);
 
     const onChangeSize = (text: string) => {
-        const re = /[+-]?([0-9]*[.])?[0-9]+/
-        if (text === "") {
+        const replacedText = text.replace(',', '.');
+        const re = /^(\d+(\.\d+)?|\.\d+)$/;
+        if (replacedText === "") {
             setWidgetData({
                 ...widgetData,
                 size: undefined,
             });
         }
-        if (re.test(text)) {
-            const s = parseFloat(text);
+        if (re.test(replacedText)) {
+            const s = parseFloat(replacedText);
             setWidgetData({
                 ...widgetData,
                 size: s,
@@ -60,7 +61,7 @@ export const SizeInput = () => {
                 <TextInput
                     textAlignVertical="center"
                     onChangeText={onChangeSize}
-                    keyboardType='number-pad'
+                    keyboardType={Platform.OS === 'ios' ? 'decimal-pad' : 'number-pad'}
                     placeholder="Saisir la taille"
                     placeholderTextColor={pink.pink6}
                     style={{
@@ -75,9 +76,7 @@ export const SizeInput = () => {
                     maxLength={5}
                     cursorColor={pink.pink7}
                     selectionColor={pink.pink7}
-                >
-
-                </TextInput>
+                />
 
                 <View style={{
                     backgroundColor: pink.pink6,

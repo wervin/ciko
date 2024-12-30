@@ -1,5 +1,5 @@
 import { pink, pinkDark } from "@/utils/colors";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Platform } from "react-native";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { BodyMassIndexWidgetProps } from "../_widgets";
 
@@ -8,15 +8,16 @@ export const WeightInput = () => {
     const setWidgetData = useWidgetStoreContext<(data: BodyMassIndexWidgetProps) => void>((store) => store.setWidgetData);
 
     const onChangeWeight = (text: string) => {
-        const re = /[+-]?([0-9]*[.])?[0-9]+/
-        if (text === "") {
+        const replacedText = text.replace(',', '.');
+        const re = /^(\d+(\.\d+)?|\.\d+)$/;
+        if (replacedText === "") {
             setWidgetData({
                 ...widgetData,
                 weight: undefined,
             });
         }
-        if (re.test(text)) {
-            const w = parseFloat(text);
+        if (re.test(replacedText)) {
+            const w = parseFloat(replacedText);
             setWidgetData({
                 ...widgetData,
                 weight: w,
@@ -59,7 +60,7 @@ export const WeightInput = () => {
             >
                 <TextInput
                     onChangeText={onChangeWeight}
-                    keyboardType='number-pad'
+                    keyboardType={Platform.OS === 'ios' ? 'decimal-pad' : 'number-pad'}
                     placeholder="Saisir le poids"
                     placeholderTextColor={pink.pink6}
                     style={{
@@ -74,9 +75,7 @@ export const WeightInput = () => {
                     maxLength={5}
                     cursorColor={pink.pink7}
                     selectionColor={pink.pink7}
-                >
-
-                </TextInput>
+                />
 
                 <View style={{
                     backgroundColor: pink.pink6,

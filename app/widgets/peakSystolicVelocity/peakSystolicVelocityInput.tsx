@@ -1,5 +1,5 @@
 import { pink, pinkDark } from "@/utils/colors";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Platform } from "react-native";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { PeakSystolicVelocityWidgetProps } from "../_widgets";
 
@@ -8,15 +8,16 @@ export const PeakSystolicVelocityInput = () => {
     const setWidgetData = useWidgetStoreContext<(data: PeakSystolicVelocityWidgetProps) => void>((store) => store.setWidgetData);
 
     const onChangeSize = (text: string) => {
-        const re = /[+-]?([0-9]*[.])?[0-9]+/
-        if (text === "") {
+        const replacedText = text.replace(',', '.');
+        const re = /^(\d+(\.\d+)?|\.\d+)$/;
+        if (replacedText === "") {
             setWidgetData({
                 ...widgetData,
                 peakSystolicVelocity: undefined,
             });
         }
-        if (re.test(text)) {
-            const mca = parseFloat(text);
+        if (re.test(replacedText)) {
+            const mca = parseFloat(replacedText);
             setWidgetData({
                 ...widgetData,
                 peakSystolicVelocity: mca,
@@ -59,7 +60,7 @@ export const PeakSystolicVelocityInput = () => {
             >
                 <TextInput
                     onChangeText={onChangeSize}
-                    keyboardType='number-pad'
+                    keyboardType={Platform.OS === 'ios' ? 'decimal-pad' : 'number-pad'}
                     placeholder="Saisir le PSV"
                     placeholderTextColor={pink.pink6}
                     style={{

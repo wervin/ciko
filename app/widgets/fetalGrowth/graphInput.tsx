@@ -22,11 +22,12 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
     const [modalVisible, setModalVisible] = useState(false);
 
     const onChangeObserved = (text: string) => {
-        const re = /[+-]?([0-9]*[.])?[0-9]+/
-        if (text === "")
+        const replacedText = text.replace(',', '.');
+        const re = /^(\d+(\.\d+)?|\.\d+)$/;
+        if (replacedText === "")
             setObserved(false, undefined);
-        else if (re.test(text))
-            setObserved(true, parseFloat(text));
+        else if (re.test(replacedText))
+            setObserved(true, parseFloat(replacedText));
     };
 
     return (
@@ -75,7 +76,7 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                 >
                     <TextInput
                         onChangeText={onChangeObserved}
-                        keyboardType='number-pad'
+                        keyboardType={Platform.OS === 'ios' ? 'decimal-pad' : 'number-pad'}
                         placeholder={placeholder}
                         placeholderTextColor={pink.pink6}
                         style={{

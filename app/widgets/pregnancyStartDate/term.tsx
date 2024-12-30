@@ -187,7 +187,7 @@ export const Term = () => {
                             textAlign: "center",
                             textAlignVertical: "center",
                             fontWeight: "700",
-                            fontSize: 16,
+                            fontSize: 15,
                             color: whiteA.whiteA12
                         }}>
                             La longueur cranio-caudale doit être comprise entre 15 et 95 mm

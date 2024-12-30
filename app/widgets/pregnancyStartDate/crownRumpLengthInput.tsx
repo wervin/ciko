@@ -7,11 +7,10 @@ export const CrownRumpLengthInput = () => {
     const widgetData = useWidgetStoreContext<PregnancyStartDateWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext<(data: PregnancyStartDateWidgetProps) => void>((store) => store.setWidgetData);
 
-    const crownRumpLength = widgetData?.crownRumpLength;
-
     const onChangeCrownRumpLength = (text: string) => {
-        const re = /[+-]?([0-9]*[.])?[0-9]+/
-        if (text === "") {
+        const replacedText = text.replace(',', '.');
+        const re = /^(\d+(\.\d+)?|\.\d+)$/;
+        if (replacedText === "") {
             setWidgetData({
                 ...widgetData,
                 isPresent: false,
@@ -19,8 +18,8 @@ export const CrownRumpLengthInput = () => {
                 crownRumpLength: undefined,
             });
         }
-        if (re.test(text)) {
-            const crl = parseFloat(text);
+        if (re.test(replacedText)) {
+            const crl = parseFloat(replacedText);
             const valid = !(crl < 15 || 95 < crl);
             setWidgetData({
                 ...widgetData,
@@ -66,13 +65,13 @@ export const CrownRumpLengthInput = () => {
             >
                 <TextInput
                     onChangeText={onChangeCrownRumpLength}
-                    keyboardType='number-pad'
+                    keyboardType={Platform.OS === 'ios' ? 'decimal-pad' : 'number-pad'}
                     placeholder="Saisir une longueur"
                     placeholderTextColor={pink.pink6}
                     style={{
                         flex: 1,
                         backgroundColor: pink.pink4,
-                        paddingHorizontal: 20,                       
+                        paddingHorizontal: 20,
                         height: 50,
                         color: pinkDark.pink3,
                         fontSize: 22,
@@ -81,9 +80,7 @@ export const CrownRumpLengthInput = () => {
                     maxLength={5}
                     cursorColor={pink.pink7}
                     selectionColor={pink.pink7}
-                >
-
-                </TextInput>
+                />
 
                 <View style={{
                     backgroundColor: pink.pink6,
