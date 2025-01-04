@@ -2,16 +2,16 @@ import { Widget } from '@/components/widget';
 import { Stack } from 'expo-router';
 import { Header } from './_components/header';
 import { View } from 'react-native';
-import { PregnancyStartDateWidget, FetalGrowthWidget, GestationalCalendarWidget, IconographyWidget, BodyMassIndexWidget, PeakSystolicVelocityWidget } from './_widgets';
+import { PregnancyStartDateWidget, FetalGrowthWidget, GestationalCalendarWidget, IconographyWidget, BodyMassIndexWidget, PeakSystolicVelocityWidget, NewbornWeightWidget } from './_widgets';
 import { WidgetStoreProvider } from '@/providers/widgetStoreProvider';
 
 export const widgets: Widget[] = [
+    PeakSystolicVelocityWidget,
     GestationalCalendarWidget,
     FetalGrowthWidget,
     PregnancyStartDateWidget,
     IconographyWidget,
     BodyMassIndexWidget,
-    PeakSystolicVelocityWidget
 ];
 
 const WidgetLayout = () => {

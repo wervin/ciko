@@ -2,11 +2,11 @@ import { blackA, pink, pinkA, pinkDark, pinkDarkA } from "@/utils/colors";
 import { View, Text } from "react-native";
 import DatePicker from "@/components/datePicker";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { FetalGrowthWidgetProps } from "../_widgets";
+import { NewbornWeightWidgetProps } from "../_widgets";
 
 export const PregnancyStartDatePicker = () => {
-    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext<(data: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
+    const widgetData = useWidgetStoreContext<NewbornWeightWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(data: NewbornWeightWidgetProps) => void>((store) => store.setWidgetData);
 
     const gestationalAge = widgetData?.gestationalAge ?? 0;
 
@@ -20,7 +20,7 @@ export const PregnancyStartDatePicker = () => {
         const d = new Date()
         const diffInMs = d.getTime() - date.getTime();
         const ga = Math.round(diffInMs / (1000 * 60 * 60 * 24)) + 14;
-        setWidgetData({ ...widgetData, gestationalAge: ga })
+        setWidgetData({ ...widgetData, gestationalAge: ga < 14 ? 14 : ga })
     }
 
     return (

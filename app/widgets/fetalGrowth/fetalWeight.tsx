@@ -17,13 +17,14 @@ export const FetalWeight = () => {
     const abdominalCircumference = widgetData?.abdominalCircumference ?? 0;
     const femurLength = widgetData?.femurLength ?? 0;
     const gestationalAge = widgetData?.gestationalAge ?? 0;
+    const gestationalAgeValid = gestationalAge >= 14 && gestationalAge <= 300;
     const referenceTable = widgetData?.referenceTable ?? ReferenceTables.Intergrowth;
 
     const isAbdominalCircumferenceValid = widgetData?.isAbdominalCircumferenceValid ?? false;
     const isHeadCircumferenceValid = widgetData?.isHeadCircumferenceValid ?? false;
     const isFemurLengthValid = widgetData?.isFemurLengthValid ?? false;
 
-    const isValid = isAbdominalCircumferenceValid && isHeadCircumferenceValid && isFemurLengthValid;
+    const isValid = isAbdominalCircumferenceValid && isHeadCircumferenceValid && isFemurLengthValid && gestationalAgeValid;
 
     const fetalWeightWithHadlock = () => {
         // EFW = 10^(1.326 +0.0107×HC + 0.0438×AC + 0.158×FL - 0.00326×AC×FL)
@@ -318,6 +319,55 @@ export const FetalWeight = () => {
                                 color: whiteA.whiteA12
                             }}>
                                 La longueur fémorale doit être renseignée
+                            </Text>
+                        </View>
+
+                        <View style={{
+                            backgroundColor: red.red9,
+                            height: 50,
+                            width: 50,
+                            borderTopRightRadius: 16,
+                            borderBottomRightRadius: 16,
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}>
+                            <CircleAlert size={24} color={whiteA.whiteA12} />
+                        </View>
+                    </View>
+                }
+
+                {
+                    !gestationalAgeValid &&
+
+                    <View style={{
+                        flexDirection: "row",
+                        height: 50,
+                        width: "100%",
+                        alignItems: "center",
+                    }}
+                    >
+                        <View
+                            style={{
+                                flex: 1,
+                                backgroundColor: red.red9,
+                                paddingHorizontal: 20,
+                                borderColor: red.red9,
+                                borderWidth: 2,
+                                borderTopLeftRadius: 16,
+                                borderBottomLeftRadius: 16,
+                                height: 50,
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}
+                        >
+                            <Text style={{
+                                textAlign: "center",
+                                textAlignVertical: "center",
+                                fontWeight: "700",
+                                fontSize: 16,
+                                color: whiteA.whiteA12
+                            }}>
+                                L'âge gestationnel n'est pas valide
                             </Text>
                         </View>
 

@@ -1,12 +1,14 @@
-import { pink, pinkDark } from "@/utils/colors";
+import { pink, pinkDark, red, whiteA } from "@/utils/colors";
 import { View, Text } from "react-native";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { PeakSystolicVelocityWidgetProps } from "../_widgets";
+import { CircleAlert } from "lucide-react-native";
 
 export const PeakSystolicVelocityMedian = () => {
     const widgetData = useWidgetStoreContext<PeakSystolicVelocityWidgetProps>((store) => store.widgetData);
 
     const gestationalAge = widgetData?.gestationalAge;
+    const gestationalAgeValid = gestationalAge >= 14 && gestationalAge <= 300;
 
     const psv = Math.exp(2.30921 + 0.0463954 * (gestationalAge / 7));
 
@@ -60,7 +62,7 @@ export const PeakSystolicVelocityMedian = () => {
                             fontWeight: "700"
                         }}
                     >
-                        {psv.toFixed(1)}
+                        {gestationalAgeValid ?psv.toFixed(1) : '-'}
                     </Text>
                 </View>
 
@@ -82,6 +84,56 @@ export const PeakSystolicVelocityMedian = () => {
                     </Text>
                 </View>
             </View>
+
+            {
+                !gestationalAgeValid &&
+
+                <View style={{
+                    flexDirection: "row",
+                    height: 50,
+                    width: "100%",
+                    alignItems: "center",
+                }}
+                >
+                    <View
+                        style={{
+                            flex: 1,
+                            backgroundColor: red.red9,
+                            paddingHorizontal: 20,
+                            borderColor: red.red9,
+                            borderWidth: 2,
+                            borderTopLeftRadius: 16,
+                            borderBottomLeftRadius: 16,
+                            height: 50,
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}
+                    >
+                        <Text style={{
+                            textAlign: "center",
+                            textAlignVertical: "center",
+                            fontWeight: "700",
+                            fontSize: 16,
+                            color: whiteA.whiteA12
+                        }}>
+                            L'âge gestationnel n'est pas valide
+                        </Text>
+                    </View>
+
+                    <View style={{
+                        backgroundColor: red.red9,
+                        height: 50,
+                        width: 50,
+                        borderTopRightRadius: 16,
+                        borderBottomRightRadius: 16,
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}>
+                        <CircleAlert size={24} color={whiteA.whiteA12} />
+                    </View>
+
+                </View>
+            }
         </View>
     );
 };

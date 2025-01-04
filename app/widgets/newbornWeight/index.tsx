@@ -1,26 +1,22 @@
 import { View } from "react-native";
 import { useEffect } from "react";
-import { GestationalAgePicker } from "@/components/gestationalAgePicker";
-import { HeadCircumferenceInput } from "./headCircumferenceInput";
-import { AbdominalCircumferenceInput } from "./abdominalCircumference";
+import { GestationalAgePicker } from "./gestationalAgePicker";
+import { WeightInput } from "./weightInput";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { FetalGrowthWidget, FetalGrowthWidgetData } from "../_widgets";
+import { NewbornWeightWidget, NewbornWeightWidgetData } from "../_widgets";
 import withScrollView from "@/app/widgets/_components/wrapper";
-import { FemurLengthInput } from "./femurLengthInput";
 import { ReferenceTableInput } from "./referenceTableInput";
-import { BiparietalDiameterInput } from "./biparietalDiameterInput";
-import { FetalWeight } from "./fetalWeight";
-import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
-import { Term } from "./term";
+import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker"
+import { SexInput } from "./sexInput"
 
-const FetalGrowth = () => {
+const NewbornWeight = () => {
     const widget = useWidgetStoreContext((store) => store.widget);
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
     useEffect(() => {
-        setWidget(FetalGrowthWidget);
-        setWidgetData(FetalGrowthWidgetData);
+        setWidget(NewbornWeightWidget);
+        setWidgetData(NewbornWeightWidgetData);
     }, []);
 
     return (
@@ -40,17 +36,13 @@ const FetalGrowth = () => {
                 gap: 10
             }}>
                 <ReferenceTableInput />
+                <SexInput />
                 <GestationalAgePicker />
                 <PregnancyStartDatePicker />
-                <Term />
-                <BiparietalDiameterInput />
-                <HeadCircumferenceInput />
-                <AbdominalCircumferenceInput />
-                <FemurLengthInput />
-                <FetalWeight />
+                <WeightInput />
             </View>
         </View>
     );
 };
 
-export default withScrollView(FetalGrowth);
+export default withScrollView(NewbornWeight);

@@ -3,7 +3,7 @@ import withScrollView from "../_components/wrapper";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useEffect } from "react";
 import { GestationalCalendarWidget, GestationalCalendarWidgetData } from "../_widgets";
-import { GestationalAgePicker } from "./gestationalAgePicker";
+import { GestationalAgePicker } from "@/components/gestationalAgePicker";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
 import { EchographyDates } from "./echographyDates";
 import { MaternityLeaveDates } from "./maternityLeaveDates";

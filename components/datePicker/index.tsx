@@ -137,56 +137,58 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                         borderBottomRightRadius: 16,
                         backgroundColor: pink.pink4,
                     }}>
-                        <FlatList
-                            data={days}
-                            initialScrollIndex={day > 4 ? day - 4 : 0}
-                            getItemLayout={(_, index) => ({
-                                length: (ITEM_HEIGHT + 1),
-                                offset: (ITEM_HEIGHT + 1) * index,
-                                index,
-                            })}
-                            keyExtractor={(item) => item.toString()}
-                            alwaysBounceHorizontal={false}
-                            alwaysBounceVertical={false}
-                            bounces={false}
-                            overScrollMode="never"
-                            showsVerticalScrollIndicator={false}
-                            ItemSeparatorComponent={() => (
-                                <View style={{ backgroundColor: pink.pink5, height: 1 }} />
-                            )}
-                            renderItem={({ item }) => (
-                                <PressableOpacity
-                                    style={{
-                                        height: ITEM_HEIGHT,
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        paddingHorizontal: 20,
-                                        backgroundColor: item === day ? pink.pink5 : pink.pink4
-                                    }}
-                                    onPress={() => {
-                                        const newDate = new Date(date);
-                                        newDate.setDate(item);
-                                        setDate(newDate);
-                                        setDayModalVisible(false);
-                                    }}
-                                >
-
-                                    <Text
+                        {days.length &&
+                            <FlatList
+                                data={days}
+                                initialScrollIndex={day > 4 ? day - 4 : 0}
+                                getItemLayout={(_, index) => ({
+                                    length: (ITEM_HEIGHT + 1),
+                                    offset: (ITEM_HEIGHT + 1) * index,
+                                    index,
+                                })}
+                                keyExtractor={(item) => item.toString()}
+                                alwaysBounceHorizontal={false}
+                                alwaysBounceVertical={false}
+                                bounces={false}
+                                overScrollMode="never"
+                                showsVerticalScrollIndicator={false}
+                                ItemSeparatorComponent={() => (
+                                    <View style={{ backgroundColor: pink.pink5, height: 1 }} />
+                                )}
+                                renderItem={({ item }) => (
+                                    <PressableOpacity
                                         style={{
-                                            color: item === day ? pinkDark.pink7 : pinkDark.pink3,
-                                            fontSize: 18,
-                                            fontWeight: "700",
-                                            textAlignVertical: "center",
+                                            height: ITEM_HEIGHT,
+                                            flexDirection: "row",
+                                            alignItems: "center",
+                                            justifyContent: "space-between",
+                                            paddingHorizontal: 20,
+                                            backgroundColor: item === day ? pink.pink5 : pink.pink4
+                                        }}
+                                        onPress={() => {
+                                            const newDate = new Date(date);
+                                            newDate.setDate(item);
+                                            setDate(newDate);
+                                            setDayModalVisible(false);
                                         }}
                                     >
-                                        {item}
-                                    </Text>
 
-                                    {item === day && <Check size={18} color={pinkDark.pink7} />}
-                                </PressableOpacity>
-                            )}
-                        />
+                                        <Text
+                                            style={{
+                                                color: item === day ? pinkDark.pink7 : pinkDark.pink3,
+                                                fontSize: 18,
+                                                fontWeight: "700",
+                                                textAlignVertical: "center",
+                                            }}
+                                        >
+                                            {item}
+                                        </Text>
+
+                                        {item === day && <Check size={18} color={pinkDark.pink7} />}
+                                    </PressableOpacity>
+                                )}
+                            />
+                        }
                     </View>
                 </Pressable>
             </Modal>
@@ -286,58 +288,60 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                         borderBottomRightRadius: 16,
                         backgroundColor: pink.pink4,
                     }}>
-                        <FlatList
-                            data={months}
-                            initialScrollIndex={(() => {
-                                return monthIndex > 3 ? monthIndex - 3 : 0;
-                            })()}
-                            getItemLayout={(_, index) => ({
-                                length: (ITEM_HEIGHT + 1),
-                                offset: (ITEM_HEIGHT + 1) * index,
-                                index,
-                            })}
-                            keyExtractor={(item) => item}
-                            alwaysBounceHorizontal={false}
-                            alwaysBounceVertical={false}
-                            bounces={false}
-                            overScrollMode="never"
-                            showsVerticalScrollIndicator={false}
-                            ItemSeparatorComponent={() => (
-                                <View style={{ backgroundColor: pink.pink5, height: 1 }} />
-                            )}
-                            renderItem={({ item, index }) => (
-                                <PressableOpacity
-                                    style={{
-                                        height: ITEM_HEIGHT,
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        paddingHorizontal: 20,
-                                        backgroundColor: item === monthName ? pink.pink5 : pink.pink4
-                                    }}
-                                    onPress={() => {
-                                        const newDate = new Date(date);
-                                        newDate.setMonth(index);
-                                        setDate(newDate);
-                                        setMonthModalVisible(false);
-                                    }}
-                                >
-
-                                    <Text
+                        {months.length &&
+                            <FlatList
+                                data={months}
+                                initialScrollIndex={(() => {
+                                    return monthIndex > 3 ? monthIndex - 3 : 0;
+                                })()}
+                                getItemLayout={(_, index) => ({
+                                    length: (ITEM_HEIGHT + 1),
+                                    offset: (ITEM_HEIGHT + 1) * index,
+                                    index,
+                                })}
+                                keyExtractor={(item) => item}
+                                alwaysBounceHorizontal={false}
+                                alwaysBounceVertical={false}
+                                bounces={false}
+                                overScrollMode="never"
+                                showsVerticalScrollIndicator={false}
+                                ItemSeparatorComponent={() => (
+                                    <View style={{ backgroundColor: pink.pink5, height: 1 }} />
+                                )}
+                                renderItem={({ item, index }) => (
+                                    <PressableOpacity
                                         style={{
-                                            color: item === monthName ? pinkDark.pink7 : pinkDark.pink3,
-                                            fontSize: 18,
-                                            fontWeight: "700",
-                                            textAlignVertical: "center",
+                                            height: ITEM_HEIGHT,
+                                            flexDirection: "row",
+                                            alignItems: "center",
+                                            justifyContent: "space-between",
+                                            paddingHorizontal: 20,
+                                            backgroundColor: item === monthName ? pink.pink5 : pink.pink4
+                                        }}
+                                        onPress={() => {
+                                            const newDate = new Date(date);
+                                            newDate.setMonth(index);
+                                            setDate(newDate);
+                                            setMonthModalVisible(false);
                                         }}
                                     >
-                                        {item}
-                                    </Text>
 
-                                    {item === monthName && <Check size={18} color={pinkDark.pink7} />}
-                                </PressableOpacity>
-                            )}
-                        />
+                                        <Text
+                                            style={{
+                                                color: item === monthName ? pinkDark.pink7 : pinkDark.pink3,
+                                                fontSize: 18,
+                                                fontWeight: "700",
+                                                textAlignVertical: "center",
+                                            }}
+                                        >
+                                            {item}
+                                        </Text>
+
+                                        {item === monthName && <Check size={18} color={pinkDark.pink7} />}
+                                    </PressableOpacity>
+                                )}
+                            />
+                        }
                     </View>
                 </Pressable>
             </Modal>
@@ -441,56 +445,58 @@ const DatePicker = ({ date, setDate }: DatePickerProps) => {
                         borderBottomRightRadius: 16,
                         backgroundColor: pink.pink4,
                     }}>
-                        <FlatList
-                            data={years}
-                            initialScrollIndex={year > (currentYear - 47) ? year - (currentYear - 47) : 0}
-                            getItemLayout={(_, index) => ({
-                                length: (ITEM_HEIGHT + 1),
-                                offset: (ITEM_HEIGHT + 1) * index,
-                                index,
-                            })}
-                            keyExtractor={(item) => item.toString()}
-                            alwaysBounceHorizontal={false}
-                            alwaysBounceVertical={false}
-                            bounces={false}
-                            overScrollMode="never"
-                            showsVerticalScrollIndicator={false}
-                            ItemSeparatorComponent={() => (
-                                <View style={{ backgroundColor: pink.pink5, height: 1 }} />
-                            )}
-                            renderItem={({ item }) => (
-                                <PressableOpacity
-                                    style={{
-                                        height: ITEM_HEIGHT,
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        paddingHorizontal: 20,
-                                        backgroundColor: item === year ? pink.pink5 : pink.pink4
-                                    }}
-                                    onPress={() => {
-                                        const newDate = new Date(date);
-                                        newDate.setFullYear(item);
-                                        setDate(newDate);
-                                        setYearModalVisible(false);
-                                    }}
-                                >
-
-                                    <Text
+                        {years.length &&
+                            <FlatList
+                                data={years}
+                                initialScrollIndex={year > (currentYear - 47) ? year - (currentYear - 47) : 0}
+                                getItemLayout={(_, index) => ({
+                                    length: (ITEM_HEIGHT + 1),
+                                    offset: (ITEM_HEIGHT + 1) * index,
+                                    index,
+                                })}
+                                keyExtractor={(item) => item.toString()}
+                                alwaysBounceHorizontal={false}
+                                alwaysBounceVertical={false}
+                                bounces={false}
+                                overScrollMode="never"
+                                showsVerticalScrollIndicator={false}
+                                ItemSeparatorComponent={() => (
+                                    <View style={{ backgroundColor: pink.pink5, height: 1 }} />
+                                )}
+                                renderItem={({ item }) => (
+                                    <PressableOpacity
                                         style={{
-                                            color: item === year ? pinkDark.pink7 : pinkDark.pink3,
-                                            fontSize: 18,
-                                            fontWeight: "700",
-                                            textAlignVertical: "center",
+                                            height: ITEM_HEIGHT,
+                                            flexDirection: "row",
+                                            alignItems: "center",
+                                            justifyContent: "space-between",
+                                            paddingHorizontal: 20,
+                                            backgroundColor: item === year ? pink.pink5 : pink.pink4
+                                        }}
+                                        onPress={() => {
+                                            const newDate = new Date(date);
+                                            newDate.setFullYear(item);
+                                            setDate(newDate);
+                                            setYearModalVisible(false);
                                         }}
                                     >
-                                        {item}
-                                    </Text>
 
-                                    {item === year && <Check size={18} color={pinkDark.pink7} />}
-                                </PressableOpacity>
-                            )}
-                        />
+                                        <Text
+                                            style={{
+                                                color: item === year ? pinkDark.pink7 : pinkDark.pink3,
+                                                fontSize: 18,
+                                                fontWeight: "700",
+                                                textAlignVertical: "center",
+                                            }}
+                                        >
+                                            {item}
+                                        </Text>
+
+                                        {item === year && <Check size={18} color={pinkDark.pink7} />}
+                                    </PressableOpacity>
+                                )}
+                            />
+                        }
                     </View>
                 </Pressable>
             </Modal>

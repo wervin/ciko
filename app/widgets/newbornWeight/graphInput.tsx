@@ -1,9 +1,9 @@
 import { Fragment, useState } from "react";
 import { View, Text, TextInput, Platform } from "react-native";
 import { GraphModal } from "./graphModal";
-import { pink, pinkDark, red, whiteA } from "@/utils/colors";
+import { pink, pinkDark } from "@/utils/colors";
 import PressableOpacity from "@/components/pressableOpacity";
-import { CircleAlert, LineChart } from "lucide-react-native";
+import { LineChart } from "lucide-react-native";
 import { ReferencePoint } from "./referenceTables";
 
 interface GraphInputProps {
@@ -20,8 +20,6 @@ interface GraphInputProps {
 
 export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge, percentileLabel, observed, isObservedValid, setObserved }: GraphInputProps) => {
     const [modalVisible, setModalVisible] = useState(false);
-
-    const gestationalAgeValid = gestationalAge >= 14 && gestationalAge <= 300;
 
     const onChangeObserved = (text: string) => {
         const replacedText = text.replace(',', '.');
@@ -95,7 +93,7 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                         selectionColor={pink.pink7}
                     />
                     {
-                        isObservedValid && gestationalAgeValid &&
+                        isObservedValid &&
 
                         <View style={{
                             height: 50,
@@ -161,56 +159,6 @@ export const GraphInput = ({ title, unit, placeholder, graphData, gestationalAge
                         </Text>
                     </View>
                 </View>
-
-                {
-                !gestationalAgeValid &&
-
-                <View style={{
-                    flexDirection: "row",
-                    height: 50,
-                    width: "100%",
-                    alignItems: "center",
-                }}
-                >
-                    <View
-                        style={{
-                            flex: 1,
-                            backgroundColor: red.red9,
-                            paddingHorizontal: 20,
-                            borderColor: red.red9,
-                            borderWidth: 2,
-                            borderTopLeftRadius: 16,
-                            borderBottomLeftRadius: 16,
-                            height: 50,
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}
-                    >
-                        <Text style={{
-                            textAlign: "center",
-                            textAlignVertical: "center",
-                            fontWeight: "700",
-                            fontSize: 16,
-                            color: whiteA.whiteA12
-                        }}>
-                            L'âge gestationnel n'est pas valide
-                        </Text>
-                    </View>
-
-                    <View style={{
-                        backgroundColor: red.red9,
-                        height: 50,
-                        width: 50,
-                        borderTopRightRadius: 16,
-                        borderBottomRightRadius: 16,
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}>
-                        <CircleAlert size={24} color={whiteA.whiteA12} />
-                    </View>
-
-                </View>
-            }
             </View>
         </Fragment>
     );

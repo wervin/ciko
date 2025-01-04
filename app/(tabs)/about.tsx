@@ -1,12 +1,8 @@
-import { pinkDark, pink, purpleDark, purple, violet, violetDark } from '@/utils/colors';
-import { View, Text, Pressable, Linking, Alert, Platform } from 'react-native';
-import { HandCoins, HandHeart, Info, Bug, CircleUser, LucideIcon } from 'lucide-react-native';
+import { pinkDark, pink } from '@/utils/colors';
+import { View, Text } from 'react-native';
+import { Info, LucideIcon } from 'lucide-react-native';
 import { ComponentType } from 'react';
 import withScrollView from '../_components/wrapper';
-import { Shadow } from 'react-native-shadow-2';
-import PressableOpacity from '@/components/pressableOpacity';
-
-// Ciko offre un accès rapide à un ensemble d'outils d'obstétrique pour les professionnels de la santé.
 
 interface AboutCardProps {
     label: string;

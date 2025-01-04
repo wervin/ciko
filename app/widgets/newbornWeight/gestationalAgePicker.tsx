@@ -2,7 +2,7 @@ import { blackA, pink, pinkDark } from "@/utils/colors";
 import { Check, ChevronDown, X } from "lucide-react-native";
 import { useState } from "react";
 import { View, Text, Modal, FlatList, Pressable } from "react-native";
-import { FetalGrowthWidgetProps } from "../_widgets";
+import { NewbornWeightWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import PressableOpacity from "@/components/pressableOpacity";
 
@@ -19,8 +19,8 @@ interface WeekModalProps {
 const ITEM_HEIGHT = 50;
 
 const DayModal = ({ visible, setVisible }: DayModalProps) => {
-    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext<(data: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
+    const widgetData = useWidgetStoreContext<NewbornWeightWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(data: NewbornWeightWidgetProps) => void>((store) => store.setWidgetData);
 
     const days = Array.from({ length: 7 }, (_, i) => i);
     const day = widgetData?.gestationalAge ? widgetData.gestationalAge % 7 : 0;
@@ -149,8 +149,8 @@ const DayModal = ({ visible, setVisible }: DayModalProps) => {
 };
 
 const WeekModal = ({ visible, setVisible }: WeekModalProps) => {
-    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
-    const setWidgetData = useWidgetStoreContext<(data: FetalGrowthWidgetProps) => void>((store) => store.setWidgetData);
+    const widgetData = useWidgetStoreContext<NewbornWeightWidgetProps>((store) => store.widgetData);
+    const setWidgetData = useWidgetStoreContext<(data: NewbornWeightWidgetProps) => void>((store) => store.setWidgetData);
 
     const weeks = Array.from({ length: 41 }, (_, i) => i + 2);
     const day = widgetData?.gestationalAge ? widgetData.gestationalAge % 7 : 0;
@@ -282,7 +282,7 @@ export const GestationalAgePicker = () => {
     const [weekModalVisible, setWeekModalVisible] = useState(false);
     const [dayModalVisible, setDayModalVisible] = useState(false);
 
-    const widgetData = useWidgetStoreContext<FetalGrowthWidgetProps>((store) => store.widgetData);
+    const widgetData = useWidgetStoreContext<NewbornWeightWidgetProps>((store) => store.widgetData);
 
     return (
         <>

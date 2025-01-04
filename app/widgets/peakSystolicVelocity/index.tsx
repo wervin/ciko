@@ -3,7 +3,7 @@ import withScrollView from "../_components/wrapper";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { useEffect } from "react";
 import { PeakSystolicVelocityWidget, PeakSystolicVelocityWidgetData } from "../_widgets";
-import { GestationalAgePicker } from "./gestationalAgePicker";
+import { GestationalAgePicker } from "@/components/gestationalAgePicker";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
 import { PeakSystolicVelocityInput } from "./peakSystolicVelocityInput";
 import { PeakSystolicVelocityMedian } from "./peakSystolicVelocityMedian";

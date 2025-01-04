@@ -4,3 +4,4 @@ export { GestationalCalendarWidget, GestationalCalendarWidgetData, GestationalCa
 export { IconographyWidget, IconographyWidgetData, IconographyWidgetProps } from './iconographyWidget';
 export { BodyMassIndexWidget, BodyMassIndexWidgetData, BodyMassIndexWidgetProps } from './bodyMassIndexWidget';
 export { PeakSystolicVelocityWidget, PeakSystolicVelocityWidgetData, PeakSystolicVelocityWidgetProps } from './peakSystolicVelocityWidget';
+export { NewbornWeightWidget, NewbornWeightWidgetData, NewbornWeightWidgetProps } from './newbornWeightWidget';

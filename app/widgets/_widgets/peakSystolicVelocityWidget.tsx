@@ -25,7 +25,7 @@ export const PeakSystolicVelocityWidgetData: PeakSystolicVelocityWidgetProps = {
 
 export const PeakSystolicVelocityWidget: Widget = {
     id: randomUUID(),
-    title: "Pic Systolique de Vélocité de l'Artère Cérébrale Moyenne",
+    title: "Analyse du Pic Systolique",
     description: () => <PeakSystolicVelocityWidgetDescription />,
     footer: () => <View style={{ borderTopColor: pink.pink6, borderTopWidth: 1 }} />,
     icon: () => <PeakSystolicVelocityIcon color={pinkDark.pink7} />,
