@@ -18,6 +18,8 @@ const FetalGrowth = () => {
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
+    const weeks = Array.from({ length: 41 }, (_, i) => i + 2);
+
     useEffect(() => {
         setWidget(FetalGrowthWidget);
         setWidgetData(FetalGrowthWidgetData);
@@ -40,7 +42,7 @@ const FetalGrowth = () => {
                 gap: 10
             }}>
                 <ReferenceTableInput />
-                <GestationalAgePicker />
+                <GestationalAgePicker weeks={weeks}/>
                 <PregnancyStartDatePicker />
                 <Term />
                 <BiparietalDiameterInput />

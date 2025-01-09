@@ -15,7 +15,7 @@ export interface NewbornWeightWidgetProps {
 };
 
 export const NewbornWeightWidgetData: NewbornWeightWidgetProps = {
-    referenceTable: ReferenceTables.Audipog,
+    referenceTable: ReferenceTables.Intergrowth,
     sex: Sex.Male,
     isWeightValid: false,
     gestationalAge: 294,

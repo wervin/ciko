@@ -15,6 +15,8 @@ const GestationalCalendar = () => {
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
+    const weeks = Array.from({ length: 41 }, (_, i) => i + 2);
+
     useEffect(() => {
         setWidget(GestationalCalendarWidget);
         setWidgetData(GestationalCalendarWidgetData);
@@ -36,7 +38,7 @@ const GestationalCalendar = () => {
                 padding: 10,
                 gap: 10
             }}>
-                <GestationalAgePicker />
+                <GestationalAgePicker weeks={weeks} />
                 <PregnancyStartDatePicker />
                 <Term />
                 <EchographyDates />

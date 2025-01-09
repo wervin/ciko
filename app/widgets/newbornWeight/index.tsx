@@ -1,18 +1,19 @@
 import { View } from "react-native";
 import { useEffect } from "react";
-import { GestationalAgePicker } from "./gestationalAgePicker";
 import { WeightInput } from "./weightInput";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { NewbornWeightWidget, NewbornWeightWidgetData } from "../_widgets";
 import withScrollView from "@/app/widgets/_components/wrapper";
-import { ReferenceTableInput } from "./referenceTableInput";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker"
 import { SexInput } from "./sexInput"
+import { GestationalAgePicker } from "@/components/gestationalAgePicker";
 
 const NewbornWeight = () => {
     const widget = useWidgetStoreContext((store) => store.widget);
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
+
+    const weeks = Array.from({ length: 19 }, (_, i) => i + 24);
 
     useEffect(() => {
         setWidget(NewbornWeightWidget);
@@ -35,9 +36,9 @@ const NewbornWeight = () => {
                 padding: 10,
                 gap: 10
             }}>
-                <ReferenceTableInput />
+                {/* <ReferenceTableInput /> */}
                 <SexInput />
-                <GestationalAgePicker />
+                <GestationalAgePicker weeks={weeks} />
                 <PregnancyStartDatePicker />
                 <WeightInput />
             </View>

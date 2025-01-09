@@ -12,6 +12,7 @@ export const widgets: Widget[] = [
     PregnancyStartDateWidget,
     IconographyWidget,
     BodyMassIndexWidget,
+    NewbornWeightWidget
 ];
 
 const WidgetLayout = () => {

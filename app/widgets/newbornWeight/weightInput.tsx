@@ -1,7 +1,8 @@
 import { NewbornWeightWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-// import { ReferenceTables, computeIntergrowthGraphWeight, computeIntergrowthPercentileWeight, computeOmsGraphWeight, computeOmsPercentileWeight, updateGraph } from "./referenceTables";
+import { ReferenceTables, computeIntergrowthPercentileBirthWeight } from "./referenceTables";
 import { GraphInput } from "./graphInput";
+import { Sex } from "./sexInput";
 
 
 export const WeightInput = () => {
@@ -10,7 +11,8 @@ export const WeightInput = () => {
 
     const isWeightValid = widgetData?.isWeightValid ?? false;
     const weight = widgetData?.weight ?? 0;
-    // const referenceTable = widgetData?.referenceTable ?? ReferenceTables.Intergrowth;
+    const sex = widgetData?.sex ?? Sex.Male;
+    const referenceTable = widgetData?.referenceTable ?? ReferenceTables.Intergrowth;
     const gestationalAge = widgetData?.gestationalAge ?? 0;
 
     // const graphData = referenceTable === ReferenceTables.Intergrowth ?
@@ -30,11 +32,9 @@ export const WeightInput = () => {
 
     // updateGraph(graphData, gestationalAge, weight);
 
-    // const weightPercentile = referenceTable === ReferenceTables.Intergrowth ?
-    //     computeIntergrowthPercentileWeight(gestationalAge / 7, weight) :
-    //     computeOmsPercentileWeight(gestationalAge / 7, weight);
-    
-    const weightPercentile = 42;
+    const weightPercentile = referenceTable === ReferenceTables.Intergrowth ?
+        computeIntergrowthPercentileBirthWeight(gestationalAge, weight, sex) :
+        0;
 
     const weightPercentileLabel = weightPercentile < 1 ?
         '<1%'

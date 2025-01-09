@@ -5,14 +5,17 @@ import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import React from "react";
 import { DropDownButton } from "../dropDownButton";
 
-export const GestationalAgePicker = () => {
+interface GestationalAgePickerProps {
+    weeks: number[];
+};
+
+export const GestationalAgePicker = ({ weeks }: GestationalAgePickerProps) => {
 
     const widgetData = useWidgetStoreContext<GestationalCalendarWidgetProps>((store) => store.widgetData);
     const setWidgetData = useWidgetStoreContext<(data: GestationalCalendarWidgetProps) => void>((store) => store.setWidgetData);
     const day = widgetData?.gestationalAge ? Math.abs(widgetData.gestationalAge % 7) : 0;
     const week = widgetData?.gestationalAge ? Math.trunc(widgetData.gestationalAge / 7) : 0;
 
-    const weeks = Array.from({ length: 41 }, (_, i) => i + 2);
     const weekInitialScrollIndex = week > 42 ? 0 : week > 5 ? week - 5 : 0;
     const weekButtonLabel = `${week} SA`;
     const weekModalLabel = "Semaine Aménorrhée";

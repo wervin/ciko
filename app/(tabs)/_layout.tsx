@@ -96,6 +96,11 @@ export default function TabLayout() {
     >
       <Tabs.Screen
         name="index"
+        listeners={{
+          focus: () => {
+            setCurrentIndex(TabBarIndex.Widgets);
+          }
+        }}
         options={{
           tabBarButton: (props) =>
             <TabBarAnimatedButton
@@ -110,6 +115,11 @@ export default function TabLayout() {
       />
       <Tabs.Screen
         name="about"
+        listeners={{
+          focus: () => {
+            setCurrentIndex(TabBarIndex.About);
+          }
+        }}
         options={{
           tabBarButton: (props) =>
             <TabBarAnimatedButton

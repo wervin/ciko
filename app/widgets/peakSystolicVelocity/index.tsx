@@ -15,6 +15,8 @@ const Iconography = () => {
     const setWidget = useWidgetStoreContext((store) => store.setWidget);
     const setWidgetData = useWidgetStoreContext((store) => store.setWidgetData);
 
+    const weeks = Array.from({ length: 41 }, (_, i) => i + 2);
+
     useEffect(() => {
         setWidget(PeakSystolicVelocityWidget);
         setWidgetData(PeakSystolicVelocityWidgetData);
@@ -36,7 +38,7 @@ const Iconography = () => {
                 padding: 10,
                 gap: 10
             }}>
-                <GestationalAgePicker />
+                <GestationalAgePicker weeks={weeks} />
                 <PregnancyStartDatePicker />
                 <PeakSystolicVelocityInput />
                 <PeakSystolicVelocityMedian />
