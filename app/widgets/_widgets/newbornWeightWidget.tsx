@@ -25,12 +25,10 @@ export const NewbornWeightWidgetData: NewbornWeightWidgetProps = {
 const NewbornWeightWidgetDescription = () => {
     return (
         <Text style={{ fontSize: 18, color: pinkDark.pink3 }}>
-            <Text>Ce calculateur permet déterminer les percentiles des biométries fœtales et d'estimer le poids fœtal à partir des mesures échographiques telles que le périmètre crânien, le périmètre abdominal et la longueur fémorale. Ce calculateur se base sur la formule proposée par </Text>
-            <Text style={{ fontWeight: "700", color: pinkDark.pink7, textDecorationLine: 'underline' }} onPress={() => Linking.openURL('https://pubmed.ncbi.nlm.nih.gov/3881966/')}>Hadlock</Text>
-            <Text>. Les courbes de référence pour déterminer les percentiles sont basées sur les résultats d'</Text>
-            <Text style={{ fontWeight: "700", color: pinkDark.pink7, textDecorationLine: 'underline' }} onPress={() => Linking.openURL('https://pubmed.ncbi.nlm.nih.gov/32086966/')}>Intergrowth-21st</Text>
-            <Text> et de l'</Text>
-            <Text style={{ fontWeight: "700", color: pinkDark.pink7, textDecorationLine: 'underline' }} onPress={() => Linking.openURL('https://pubmed.ncbi.nlm.nih.gov/28118360/')}>OMS</Text>
+            <Text>Ce calculateur permet déterminer les percentiles du poids à la naissance. </Text>
+            <Text>Les courbes de référence pour déterminer les percentiles sont basées sur les résultats d'</Text>
+            <Text style={{ fontWeight: "700", color: pinkDark.pink7, textDecorationLine: 'underline' }} onPress={() => Linking.openURL('https://pubmed.ncbi.nlm.nih.gov/25209487/')}>Intergrowth-21st</Text>
+            <Text>. Les courbes de référence d'Audipog ne sont pas disponibles pour le moment</Text>
         </Text>
     );
 };

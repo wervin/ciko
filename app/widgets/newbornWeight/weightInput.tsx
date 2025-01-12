@@ -1,9 +1,8 @@
 import { NewbornWeightWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
-import { ReferenceTables, computeIntergrowthPercentileBirthWeight } from "./referenceTables";
+import { ReferenceTables, computeIntergrowthPercentileBirthWeight, computeIntergrowthGraphBirthWeight } from "./referenceTables";
 import { GraphInput } from "./graphInput";
 import { Sex } from "./sexInput";
-
 
 export const WeightInput = () => {
     const widgetData = useWidgetStoreContext<NewbornWeightWidgetProps>((store) => store.widgetData);
@@ -15,22 +14,8 @@ export const WeightInput = () => {
     const referenceTable = widgetData?.referenceTable ?? ReferenceTables.Intergrowth;
     const gestationalAge = widgetData?.gestationalAge ?? 0;
 
-    // const graphData = referenceTable === ReferenceTables.Intergrowth ?
-    //     computeIntergrowthGraphWeight(Math.trunc(gestationalAge / 7)) :
-    //     computeOmsGraphWeight(Math.trunc(gestationalAge / 7));
-
-    const graphData = [{
-        gaDay: 42,
-        quantile05: 42,
-        quantile10: 42,
-        quantile25: 42,
-        quantile50: 42,
-        quantile75: 42,
-        quantile90: 42,
-        quantile95: 42,
-    }];
-
-    // updateGraph(graphData, gestationalAge, weight);
+    const graphData = referenceTable === ReferenceTables.Intergrowth ?
+        computeIntergrowthGraphBirthWeight(gestationalAge, sex) : undefined;
 
     const weightPercentile = referenceTable === ReferenceTables.Intergrowth ?
         computeIntergrowthPercentileBirthWeight(gestationalAge, weight, sex) :

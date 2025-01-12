@@ -7,6 +7,7 @@ import withScrollView from "@/app/widgets/_components/wrapper";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker"
 import { SexInput } from "./sexInput"
 import { GestationalAgePicker } from "@/components/gestationalAgePicker";
+import { ReferenceTableInput } from "./referenceTableInput";
 
 const NewbornWeight = () => {
     const widget = useWidgetStoreContext((store) => store.widget);
@@ -36,7 +37,7 @@ const NewbornWeight = () => {
                 padding: 10,
                 gap: 10
             }}>
-                {/* <ReferenceTableInput /> */}
+                <ReferenceTableInput />
                 <SexInput />
                 <GestationalAgePicker weeks={weeks} />
                 <PregnancyStartDatePicker />

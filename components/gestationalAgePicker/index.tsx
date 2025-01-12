@@ -16,7 +16,7 @@ export const GestationalAgePicker = ({ weeks }: GestationalAgePickerProps) => {
     const day = widgetData?.gestationalAge ? Math.abs(widgetData.gestationalAge % 7) : 0;
     const week = widgetData?.gestationalAge ? Math.trunc(widgetData.gestationalAge / 7) : 0;
 
-    const weekInitialScrollIndex = week > 42 ? 0 : week > 5 ? week - 5 : 0;
+    const weekInitialScrollIndex = week > (weeks[0] + weeks.length - 1) ? 0 : week > weeks[0] + 3 ? week - weeks[0] + 3 : 0;
     const weekButtonLabel = `${week} SA`;
     const weekModalLabel = "Semaine Aménorrhée";
     const weekOnPress = (item: number) => {

@@ -14,15 +14,17 @@ interface PressableOpacityProps extends PressableProps {
 
 const PressableOpacity: React.FC<PressableOpacityProps> = ({
   children,
+  disabled,
   style,
   activeOpacity = 0.5,
   ...rest
 }) => {
   return (
     <Pressable
+      disabled={disabled}
       style={({ pressed }) => [
         style,
-        { opacity: pressed ? activeOpacity : 1 },
+        { opacity: pressed || disabled ? activeOpacity : 1 },
       ]}
       {...rest}
     >

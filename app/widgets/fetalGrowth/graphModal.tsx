@@ -3,7 +3,7 @@ import { blackA, pink, pinkDark, purple, red } from "@/utils/colors";
 import { X } from "lucide-react-native";
 import { Modal, View, Text } from "react-native";
 import { GestureHandlerRootView, HandlerStateChangeEvent, State, TapGestureHandler, TapGestureHandlerEventPayload } from "react-native-gesture-handler";
-import { ReferencePoint } from "./referenceTables";
+import { ReferencePoint, updateGraph } from "./referenceTables";
 import { CartesianChart, ChartPressState, Line, PointsArray, Scatter, useChartPressState } from "victory-native";
 import { DashPathEffect, RoundedRect, Skia, Circle, Text as SkiaText, useFont } from "@shopify/react-native-skia";
 import { Fragment } from "react";
@@ -331,6 +331,8 @@ export const GraphModal = ({ title, visible, setVisible, graphData, yUnit, gesta
         if (event.nativeEvent.state === State.END) {
         }
     };
+
+    updateGraph(graphData, gestationalAge, observed);
 
     return (
         <Modal
