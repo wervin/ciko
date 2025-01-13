@@ -6,7 +6,7 @@ import { FetalGrowthWidgetProps } from "../_widgets";
 import { ReferenceTables, computeIntergrowthGraphEstimatedFetalWeight, computeIntergrowthPercentileEstimatedFetalWeight, computeOmsGraphEstimatedFetalWeight, computeOmsPercentileEstimatedFetalWeight, updateGraph } from "./referenceTables";
 import PressableOpacity from "@/components/pressableOpacity";
 import { Fragment, useState } from "react";
-import { GraphModal } from "./graphModal";
+import { GraphModal } from "../../../components/graphInput/graphModal";
 
 export const FetalWeight = () => {
     const [modalVisible, setModalVisible] = useState(false);

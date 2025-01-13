@@ -1,8 +1,8 @@
 import { NewbornWeightWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { ReferenceTables, computeIntergrowthPercentileBirthWeight, computeIntergrowthGraphBirthWeight } from "./referenceTables";
-import { GraphInput } from "./graphInput";
 import { Sex } from "./sexInput";
+import { GraphInput } from "@/components/graphInput";
 
 export const WeightInput = () => {
     const widgetData = useWidgetStoreContext<NewbornWeightWidgetProps>((store) => store.widgetData);

@@ -1,7 +1,7 @@
 import { FetalGrowthWidgetProps } from "../_widgets";
 import { useWidgetStoreContext } from "@/providers/widgetStoreProvider";
 import { ReferenceTables, computeIntergrowthGraphFemurLength, computeIntergrowthPercentileFemurLength, computeOmsGraphFemurLength, computeOmsPercentileFemurLength, updateGraph } from "./referenceTables";
-import { GraphInput } from "./graphInput";
+import { GraphInput } from "../../../components/graphInput";
 
 
 export const FemurLengthInput = () => {

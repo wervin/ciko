@@ -4,7 +4,7 @@ import { GraphModal } from "./graphModal";
 import { pink, pinkDark, red, whiteA } from "@/utils/colors";
 import PressableOpacity from "@/components/pressableOpacity";
 import { CircleAlert, LineChart } from "lucide-react-native";
-import { ReferencePoint } from "./referenceTables";
+import { ReferencePoint } from "../../app/widgets/fetalGrowth/referenceTables";
 
 interface GraphInputProps {
     title: string;
