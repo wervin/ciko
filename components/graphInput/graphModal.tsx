@@ -1,12 +1,12 @@
 import PressableOpacity from "@/components/pressableOpacity";
 import { blackA, pink, pinkDark, purple, red } from "@/utils/colors";
 import { X } from "lucide-react-native";
-import { Modal, View, Text } from "react-native";
+import { Modal, View, Text, LayoutChangeEvent } from "react-native";
 import { GestureHandlerRootView, HandlerStateChangeEvent, State, TapGestureHandler, TapGestureHandlerEventPayload } from "react-native-gesture-handler";
 import { ReferencePoint, updateGraph } from "../../app/widgets/fetalGrowth/referenceTables";
-import { CartesianChart, ChartPressState, Line, PointsArray, Scatter, useChartPressState } from "victory-native";
+import { CartesianChart, ChartBounds, ChartPressState, Line, PointsArray, Scatter, useChartPressState } from "victory-native";
 import { DashPathEffect, RoundedRect, Skia, Circle, Text as SkiaText, useFont } from "@shopify/react-native-skia";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { SharedValue, useDerivedValue } from "react-native-reanimated";
 
 interface GraphState {
@@ -48,6 +48,7 @@ interface GraphProps {
     gestationalAge: number;
     percentileLabel: string;
     observed: number;
+    dimensions: Dimensions;
 };
 
 interface GraphModalProps {
@@ -225,7 +226,7 @@ const GraphObservedToolTip = ({ percentileLabel, gestationalAge, observed, point
     );
 }
 
-const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: GraphProps) => {
+const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel, dimensions }: GraphProps) => {
     const font = useFont(require('@/assets/fonts/SpaceMono-Regular.ttf'), 12);
 
     const gaWeek = Math.trunc(gestationalAge / 7) * 7;
@@ -246,81 +247,91 @@ const Graph = ({ graphData, yUnit, gestationalAge, observed, percentileLabel }: 
 
     return (
         <View>
-            <View style={{ height: 300, minWidth: 300, borderColor: pink.pink6, borderWidth: 1, borderRadius: 16 }}>
-                <CartesianChart
-                    data={graphData}
-                    xKey="gaDay"
-                    yKeys={[
-                        "observed",
-                        "quantile05",
-                        "quantile10",
-                        "quantile25",
-                        "quantile50",
-                        "quantile75",
-                        "quantile90",
-                        "quantile95"
-                    ]}
-                    padding={{ left: 5 }}
-                    xAxis={{
-                        font: font,
-                        labelColor: pinkDark.pink7,
-                        tickCount: 3,
-                        tickValues: [gaWeek - 7, gaWeek, gaWeek + 7],
-                        lineColor: pink.pink6,
-                        lineWidth: 1,
-                        formatXLabel: (label) => `${Math.trunc(label / 7)}SA`
-                    }}
-                    yAxis={[{
-                        font: font,
-                        labelColor: pinkDark.pink7,
-                        lineColor: pink.pink6,
-                        lineWidth: 1,
-                        formatYLabel: (label) => `${label}${yUnit}`
-                    }]}
-                    domain={{ x: [gaWeek - 10, gaWeek + 10] }}
-                    chartPressState={state}
-                >
-                    {({ points }) => (
-                        <>
-                            <Line points={points.quantile05} color={purple.purple9} strokeWidth={2} />
-                            <Line points={points.quantile10} color={purple.purple8} strokeWidth={2}>
-                                <DashPathEffect intervals={[8, 4]} phase={0} />
-                            </Line>
-                            <Line points={points.quantile25} color={purple.purple7} strokeWidth={2}>
-                                <DashPathEffect intervals={[4, 3]} phase={0} />
-                            </Line>
-                            <Line points={points.quantile50} color={pink.pink10} strokeWidth={2} />
-                            <Line points={points.quantile75} color={red.red7} strokeWidth={2} >
-                                <DashPathEffect intervals={[4, 3]} phase={0} />
-                            </Line>
-                            <Line points={points.quantile90} color={red.red8} strokeWidth={2} >
-                                <DashPathEffect intervals={[8, 4]} phase={0} />
-                            </Line>
-                            <Line points={points.quantile95} color={red.red9} strokeWidth={2} />
-                            {
-                                isActive ?
-                                    <GraphPercentileToolTip
-                                        state={state}
-                                        yUnit={yUnit}
-                                    />
-                                    :
-                                    <GraphObservedToolTip
-                                        percentileLabel={percentileLabel}
-                                        gestationalAge={gestationalAge}
-                                        observed={observed}
-                                        pointsObserved={points.observed}
-                                        yUnit={yUnit}
-                                    />
-                            }
-                        </>
-                    )}
-                </CartesianChart>
+            <View style={{ height: 300, borderColor: pink.pink6, borderWidth: 1, borderRadius: 16 }}>
+                {
+                    dimensions.width != 0 &&
+                    <CartesianChart
+                        data={graphData}
+                        xKey="gaDay"
+                        yKeys={[
+                            "observed",
+                            "quantile05",
+                            "quantile10",
+                            "quantile25",
+                            "quantile50",
+                            "quantile75",
+                            "quantile90",
+                            "quantile95"
+                        ]}
+                        padding={{ left: 5 }}
+                        xAxis={{
+                            font: font,
+                            labelColor: pinkDark.pink7,
+                            tickCount: 3,
+                            tickValues: [gaWeek - 7, gaWeek, gaWeek + 7],
+                            lineColor: pink.pink6,
+                            lineWidth: 1,
+                            formatXLabel: (label) => `${Math.trunc(label / 7)}SA`
+                        }}
+                        yAxis={[{
+                            font: font,
+                            labelColor: pinkDark.pink7,
+                            lineColor: pink.pink6,
+                            lineWidth: 1,
+                            formatYLabel: (label) => `${label}${yUnit}`
+                        }]}
+                        domain={{ x: [gaWeek - 10, gaWeek + 10] }}
+                        chartPressState={state}
+                    >
+                        {({ points }) => (
+                            <>
+                                <Line points={points.quantile05} color={purple.purple9} strokeWidth={2} />
+                                <Line points={points.quantile10} color={purple.purple8} strokeWidth={2}>
+                                    <DashPathEffect intervals={[8, 4]} phase={0} />
+                                </Line>
+                                <Line points={points.quantile25} color={purple.purple7} strokeWidth={2}>
+                                    <DashPathEffect intervals={[4, 3]} phase={0} />
+                                </Line>
+                                <Line points={points.quantile50} color={pink.pink10} strokeWidth={2} />
+                                <Line points={points.quantile75} color={red.red7} strokeWidth={2} >
+                                    <DashPathEffect intervals={[4, 3]} phase={0} />
+                                </Line>
+                                <Line points={points.quantile90} color={red.red8} strokeWidth={2} >
+                                    <DashPathEffect intervals={[8, 4]} phase={0} />
+                                </Line>
+                                <Line points={points.quantile95} color={red.red9} strokeWidth={2} />
+                                {
+                                    isActive ?
+                                        <GraphPercentileToolTip
+                                            state={state}
+                                            yUnit={yUnit}
+                                        />
+                                        :
+                                        <GraphObservedToolTip
+                                            percentileLabel={percentileLabel}
+                                            gestationalAge={gestationalAge}
+                                            observed={observed}
+                                            pointsObserved={points.observed}
+                                            yUnit={yUnit}
+                                        />
+                                }
+                            </>
+                        )}
+                    </CartesianChart>
+                }
             </View>
         </View>
     );
 };
 
+interface Dimensions {
+    width: number;
+    height: number;
+}
+
 export const GraphModal = ({ title, visible, setVisible, graphData, yUnit, gestationalAge, percentileLabel, observed }: GraphModalProps) => {
+    const [dimensions, setDimensions] = useState<Dimensions>({ width: 0, height: 0 });
+
     const handleOutsideTap = (event: HandlerStateChangeEvent<TapGestureHandlerEventPayload>) => {
         if (event.nativeEvent.state === State.END) {
             setVisible(false);
@@ -333,6 +344,11 @@ export const GraphModal = ({ title, visible, setVisible, graphData, yUnit, gesta
     };
 
     updateGraph(graphData, gestationalAge, observed);
+
+    const handleLayout = (event: LayoutChangeEvent) => {
+        const { width, height } = event.nativeEvent.layout;
+        setDimensions({ width, height });
+    };
 
     return (
         <Modal
@@ -354,6 +370,7 @@ export const GraphModal = ({ title, visible, setVisible, graphData, yUnit, gesta
                     >
                         <TapGestureHandler onHandlerStateChange={handleInsideTap}>
                             <View
+                                onLayout={handleLayout}
                                 style={{
                                     width: "90%",
                                     backgroundColor: pink.pink4,
@@ -414,6 +431,7 @@ export const GraphModal = ({ title, visible, setVisible, graphData, yUnit, gesta
                                         gestationalAge={gestationalAge}
                                         observed={observed}
                                         percentileLabel={percentileLabel}
+                                        dimensions={dimensions}
                                     />
                                 </View>
                             </View>
@@ -424,3 +442,7 @@ export const GraphModal = ({ title, visible, setVisible, graphData, yUnit, gesta
         </Modal >
     );
 };
+
+function setDimensions(arg0: { width: number; height: number; }) {
+    throw new Error("Function not implemented.");
+}
