@@ -19,7 +19,7 @@ interface AboutViewProps {
 
 const Version = () => {
     return (
-        <AboutView label={"v1.0.5"} Icon={Info} primaryColor={pink.pink5} secondaryColor={pink.pink6} textColor={pinkDark.pink7} />
+        <AboutView label={"v1.0.6"} Icon={Info} primaryColor={pink.pink5} secondaryColor={pink.pink6} textColor={pinkDark.pink7} />
     );
 };
 

@@ -187,7 +187,7 @@ export function computeIntergrowthPercentileBirthWeight(
     observedMeasurement: number,
     sex: SexType
 ): number {
-    const ga = Math.min(300, Math.max(168, age - 14));
+    const ga = Math.min(300, Math.max(168, age));
     const value = observedMeasurement / 1000.0;
     return ga < 231 ? valueToPercentileBirthWeightEarly(ga, value, sex) : valueToPercentileBirthWeight(ga, value, sex);
 }
