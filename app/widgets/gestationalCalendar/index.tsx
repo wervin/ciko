@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { GestationalCalendarWidget, GestationalCalendarWidgetData } from "../_widgets";
 import { GestationalAgePicker } from "@/components/gestationalAgePicker";
 import { PregnancyStartDatePicker } from "./pregnancyStartDatePicker";
+import { PeriodsDatePicker } from "./periodsDatePicker";
 import { EchographyDates } from "./echographyDates";
 import { MaternityLeaveDates } from "./maternityLeaveDates";
 import { Term } from "./term";
@@ -39,6 +40,7 @@ const GestationalCalendar = () => {
                 gap: 10
             }}>
                 <GestationalAgePicker weeks={weeks} />
+                <PeriodsDatePicker />
                 <PregnancyStartDatePicker />
                 <Term />
                 <EchographyDates />
